@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i ./src/styles/input.css -o ./public/css/style.css --watch",
-    "build": "npx tailwindcss -i ./src/styles/input.css -o ./public/css/style.css --minify"
+    "dev": "npm run copy-assets & npx @tailwindcss/cli -i ./src/style/style.css -o ./dist/css/style.css --watch",
+    "build": "npm run copy-assets & npx @tailwindcss/cli -i ./src/style/style.css -o ./dist/css/style.css --minify",
+    "copy-assets": "if not exist dist\\assets mkdir dist\\assets && if exist src\\assets xcopy /s /y src\\assets dist\\assets\\"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,11 @@
   "homepage": "https://github.com/Maiizo/INFEST-Web#readme",
   "description": "",
   "dependencies": {
-    "jquery": "^3.7.1",
-    "tailwindcss": "^4.1.7"
+    "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.7",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3"
   }
 }
