@@ -1,4 +1,31 @@
-<section class="layout-container">
+<section class="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+    <!-- background Image Overlay -->
+    <div class="absolute inset-0 bg-black/50"></div>
+
+    <!-- background pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-20 left-20 w-32 h-32 bg-primary rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-40 right-20 w-40 h-40 bg-secondary rounded-full blur-3xl animate-pulse"
+            style="animation-delay: 2s;"></div>
+        <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-accent rounded-full blur-2xl animate-pulse"
+            style="animation-delay: 4s;"></div>
+    </div>
+    <!-- content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 pt-32 pb-20">
+        <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-8rem)]">
+            <!-- left content -->
+            <div class="space-y-8">
+                <div class="space-y-6">
+                    <h3>Together we thrive</h3>
+                    <h1>Need <span>Any</span> Help? <br>
+                        <span>We</span> got you!
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="w-full h-screen" id="home">
         <div class="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
             style="background-image: url('/INFEST2025/INFEST-Web/src/assets/bg.png')"></div>
@@ -46,3 +73,17 @@
         overflow: hidden;
     }
 </style>
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#FF6B35',    // Orange color
+                    secondary: '#4ECDC4',   // Teal/Turquoise color  
+                    accent: '#FFE66D'       // Yellow color
+                }
+            }
+        }
+    }
+</script>
