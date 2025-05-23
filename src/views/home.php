@@ -21,7 +21,6 @@
     
  <?php include '../components/home/section2.html'; ?>
  
- <?php include '../components/home/section2.html'; ?>
 </body>
 
 </html>
