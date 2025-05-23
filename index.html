@@ -16,14 +16,14 @@
     <a href="/contact" data-link>Contact</a>
   </nav>
   <div id="app"></div>
-  
+
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script type="module" src="./src/index.js"></script>
   <script type="module">
-  import { Navbar } from '../src/component/navbar.html';
-
-  document.getElementById('navbar-container').innerHTML = Navbar();
-</script>
+    import { Navbar } from '../src/component/navbar.html';
+    import { Section2 } from '../src/component/home/section2.html';
+    document.getElementById('navbar-container').innerHTML = Navbar();
+  </script>
 </body>
 
 </html>
