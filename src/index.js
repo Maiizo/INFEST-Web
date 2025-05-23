@@ -1,4 +1,4 @@
-import home from "./views/home.js";
+import home from "./views/home.php";
 import about from "./views/about.js";
 import contact from "./views/contact.js";
 
