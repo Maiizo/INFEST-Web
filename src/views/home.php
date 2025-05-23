@@ -1,30 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    
+<link rel="stylesheet" href="/INFEST2025/INFEST-Web/dist/css/style.css">
 </head>
+
 <body>
+ <?php include '../components/navbar.html'; ?> 
     <section class="hero" id="home">
         <div class="hero-content">
-            <p class="hero-subtitle">Together We Thrive</p>
-            <h1 class="hero-title-1">Need any help?</h1>
-            <h2 class="hero-title-2">We got you!</h2>
-            <p class="hero-description">
-                Join our verified local help exchange platform that connects everyone each other. 
-                Discover the joy of giving and receiving support in your community.
-            </p>
-
-            <!-- stats to be dynamic from the database -->
-             <div class="hero-stats">
-                <div class="stat-item">
-                    <div></div>
+            <div class="hero-text">
+                <p class="hero-subtitle">Together We Thrive</p>
+                <h1 class="hero-title-1">Need any help?</h1>
+                <h2 class="hero-title-2">We got you!</h2>
+            </div>
+            <div class="hero-stats">
+                <div>
+                    <h1>14</h1>
+                    <p>Helped</p>
                 </div>
-             </div>
+                <div>
+                    <h1>5</h1>
+                    <p>Requests Mode</p>
+                </div>
+                <div>
+                    <h1>92%</h1>
+                    <p>Response Rate</p>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="LoginRegister.php">Join Now</a>
+                <a href="#ProductsAvailable">See Products Available</a>
+            </div>
+            <div class="hero-caption">
+                <p>Join our verified local help exchange platform where neighbors empower each other. Discover the joys of giving and receiving support in your community.</p>
+            </div>
         </div>
     </section>
+
+    <section class="hero-join">
+        <div>
+            <div>
+                <div>
+                    <h3>Join the Movement for a Stronger Neighborhood Community!</h3>
+                </div>
+                <div>
+                    <p>Discover how easy it is to connect with neighbors who are ready to help. Whether you need assistance or can lend a hand, this platform is built for you.</p>
+                </div>
+                <div>
+                    <a href="LoginRegister.php">Get Involved Now</a>
+                </div>
+                <div>
+                    <div class="hero-join-rating">
+                        <div class="hero-join-rating-svg">
+                            <!-- svgs -->
+                        </div>
+                        <div class="hero-join-rating-stats">5.0</div>
+
+                    </div>
+                    <div class="hero-join-rating-text">
+                        <p>“This platform has transformed our community. I’ve met amazing neighbors and received help when I needed it!”</p>
+                    </div>
+                    <div class="hero-join-rating-author">
+                        <div class="hero-join-rating-author-img">
+                            <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fG1hbiUyMGZhdGV8ZW58MHx8fHwxNjg5NTY3NzQy&ixlib=rb-4.0.3&q=80&w=400" alt="User image">
+                        </div>
+                        <div class="hero-join-rating-author-text">
+                            <p>Emily Johnson, Local Resident</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fG1hbiUyMGZhdGV8ZW58MHx8fHwxNjg5NTY3NzQy&ixlib=rb-4.0.3&q=80&w=400" alt="User image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero-purpose">
+        <div>
+            <div class="hero-purpose-image">
+                <img src="" alt="">
+            </div>
+            <div>
+                <div class="hero-purpose-title">
+                    <h3>Empowering Local Connections</h3>
+                </div>
+                <div class="hero-purpose-subtitle">
+                    <p>Join us in creating a supportive community for all.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-4 max-w-md mx-auto">
+                    <!-- find local help  -->
+                    <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-200 flex items-center space-x-3 hover:shadow-md transition-shadow cursor-pointer">
+                        <div class="w-8 h-8 bg-black rounded-full flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span class="text-gray-900 font-medium">Find Local Help</span>
+                    </div>
+                    <!-- offer your skills -->
+                     <div>
+                        <div>
+                            
+                        </div>
+                     </div>
+                    <!-- share your resources -->
+                     <!-- build trusting bonds -->
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </section>
+    
+  <script type="module" src="/src/app.js"></script>
 </body>
+
 </html>
