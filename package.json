@@ -2,9 +2,9 @@
   "name": "infest-web",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "dev": "npm run copy-assets && npx tailwindcss -i ./src/style/style.css -o ./dist/css/style.css --watch",
-    "build": "npm run copy-assets && npx tailwindcss -i ./src/style/style.css -o ./dist/css/style.css --minify",
+   "scripts": {
+    "dev": "tailwindcss -i ./src/style/style.css -o ./dist/css/output.css --watch",
+    "build": "tailwindcss -i ./src/style/style.css -o ./dist/css/output.css --minify",
     "copy-assets": "shx mkdir -p dist/assets && shx cp -r src/assets/* dist/assets/"
   },
   "repository": {
@@ -20,13 +20,10 @@
   "homepage": "https://github.com/Maiizo/INFEST-Web#readme",
   "description": "",
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.7",
     "jquery": "^3.7.1"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.7",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.3",
     "shx": "^0.4.0"
   }
 }
