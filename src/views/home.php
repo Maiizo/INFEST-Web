@@ -8,18 +8,18 @@
     link
     <link rel="stylesheet" href="/INFEST2025/INFEST-Web/dist/css/style.css">
 
+    <script src="https://cdn.tailwindcss.com"></script>
 
 
 </head>
 
 <body>
  <?php include '../components/navbar.html'; ?>
- 
-    
- <?php include '../components/home/hero.html'; ?>
-
-    
+ <?php include '../components/home/hero.html'; ?>    
  <?php include '../components/home/section2.html'; ?>
+ <?php include '../components/home/section3.html'; ?>
+ <?php include '../components/home/review.html'; ?>
+  <?php include '../components/footer.html'; ?>
  
 </body>
 
