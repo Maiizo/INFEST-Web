@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "dev": "npm run copy-assets & npx tailwindcss -i ./src/style/style.css -o ./dist/css/style.css --watch",
-  "build": "npm run copy-assets && npx tailwindcss -i ./src/style/style.css -o ./dist/css/style.css --minify",
-  "copy-assets": "if not exist dist\\assets mkdir dist\\assets && if exist src\\assets xcopy /s /y src\\assets dist\\assets\\"
-},
+    "dev": "npm run copy-assets & npx tailwindcss -i ./src/style/style.css -o ./dist/css/style.css --watch",
+    "build": "npm run copy-assets && npx tailwindcss -i ./src/style/style.css -o ./dist/css/style.css --minify",
+    "copy-assets": "if not exist dist\\assets mkdir dist\\assets && if exist src\\assets xcopy /s /y src\\assets dist\\assets\\"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Maiizo/INFEST-Web.git"
@@ -20,8 +20,9 @@
   "homepage": "https://github.com/Maiizo/INFEST-Web#readme",
   "description": "",
   "dependencies": {
-    "jquery": "^3.7.1",
-     "@tailwindcss/cli":"^4.1.7"
+    "@tailwindcss/cli": "^4.1.7",
+    "first": "^0.0.3",
+    "jquery": "^3.7.1"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.7",
