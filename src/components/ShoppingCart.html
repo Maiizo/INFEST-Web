@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Exchange Cart Button</title>
+    
+    <!-- Include Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Extend Tailwind configuration with UnityGrid colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    // UnityGrid color palette
+                    colors: {
+                        primary: '#ff7a59',    // Main UnityGrid orange
+                        secondary: '#4ecdc4',  // Teal/turquoise accent
+                        danger: '#ff4d4f',     // Red for badge
+                        unity: {
+                            orange: '#FF7A59',   // Main orange
+                            teal: '#4ECDC4',     // Main teal
+                            darkBlue: '#2E86AB', // Darker blue
+                            warm: '#FFA07A',     // Warm orange
+                            cool: '#5DADE2'      // Cool blue
+                        }
+                    },
+                    // Custom spacing for cart width
+                    spacing: {
+                        '112': '28rem'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+    <!-- Demo content to show scrolling behavior -->
+    <div class="p-8 space-y-8">
+        <h1 class="text-3xl font-bold text-gray-800">Demo Page Content</h1>
+        <div class="space-y-4">
+            <p class="text-gray-600">This is demo content to show how the floating cart button stays fixed during scrolling.</p>
+            <div class="h-96 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center">
+                <p class="text-gray-500">Scroll down to see the floating button behavior...</p>
+            </div>
+            <div class="h-96 bg-gradient-to-br from-green-100 to-yellow-100 rounded-lg flex items-center justify-center">
+                <p class="text-gray-500">The cart button stays fixed in the bottom-right corner</p>
+            </div>
+            <div class="h-96 bg-gradient-to-br from-pink-100 to-red-100 rounded-lg flex items-center justify-center">
+                <p class="text-gray-500">It will persist across page changes and scrolling</p>
+            </div>
+            <div class="h-96 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-lg flex items-center justify-center">
+                <p class="text-gray-500">Perfect for a sticky shopping cart experience!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Exchange Cart Button - Fixed Position -->
+    <!-- fixed: stays in place during scrolling | bottom-6 right-6: positioned 1.5rem from bottom-right -->
+    <!-- z-50: high stacking order to appear above other content -->
+    <!-- bg-gradient-to-r: horizontal gradient from UnityGrid orange to teal -->
+    <!-- text-white: white text | p-4: 1rem padding | rounded-full: circular button -->
+    <!-- shadow-2xl: large shadow for prominence | transition-all: smooth hover effects -->
+    <!-- hover effects: lift up, increase shadow, slight scale -->
+    <button 
+        class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-unity-teal text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-3xl hover:scale-110 group"
+        onclick="openCart()"
+        aria-label="Open exchange cart">
+        
+        <!-- Shopping Cart Icon (SVG) -->
+        <!-- w-6 h-6: 24px icon size | transition-transform: smooth icon animation -->
+        <!-- group-hover:scale-110: slightly scale icon when button is hovered -->
+        <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-110 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H19M9 19h.01M20 19h.01"></path>
+        </svg>
+        
+        <!-- Notification Badge -->
+        <!-- absolute: positioned relative to button | -top-2 -right-2: offset positioning -->
+        <!-- bg-danger: red background | text-white: white text | text-xs: small text -->
+        <!-- w-6 h-6: 24px circle | rounded-full: circular | flex items-center justify-center: center number -->
+        <!-- font-bold: bold text | animate-pulse: pulsing animation to draw attention -->
+        <span class="absolute -top-2 -right-2 bg-danger text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold animate-pulse">
+            3
+        </span>
+    </button>
+
+    <!-- Overlay for cart (hidden by default) -->
+    <!-- fixed inset-0: covers entire viewport | bg-black bg-opacity-50: semi-transparent background -->
+    <!-- backdrop-blur-sm: blur background | z-40: below cart but above page content -->
+    <!-- opacity-0 invisible: hidden by default | transition-all: smooth show/hide animation -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 opacity-0 invisible transition-all duration-300" id="cartOverlay" onclick="closeCart()"></div>
+    
+    <!-- Cart Slider Panel -->
+    <!-- fixed top-0 right-0: positioned at top-right | w-112: 28rem width on desktop -->
+    <!-- max-w-full: full width on mobile | h-screen: full viewport height -->
+    <!-- bg-white: white background | z-50: above overlay | flex flex-col: vertical layout -->
+    <!-- shadow-3xl: large shadow | transform translate-x-full: initially hidden off-screen -->
+    <!-- transition-transform: smooth slide animation -->
+    <div class="fixed top-0 right-0 w-112 max-w-full h-screen bg-white z-50 flex flex-col shadow-3xl transform translate-x-full transition-transform duration-500 ease-out" id="cartSlider">
+        
+        <!-- Cart Header -->
+        <div class="bg-gradient-to-r from-primary to-unity-teal text-white p-6 flex justify-between items-center">
+            <div>
+                <h2 class="text-2xl font-bold">Exchange Hub</h2>
+                <p class="text-sm opacity-90 mt-1">Your community connections</p>
+            </div>
+            <!-- Close Button -->
+            <button class="bg-white bg-opacity-20 w-10 h-10 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:bg-opacity-30 hover:rotate-90" onclick="closeCart()">×</button>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="bg-gradient-to-r from-unity-teal to-unity-cool text-white px-6 py-5 text-center">
+            <div class="text-lg font-semibold mb-1" id="exchangeCount">3 Active Exchange Requests</div>
+            <div class="text-sm opacity-90" id="exchangeSubtitle">Ready to connect with your neighbors</div>
+        </div>
+
+        <!-- Cart Items -->
+        <div class="flex-1 overflow-y-auto p-5 space-y-5" id="cartItems">
+            <!-- Sample Exchange Item -->
+            <div class="exchange-item bg-orange-50 rounded-2xl p-5 border-l-4 border-primary transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                <div class="flex items-start mb-4">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-unity-teal flex items-center justify-center text-white font-bold text-lg mr-4 flex-shrink-0">SM</div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="text-base font-semibold text-gray-800 mb-1 truncate">Weekly Sourdough Bread</h3>
+                        <p class="text-sm text-gray-600">Posted by Sarah M. • 2 days ago</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-4 space-y-4">
+                    <div>
+                        <div class="flex items-center text-xs font-semibold uppercase text-unity-darkBlue mb-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                            Offering
+                        </div>
+                        <p class="text-sm text-gray-700 leading-relaxed">Fresh homemade sourdough bread, delivered weekly.</p>
+                    </div>
+                    <div>
+                        <div class="flex items-center text-xs font-semibold uppercase text-unity-darkBlue mb-2">
+                            <div class="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
+                            Seeking
+                        </div>
+                        <p class="text-sm text-gray-700 leading-relaxed">Lawn mowing service for small front yard.</p>
+                    </div>
+                </div>
+                <div class="flex gap-2 mt-4">
+                    <button class="flex-1 py-2 px-4 bg-primary text-white rounded-lg text-sm font-medium transition-all duration-300 hover:bg-orange-600">Connect</button>
+                    <button class="flex-1 py-2 px-4 bg-white text-danger border-2 border-danger rounded-lg text-sm font-medium transition-all duration-300 hover:bg-danger hover:text-white" onclick="removeItem(this)">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="p-6 bg-orange-50 border-t border-gray-200">
+            <div class="flex gap-4">
+                <button class="flex-1 py-4 px-6 bg-white text-primary border-2 border-primary rounded-xl text-base font-semibold transition-all duration-300 hover:bg-primary hover:text-white">Browse More</button>
+                <button class="flex-1 py-4 px-6 bg-gradient-to-r from-primary to-unity-teal text-white rounded-xl text-base font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">Start Exchange</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Opens the exchange cart
+         */
+        function openCart() {
+            const overlay = document.getElementById('cartOverlay');
+            const slider = document.getElementById('cartSlider');
+            
+            // Show overlay and cart
+            overlay.classList.remove('opacity-0', 'invisible');
+            overlay.classList.add('opacity-100', 'visible');
+            
+            slider.classList.remove('translate-x-full');
+            slider.classList.add('translate-x-0');
+            
+            // Prevent body scrolling
+            document.body.classList.add('overflow-hidden');
+        }
+
+        /**
+         * Closes the exchange cart
+         */
+        function closeCart() {
+            const overlay = document.getElementById('cartOverlay');
+            const slider = document.getElementById('cartSlider');
+            
+            // Hide overlay and cart
+            overlay.classList.remove('opacity-100', 'visible');
+            overlay.classList.add('opacity-0', 'invisible');
+            
+            slider.classList.remove('translate-x-0');
+            slider.classList.add('translate-x-full');
+            
+            // Restore body scrolling
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        /**
+         * Removes an exchange item
+         */
+        function removeItem(button) {
+            const item = button.closest('.exchange-item');
+            item.style.transform = 'translateX(100%)';
+            item.style.opacity = '0';
+            
+            setTimeout(() => {
+                item.remove();
+                updateCartCount();
+            }, 300);
+        }
+
+        /**
+         * Updates the cart count and badge
+         */
+        function updateCartCount() {
+            const items = document.querySelectorAll('.exchange-item');
+            const count = items.length;
+            const badge = document.querySelector('.animate-pulse');
+            const countElement = document.getElementById('exchangeCount');
+            
+            badge.textContent = count;
+            countElement.textContent = `${count} Active Exchange Request${count !== 1 ? 's' : ''}`;
+            
+            // Hide badge if no items
+            if (count === 0) {
+                badge.style.display = 'none';
+                document.getElementById('cartItems').innerHTML = `
+                    <div class="flex flex-col items-center justify-center text-center py-16 px-5 text-gray-500">
+                        <div class="text-6xl mb-6 opacity-50">🤝</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-700">No Exchange Requests Yet</h3>
+                        <p class="text-sm text-gray-500 max-w-xs">Start connecting with your community!</p>
+                    </div>
+                `;
+            } else {
+                badge.style.display = 'flex';
+            }
+        }
+
+        // Close cart with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCart();
+            }
+        });
+
+        // Close cart when clicking outside
+        document.addEventListener('click', function(e) {
+            const cartSlider = document.getElementById('cartSlider');
+            const overlay = document.getElementById('cartOverlay');
+            
+            if (overlay.classList.contains('opacity-100') && 
+                !cartSlider.contains(e.target) && 
+                !e.target.closest('[onclick="openCart()"]')) {
+                closeCart();
+            }
+        });
+    </script>
+</body>
+</html>
