@@ -1,3 +1,24 @@
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        animation: {
+          'dropdown-enter': 'dropdown-enter 0.2s ease-out', 
+          'dropdown-exit': 'dropdown-exit 0.2s ease-in',
+          'mobile-menu-enter': 'mobile-menu-enter 0.3s ease-out',
+          'mobile-menu-exit': 'mobile-menu-exit 0.3s ease-in'
+        },
+        keyfromes: {
+          'dropdown-enter': {
+            '0%' : { opacity: '0', transform: 'translateY(-10px) scale(0.95)' },
+            '100%' : { opacity: '1', transform: 'translateY(0) scale(1)' }
+          }
+        }
+      }
+    }
+  }
+</script>
+
 <nav class="bg-transparent fixed top-5 left-0 w-full z-30 ">
   <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
 
@@ -43,14 +64,23 @@
 
     <!-- mobile menu (hidden by default) -->
     <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg px-4 py-4">
-      
-      <a href="signup.html">Sign up</a>
-      <a href="hero.php">Home</a>
-      <a href="BrowseOffers.html">Browse Offers</a>
-      <a href="PostOffers.html">Post Offers</a>
+      <a href="signup.html" class="block py-2 text-gray-800 hover:text-blue-500 hover:bg-gray-100 rounded">Sign up</a>
+      <a href="signin.html" class="block py-2 text-gray-800 hover:text-blue-500 hover:bg-gray-100 rounded">Sign in</a>
+      <a href="hero.php" class="block py-2 text-gray-800 hover:text-blue-500 hover:bg-gray-100 rounded">Home</a>
+      <a href="BrowseOffers.html" class="block py-2 text-gray-800 hover:text-blue-500 hover:bg-gray-100 rounded">Browse Offers</a>
+      <a href="PostOffers.html" class="block py-2 text-shadow-gray-800 hover:text-blue-500 hover:bg-gray-100 rounded">Post Offers</a>
     </div>
   </div>
 </nav>
+
+<script>
+    // simple JS to toggle mobile menu visibility
+    document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+</script>
 
 <!-- 
 <div class="relative group"> <a href="#top" class="ml-4 mt-0 text-gray-500 hover:text-blue-500"> <svg class="w-10 h-10"
