@@ -1,6 +1,6 @@
 import home from "./views/home.php";
-import about from "./views/about.js";
-import contact from "./views/contact.js";
+import about from "./views/config.php";
+import contact from "./views/LoginRegister.php";
 
 const routes = {
     "/": { title: "Home", render: home },
