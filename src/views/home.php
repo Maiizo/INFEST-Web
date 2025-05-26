@@ -20,7 +20,7 @@
     <?php include '../components/footer.html'; ?>
     <?php include '../components/home/BUTTONS.html'; ?>
     <?php include '../components/signup.html'; ?>
-
+    <?php include '../components/ShoppingCart.html'; ?>
 
 
 </body>
