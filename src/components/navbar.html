@@ -1,17 +1,20 @@
 <script>
   tailwind.config = {
-    theme: {
-      extend: {
-        animation: {
+    theme: { // main theme configuration
+      extend: { // extend the default tailwind theme, doesn't override
+        animation: { // custom animation utilities
           'dropdown-enter': 'dropdown-enter 0.2s ease-out', 
           'dropdown-exit': 'dropdown-exit 0.2s ease-in',
           'mobile-menu-enter': 'mobile-menu-enter 0.3s ease-out',
           'mobile-menu-exit': 'mobile-menu-exit 0.3s ease-in'
         },
-        keyfromes: {
+        keyfromes: { // css keyframe definitions
           'dropdown-enter': {
             '0%' : { opacity: '0', transform: 'translateY(-10px) scale(0.95)' },
             '100%' : { opacity: '1', transform: 'translateY(0) scale(1)' }
+          },
+          'dropdown-exit' : {
+            '0%' : { opacity: '0', transform: 'translateY(0) scale(1)' },
           }
         }
       }
@@ -74,26 +77,55 @@
 </nav>
 
 <script>
-    // simple JS to toggle mobile menu visibility
-    document.getElementById('mobile-menu-btn').addEventListener('click', function () {
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenu.classList.toggle('hidden');
+    // mobile menu toggle functionality
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    mobileMenuBtn.addEventListener('click', function(){
+      const isHidden = mobileMenu.classList.contains('scale-y-0');
+      if (isHidden) {
+        // show menu 
+        // scale-y-100: scale to 100% vertically (full height)
+        mobileMenu.classList.remove('scale-y-0','opacity-0');
+        mobileMenu.classList.add('scale-y-100','opacity-100');
+        // rotate-90 degreessss
+        menuIcon.classList.add('hidden','rotate-90');
+        closeIcon.classList.remove('hidden','rotate-90');
+        closeIcon.classList.add('rotate-0');
+        mobileMenu.setAttribute('aria-expanded', 'true');
+      } else {
+        // hide menu 
+        mobileMenu.classList.remove('scale-y-100','opacity-100');
+        mobileMenu.classList.add('scale-y-0','opacity-0');
+        menuIcon.classList.remove('hidden', 'rotate-90');
+        closeIcon.classList.add('hidden', 'rotate-90');
+        closeIcon.classList.remove('rotate-0');
+        mobileMenu.setAttribute('aria-expanded', 'false');
+      }
     });
+
+    // modifiction: profile dropdown with pure tailwind class manipulation
+    const profileBtn = document.getElementById('profile-btn');
+    const profileDropdown = document.getElementById('profile-dropdown');
+    let dropdownTimeout;
+
+    // show dropdown function
+    function showDropDown(){
+      clearTimeout(dropdownTimeout);
+      profileDropdown.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+      profileDropdown.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
+      profileBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    // hide dropdown with delay
+    function hideDropDown(){
+      dropdownTimeout = setTimeout(() => {
+        profileDropdown.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+        profileDropdown.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+        profileBtn.setAttribute('aria-expanded', 'false');
+      }, 150);
+    }
     
-</script>
-
-<!-- 
-<div class="relative group"> <a href="#top" class="ml-4 mt-0 text-gray-500 hover:text-blue-500"> <svg class="w-10 h-10"
-      fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M5.121 17.804A13.937 13.937 0 0112 15c2.485 0 4.797.657 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg> </a>
-  <div
-    class=" left-0 mt-2 w-48 bg-white shadow-md rounded-md py-2 z-10 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition">
-    <a href="LoginRegister.php" class="block px-4 py-2 hover:bg-gray-100">Sign Up</a> <a href="LoginRegister.php"
-      class="block px-4 py-2 hover:bg-gray-100">Sign In</a> </div>
-
-        class="absolute top-full right-0 mt-2 w-48 bg-white shadow-md rounded-md py-2 z-10 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition">
-        
-
-</div> -->
+</script> 
