@@ -6,7 +6,8 @@ module.exports = {
   content: [
   "./*.{html,php}",
   "./includes/**/*.php",
-  "./templates/**/*.php"
+  "./templates/**/*.php",
+    "./src/views/**/*.html"
 ],
   theme: {
     extend: {

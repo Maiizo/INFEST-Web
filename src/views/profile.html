@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnityGrid Dashboard</title>
+    <link rel="stylesheet" href="/INFEST2025/INFEST-Web/dist/css/output.css">
+       
+</head>
+<body class="bg-gray-100 text-gray-800 antialiased min-h-screen flex">
+
+    <aside class="w-64 bg-white p-6 flex flex-col shadow-lg rounded-r-lg">
+        <div class="flex items-center mb-10">
+            <div class="bg-primary p-2 rounded-full mr-3">
+                <i class="fas fa-grip-horizontal text-white text-lg"></i>
+            </div>
+            <span class="text-xl font-semibold text-gray-900">UNITYGRID</span>
+        </div>
+
+        <div class="flex flex-col items-center mb-10">
+            <img src="https://placehold.co/80x80/d1d5db/4b5563?text=Profile" alt="Profile" class="w-20 h-20 rounded-full mb-3 object-cover">
+            <span class="text-lg font-medium text-gray-900">USERNAME</span>
+            <div class="flex space-x-4 mt-4">
+                <button class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-300 transition-colors">
+                    <i class="fas fa-bell"></i>
+                </button>
+                <button class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-300 transition-colors">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-300 transition-colors">
+                    <i class="fas fa-ellipsis-h"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="mb-10">
+            <h3 class="text-xs font-semibold text-gray-500 uppercase mb-4">OVERVIEW</h3>
+            <nav>
+                <ul>
+                    <li class="mb-3">
+                        <a href="#" class="flex items-center p-3 rounded-lg text-primary bg-primary/10 font-medium hover:bg-primary/20 transition-colors">
+                            <i class="fas fa-tachometer-alt mr-3"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#" class="flex items-center p-3 rounded-lg text-gray-700 hover:bg-gray-200 transition-colors">
+                            <i class="fas fa-handshake mr-3"></i>
+                            Offer
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center p-3 rounded-lg text-gray-700 hover:bg-gray-200 transition-colors">
+                            <i class="fas fa-question-circle mr-3"></i>
+                            Request
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="mt-auto">
+            <h3 class="text-xs font-semibold text-gray-500 uppercase mb-4">SETTINGS</h3>
+            <nav>
+                <ul>
+                    <li class="mb-3">
+                        <a href="#" class="flex items-center p-3 rounded-lg text-gray-700 hover:bg-gray-200 transition-colors">
+                            <i class="fas fa-cog mr-3"></i>
+                            Settings
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center p-3 rounded-lg text-red-600 hover:bg-red-100 transition-colors">
+                            <i class="fas fa-sign-out-alt mr-3"></i>
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <main class="flex-1 p-8 overflow-auto">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-2xl font-semibold text-gray-900">Your Offer</h1>
+            <div class="flex space-x-2">
+                <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-600 shadow hover:bg-gray-200 transition-colors">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-600 shadow hover:bg-gray-200 transition-colors">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </header>
+
+        <section class="mb-12">
+            <div class="flex overflow-x-auto space-x-6 pb-4 scrollbar-hide">
+                <div class="flex-shrink-0 w-80 bg-white p-5 rounded-lg shadow-md border border-gray-200">
+                    <img src="https://placehold.co/300x150/e5e7eb/4b5563?text=Image" alt="Offer Image" class="w-full h-36 object-cover rounded-lg mb-4">
+                    <span class="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded-full mb-3 inline-block">GOODS</span>
+                    <h2 class="text-lg font-semibold text-gray-900 mb-2">1 Pair Of New Nike Shoes For A New Pair Of Converse Shoe</h2>
+                    <div class="flex items-center text-sm text-gray-600 mb-4">
+                        <img src="https://placehold.co/24x24/d1d5db/4b5563?text=A" alt="Person A" class="w-6 h-6 rounded-full mr-2">
+                        <span>Person A</span>
+                        <span class="ml-auto">20/02/2025</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 w-80 bg-white p-5 rounded-lg shadow-md border border-gray-200">
+                    <img src="https://placehold.co/300x150/e5e7eb/4b5563?text=Image" alt="Offer Image" class="w-full h-36 object-cover rounded-lg mb-4">
+                    <span class="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded-full mb-3 inline-block">SERVICE</span>
+                    <h2 class="text-lg font-semibold text-gray-900 mb-2">My Love For You in Exchange For Your Love For Me Wkwkkw</h2>
+                    <div class="flex items-center text-sm text-gray-600 mb-4">
+                        <img src="https://placehold.co/24x24/d1d5db/4b5563?text=A" alt="Person A" class="w-6 h-6 rounded-full mr-2">
+                        <span>Person A</span>
+                        <span class="ml-auto">19/04/2016</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 50%"></div>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 w-80 bg-white p-5 rounded-lg shadow-md border border-gray-200">
+                    <img src="https://placehold.co/300x150/e5e7eb/4b5563?text=Image" alt="Offer Image" class="w-full h-36 object-cover rounded-lg mb-4">
+                    <span class="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded-full mb-3 inline-block">GOODS</span>
+                    <h2 class="text-lg font-semibold text-gray-900 mb-2">Private Jet For Personal Hell</h2>
+                    <div class="flex items-center text-sm text-gray-600 mb-4">
+                        <img src="https://placehold.co/24x24/d1d5db/4b5563?text=A" alt="Person A" class="w-6 h-6 rounded-full mr-2">
+                        <span>Person A</span>
+                        <span class="ml-auto">05/08/2023</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <header class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-900">Your Request</h2>
+                <a href="#" class="text-primary text-sm font-medium hover:underline">See All</a>
+            </header>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CUSTOMER'S NAME</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">TYPE</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">TITLE</th>
+                            <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10">
+                                        <img class="h-10 w-10 rounded-full" src="https://placehold.co/40x40/d1d5db/4b5563?text=KM" alt="Kim Ming Yu">
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Kim Ming Yu</div>
+                                        <div class="text-sm text-gray-500">25/2/2073</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-primary/10 text-primary">GOODS</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">Understanding Concept Of React</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a href="#" class="text-primary hover:text-orange-700">SHOW DETAILS</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10">
+                                        <img class="h-10 w-10 rounded-full" src="https://placehold.co/40x40/d1d5db/4b5563?text=FS" alt="Felicia Sword">
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Felicia Sword</div>
+                                        <div class="text-sm text-gray-500">25/2/2023</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-primary/10 text-primary">SERVICE</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">Understanding The Concept Of My Love Towards Mingyu And Him (I Forgot His Name)</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a href="#" class="text-primary hover:text-orange-700">SHOW DETAILS</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
