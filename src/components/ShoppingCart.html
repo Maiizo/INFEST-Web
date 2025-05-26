@@ -32,6 +32,93 @@
     <!-- text-white: white text | p-4: 1rem padding | rounded-full: circular button -->
     <!-- shadow-2xl: large shadow for prominence | transition-all: smooth hover effects -->
     <!-- hover effects: lift up, increase shadow, slight scale -->
-    <button class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-unity-teal text-white">
+    <button class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-unity-teal text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-3xl hover:scale-110 group"
+    onclick="openCart()">
     </button>
 </body>
+
+<script>
+    // function to open the exchange cart
+    function openCart() {
+        const overlay = document.getElementById('cartOverlay');
+        const slider = document.getElementById('cartSlider');
+
+        // show overlay and cart
+        overlay.classList.remove('opacity-0', 'invisible');
+        overlay.classList.add('opacity-100', 'visible');
+
+        slider.classList.remove('translate-x-full');
+        slider.classList.add('translate-x-0');
+
+        // prevent body scrolling
+        document.body.classList.add('overflow-hidden');
+    }
+
+    // closes the exchange cart
+    function closeCart() {
+        const overlay = document.getElementById('cartOverlay');
+        const slider = document.getElementById('cartSlider');
+
+        // hide overlay and cart
+        overlay.classList.remove('opacity-100', 'visible');
+        overlay.classList.add('opacity-0', 'invisible');
+
+        slider.classList.remove('translate-x-0');
+        slider.classList.add('translate-x-full');
+
+        // allow body scrolling again
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    // remove an exchange item
+    function removeItem(button) {
+        const item = button.closest('.exchange-item');
+        item.style.transform = 'translateX(100%)';
+        item.style.opacity = '0';
+
+        setTimeout(() => {
+            item.remove();
+            updateCartTotal();
+        }, 300); // match the transition duration
+    }
+
+    // update the cart count and badge
+    function updateCartCount(){
+        const items = document.querySelectorAll('.exchange-item');
+        const count = items.length;
+        const badge = document.querySelectorAll('exchangeCount');
+
+        badge.textContent = count;
+        countElement.textContent = `${count} Active Exchange Request${ count !== 1 ? 's' : ''}`;
+
+        // hide badge if no items
+        if(count === 0) {
+            badge.style.display = 'none';
+            document.getElementById('cartItems').innerHTML = 
+            <div class="flex flex-col items-center justify-center text-center py-16 px-5 text-gray-500">
+                <div class="text-6xl mb-6 opacity-50">🤝</div>
+                <h3 class="text-xl font-semibold mb-3 text-gray-700">No Exchange Requests</h3>
+                <p class="text-sm text-gray-500 max-w-xs">Start connecting with your community</p>
+            </div>
+            ;
+        } else {
+            badge.style.display = 'flex';
+        }
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeCart();
+        }
+    });
+
+    // close cart when clicking outside
+    document.addEventListener('click', function(e) {
+        const cartSlider = document.getElementById('cartSlider');
+        const overlay = document.getElementById('cartOverlay');
+
+        if (overlay.classList.contains('opacity-100') && !cartSlider.contains(e.target) && !e.target.closest('.exchange-cart-button')) {
+            closeCart();
+        }
+    });
+</script>
