@@ -2,10 +2,10 @@
   "name": "infest-web",
   "version": "1.0.0",
   "main": "index.js",
+  
   "scripts": {
-    "dev": "tailwindcss -i ./src/style/style.css -o ./dist/css/output.css --watch",
-    "build": "tailwindcss -i ./src/style/style.css -o ./dist/css/output.css --minify",
-    "copy-assets": "shx mkdir -p dist/assets && shx cp -r src/assets/* dist/assets/"
+    "copy-assets": "shx mkdir -p dist/assets && shx cp -r src/assets/* dist/assets/",
+    "serve": "echo 'Use Live Server or XAMPP to serve files'"
   },
   "repository": {
     "type": "git",
@@ -23,8 +23,6 @@
     "jquery": "^3.7.1"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.7",
-    "shx": "^0.4.0",
-    "tailwindcss": "^4.1.7"
+    "shx": "^0.4.0"
   }
 }
