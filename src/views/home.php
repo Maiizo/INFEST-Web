@@ -7,8 +7,9 @@
     <title>Document</title>
 
     <!-- <link rel="stylesheet" href="../../dist/css/style.css"> -->
-    <link rel="stylesheet" href="../../dist/css/style.css">
+    <!-- <link rel="stylesheet" href="../../dist/css/style.css"> -->
 
+    <link rel="stylesheet" href="/INFEST2025/INFEST-Web/dist/css/output.css">
 </head>
 
 <body>

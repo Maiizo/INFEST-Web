@@ -1,10 +1,18 @@
-
 @import "tailwindcss";
 
 @theme {
   --color-primary: #FF6B35;
   --color-secondary: #4ECDC4;
   --color-accent: #FFE66D;
+
+  --color-danger: #ff4d4f;
+  --color-unity-orange: #FF7A59;
+  --color-unity-teal: #4ECDC4;
+  --color-unity-darkBlue: #2E86AB;
+  --color-unity-warm: #FFA07A;
+  --color-unity-cool: #5DADE2;
+
+  --spacing-112: 28rem;
 }
 
 html,
@@ -12,17 +20,16 @@ body {
   /* overflow: hidden; */
   /* margin: 0;
   padding: 0; */
-  overflow-x: hidden; 
+  overflow-x: hidden;
   max-width: 100vw;
-  
+
 }
 
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
-
-
