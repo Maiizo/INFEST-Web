@@ -69,15 +69,15 @@
                 </a>
 
                 <!-- Desktop menu - MODIFICATION: Using only Tailwind classes for transitions -->
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden md:flex items-center flex-1">
                     <!-- hidden: Display none (hidden by default) -->
                     <!-- md:flex: Display flex on medium screens and up (768px+) -->
                     <!-- items-center: Vertically center items -->
                     <!-- space-x-8: Horizontal gap of 32px between children -->
                     
-                    <div class="flex items-center space-x-8">
+                    <div class="flex items-center space-x-8 flex-1 justify-center">
                         <!-- MODIFICATION: Changed hero.php to index.html for consistency -->
-                        <a href="hero.php"
+                        <a href="../views/home.php"
                             class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] hover:drop-shadow-[0_2px_4px_rgba(59,130,246,0.5)]">
                             <!-- text-lg: Font size 18px -->
                             <!-- text-white: White text color -->
@@ -89,16 +89,16 @@
                             <!-- hover:drop-shadow-[custom]: Custom drop shadow on hover -->
                             Home
                         </a>
-                        <a href="BrowseOffers.html"
+                        <a href="../views/BrowseOffers.html"
                             class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] hover:drop-shadow-[0_2px_4px_rgba(59,130,246,0.5)]">
                             Browse Offers
                         </a>
-                        <a href="PostOffers.html"
+                        <a href="../components/PostOffers.html"
                             class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] hover:drop-shadow-[0_2px_4px_rgba(59,130,246,0.5)]">
                             Post Offers
                         </a>
                     </div>
-                </div>
+            
 
                 <!-- MODIFICATION: Profile dropdown with pure Tailwind classes -->
                 <div class="relative">
@@ -107,7 +107,7 @@
                     <button 
                         id="profile-btn" 
                         type="button" 
-                        class="ml-4 p-2 text-gray-300 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-full transition-all duration-300 transform hover:scale-110"
+                        class="ml-4 p-2 text-gray-300  hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-full transition-all duration-300 transform hover:scale-110"
                         aria-label="Profile menu"
                         aria-expanded="false"
                         aria-haspopup="true">
@@ -176,6 +176,7 @@
                             Sign In
                         </a>
                     </div>
+                </div>
                 </div>
 
                 <!-- Mobile menu button - MODIFICATION: Pure Tailwind styling -->

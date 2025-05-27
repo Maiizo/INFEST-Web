@@ -10,6 +10,6 @@
     <link rel="stylesheet" href="/INFEST2025/INFEST-Web/dist/css/output.css">
 </head>
 <body>
-    <?php include '../components/signup.html'; ?>
+    <?php include '../components/SignIn.html'; ?>
 </body>
 </html>
