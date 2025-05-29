@@ -1,385 +1,207 @@
 <script>
   tailwind.config = {
-    theme: { // main theme configuration
-      extend: { // extend the default tailwind theme, doesn't override
-        animation: { // custom animation utilities
+    theme: {
+      extend: {
+        animation: {
           'dropdown-enter': 'dropdown-enter 0.2s ease-out', 
           'dropdown-exit': 'dropdown-exit 0.2s ease-in',
           'mobile-menu-enter': 'mobile-menu-enter 0.3s ease-out',
           'mobile-menu-exit': 'mobile-menu-exit 0.3s ease-in'
         },
         keyframes: {
-                        'dropdown-enter': {
-                            '0%': { opacity: '0', transform: 'translateY(-10px) scale(0.95)' },
-                            '100%': { opacity: '1', transform: 'translateY(0) scale(1)' }
-                        },
-                        'dropdown-exit': {
-                            '0%': { opacity: '1', transform: 'translateY(0) scale(1)' },
-                            '100%': { opacity: '0', transform: 'translateY(-10px) scale(0.95)' }
-                        },
-                        'mobile-menu-enter': {
-                            '0%': { opacity: '0', transform: 'scaleY(0)' },
-                            '100%': { opacity: '1', transform: 'scaleY(1)' }
-                        },
-                        'mobile-menu-exit': {
-                            '0%': { opacity: '1', transform: 'scaleY(1)' },
-                            '100%': { opacity: '0', transform: 'scaleY(0)' }
-                        }
-                      }
+          'dropdown-enter': {
+            '0%': { opacity: '0', transform: 'translateY(-10px) scale(0.95)' },
+            '100%': { opacity: '1', transform: 'translateY(0) scale(1)' }
+          },
+          'dropdown-exit': {
+            '0%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+            '100%': { opacity: '0', transform: 'translateY(-10px) scale(0.95)' }
+          },
+          'mobile-menu-enter': {
+            '0%': { opacity: '0', transform: 'scaleY(0)' },
+            '100%': { opacity: '1', transform: 'scaleY(1)' }
+          },
+          'mobile-menu-exit': {
+            '0%': { opacity: '1', transform: 'scaleY(1)' },
+            '100%': { opacity: '0', transform: 'scaleY(0)' }
+          }
+        }
       }
     }
   }
 </script>
 
-<nav id="navbar" class=" fixed top-5 left-0 w-full z-30 border-b border-white/10 transition-all duration-300">
-            <!-- bg-black/20: Semi-transparent black background (20% opacity) -->
-            <!-- backdrop-blur-sm: Applies backdrop blur filter for glassmorphism effect -->
-            <!-- fixed: Position fixed to viewport -->
-            <!-- top-5: 20px from top (5 * 4px = 20px) -->
-            <!-- left-0: 0px from left edge -->
-            <!-- w-full: Width 100% -->
-            <!-- z-30: z-index of 30 (high stacking order) -->
-            <!-- border-b: Border on bottom edge -->
-            <!-- border-white/10: Semi-transparent white border (10% opacity) -->
-            <!-- transition-all duration-300: Smooth transition for all properties over 300ms -->
-            
-            <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-                <!-- max-w-7xl: Maximum width of 80rem (1280px) -->
-                <!-- mx-auto: Horizontal margin auto (centers container) -->
-                <!-- px-4: Horizontal padding of 16px (4 * 4px) -->
-                <!-- flex: Display flex -->
-                <!-- items-center: Align items center (vertical centering) -->
-                <!-- justify-between: Space between flex items -->
-                <!-- h-16: Height of 64px (16 * 4px) -->
+<nav id="navbar" class="fixed top-5 left-0 w-full z-30 border-b border-white/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+        <a href="home.php" class="flex items-center space-x-2 transform transition-all duration-300 hover:scale-105">
+            <span class="text-xl font-bold text-blue-400 drop-shadow-lg">UnityGrid</span>
+        </a>
 
-                <!-- MODIFICATION: Enhanced logo with Tailwind transitions -->
-                <a href="home.php" class="flex items-center space-x-2 transform transition-all duration-300 hover:scale-105">
-                    <!-- flex: Display flex -->
-                    <!-- items-center: Vertically center flex items -->
-                    <!-- space-x-2: Horizontal gap of 8px between children -->
-                    <!-- transform: Enable CSS transforms -->
-                    <!-- transition-all duration-300: Transition all properties over 300ms -->
-                    <!-- hover:scale-105: Scale to 105% on hover -->
-                    
-                    <span class="text-xl font-bold text-blue-400 drop-shadow-lg">UnityGrid</span>
-                    <!-- text-xl: Font size 20px -->
-                    <!-- font-bold: Font weight 700 -->
-                    <!-- text-blue-400: Blue color (medium blue) -->
-                    <!-- drop-shadow-lg: Large drop shadow effect -->
+        <div class="hidden md:flex items-center flex-1">
+            <div class="flex items-center space-x-8 flex-1 justify-center">
+                <a href="../views/home.php"
+                    class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] hover:drop-shadow-[0_2px_4px_rgba(59,130,246,0.5)]">
+                    Home
                 </a>
-
-                <!-- Desktop menu - MODIFICATION: Using only Tailwind classes for transitions -->
-                <div class="hidden md:flex items-center flex-1">
-                    <!-- hidden: Display none (hidden by default) -->
-                    <!-- md:flex: Display flex on medium screens and up (768px+) -->
-                    <!-- items-center: Vertically center items -->
-                    <!-- space-x-8: Horizontal gap of 32px between children -->
-                    
-                    <div class="flex items-center space-x-8 flex-1 justify-center">
-                        <!-- MODIFICATION: Changed hero.php to index.html for consistency -->
-                        <a href="../views/home.php"
-                            class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] hover:drop-shadow-[0_2px_4px_rgba(59,130,246,0.5)]">
-                            <!-- text-lg: Font size 18px -->
-                            <!-- text-white: White text color -->
-                            <!-- hover:text-blue-400: Blue text on hover -->
-                            <!-- transition-all duration-300: Smooth transition for all properties -->
-                            <!-- transform: Enable transforms -->
-                            <!-- hover:scale-105: Scale to 105% on hover -->
-                            <!-- drop-shadow-[custom]: Custom drop shadow with rgba values -->
-                            <!-- hover:drop-shadow-[custom]: Custom drop shadow on hover -->
-                            Home
-                        </a>
-                        <a href="../views/BrowseOffers.html"
-                            class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] hover:drop-shadow-[0_2px_4px_rgba(59,130,246,0.5)]">
-                            Browse Offers
-                        </a>
-                        <a href="../components/PostOffers.html"
-                            class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] hover:drop-shadow-[0_2px_4px_rgba(59,130,246,0.5)]">
-                            Post Offers
-                        </a>
-                    </div>
-            
-
-                <!-- MODIFICATION: Profile dropdown with pure Tailwind classes -->
-                <div class="relative">
-                    <!-- relative: Position relative (for absolute positioned children) -->
-                    
-                    <button 
-                        id="profile-btn" 
-                        type="button" 
-                        class="ml-4 p-2 text-gray-300  hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-full transition-all duration-300 transform hover:scale-110"
-                        aria-label="Profile menu"
-                        aria-expanded="false"
-                        aria-haspopup="true">
-                        <!-- ml-4: Left margin 16px -->
-                        <!-- p-2: Padding 8px all sides -->
-                        <!-- text-gray-300: Light gray text -->
-                        <!-- hover:text-blue-400: Blue text on hover -->
-                        <!-- focus:outline-none: Remove default focus outline -->
-                        <!-- focus:ring-2: 2px focus ring -->
-                        <!-- focus:ring-blue-400: Blue focus ring -->
-                        <!-- focus:ring-offset-2: 2px ring offset -->
-                        <!-- focus:ring-offset-transparent: Transparent ring offset -->
-                        <!-- rounded-full: Fully rounded corners (circular) -->
-                        <!-- transition-all duration-300: Smooth transitions -->
-                        <!-- transform: Enable transforms -->
-                        <!-- hover:scale-110: Scale to 110% on hover -->
-                        
-                        <svg class="w-8 h-8 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <!-- w-8 h-8: Width and height 32px each -->
-                            <!-- transition-transform duration-200: Smooth transform transitions -->
-                            <!-- fill="none": No fill color -->
-                            <!-- stroke="currentColor": Stroke uses current text color -->
-                            
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5.121 17.804A13.937 13.937 0 0112 15c2.485 0 4.797.657 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                    </button>
-                    
-                    <!-- MODIFICATION: Dropdown using Tailwind transform and opacity classes -->
-                    <div
-                        id="profile-dropdown"
-                        class="absolute top-full right-0 mt-2 w-48 bg-white/95 backdrop-blur-sm shadow-xl rounded-lg py-2 z-10 opacity-0 scale-95 transform transition-all duration-200 ease-out pointer-events-none border border-gray-200">
-                        <!-- absolute: Position absolute -->
-                        <!-- top-full: Top position 100% (below parent) -->
-                        <!-- right-0: Right position 0 (aligned to right) -->
-                        <!-- mt-2: Top margin 8px -->
-                        <!-- w-48: Width 192px -->
-                        <!-- bg-white/95: Semi-transparent white background (95% opacity) -->
-                        <!-- backdrop-blur-sm: Small backdrop blur -->
-                        <!-- shadow-xl: Extra large shadow -->
-                        <!-- rounded-lg: Large rounded corners -->
-                        <!-- py-2: Vertical padding 8px -->
-                        <!-- z-10: z-index 10 -->
-                        <!-- opacity-0: Initially invisible -->
-                        <!-- scale-95: Initially scaled to 95% -->
-                        <!-- transform: Enable transforms -->
-                        <!-- transition-all duration-200: Smooth transitions -->
-                        <!-- ease-out: Ease-out timing function -->
-                        <!-- pointer-events-none: Ignore pointer events when hidden -->
-                        <!-- border border-gray-200: Light gray border -->
-                        
-                        <!-- MODIFICATION: Pure Tailwind hover states -->
-                        <a href="LoginRegister.php" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 rounded-md mx-1">
-                            <!-- block: Display block -->
-                            <!-- px-4: Horizontal padding 16px -->
-                            <!-- py-2: Vertical padding 8px -->
-                            <!-- text-gray-800: Dark gray text -->
-                            <!-- hover:bg-blue-50: Very light blue background on hover -->
-                            <!-- hover:text-blue-600: Blue text on hover -->
-                            <!-- transition-colors duration-200: Smooth color transitions -->
-                            <!-- rounded-md: Medium rounded corners -->
-                            <!-- mx-1: Horizontal margin 4px -->
-                            Sign Up
-                        </a>
-                        <a href="LoginRegister.php" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 rounded-md mx-1">
-                            Sign In
-                        </a>
-                    </div>
-                </div>
-                </div>
-
-                <!-- Mobile menu button - MODIFICATION: Pure Tailwind styling -->
-                <div class="block md:hidden">
-                    <!-- block: Display block -->
-                    <!-- md:hidden: Hidden on medium screens and up -->
-                    
-                    <button 
-                        id="mobile-menu-btn" 
-                        class="text-white hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent rounded p-2 transition-all duration-300 transform hover:scale-110 active:scale-95"
-                        aria-label="Toggle mobile menu"
-                        aria-expanded="false">
-                        <!-- text-white: White text -->
-                        <!-- hover:text-blue-400: Blue text on hover -->
-                        <!-- focus:outline-none: Remove default outline -->
-                        <!-- focus:ring-2: 2px focus ring -->
-                        <!-- focus:ring-blue-400: Blue focus ring -->
-                        <!-- focus:ring-offset-2: 2px ring offset -->
-                        <!-- focus:ring-offset-transparent: Transparent offset -->
-                        <!-- rounded: Small rounded corners -->
-                        <!-- p-2: Padding 8px all sides -->
-                        <!-- transition-all duration-300: Smooth transitions -->
-                        <!-- transform: Enable transforms -->
-                        <!-- hover:scale-110: Scale to 110% on hover -->
-                        <!-- active:scale-95: Scale to 95% when pressed -->
-                        
-                        <svg id="menu-icon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <!-- w-6 h-6: Width and height 24px each -->
-                            <!-- transition-transform duration-300: Smooth transform transitions -->
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        <!-- MODIFICATION: Close icon with Tailwind transitions -->
-                        <svg id="close-icon" class="w-6 h-6 hidden transition-transform duration-300 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <!-- hidden: Initially hidden -->
-                            <!-- rotate-90: Rotated 90 degrees initially -->
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
+                <a href="../views/BrowseOffers.html"
+                    class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] hover:drop-shadow-[0_2px_4px_rgba(59,130,246,0.5)]">
+                    Browse Offers
+                </a>
+                <a href="../components/PostOffers.html"
+                    class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] hover:drop-shadow-[0_2px_4px_rgba(59,130,246,0.5)]">
+                    Post Offers
+                </a>
+                <a href="../components/Database.html"
+                    class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] hover:drop-shadow-[0_2px_4px_rgba(59,130,246,0.5)]">
+                    Database
+                </a>
             </div>
 
-            <!-- MODIFICATION: Mobile menu with Tailwind animations and transforms -->
-            <div id="mobile-menu" class="md:hidden bg-white/95 backdrop-blur-sm shadow-lg border-t border-gray-200 transform origin-top scale-y-0 opacity-0 transition-all duration-300 ease-out overflow-hidden">
-                <!-- md:hidden: Hidden on medium screens and up -->
-                <!-- bg-white/95: Semi-transparent white background -->
-                <!-- backdrop-blur-sm: Small backdrop blur -->
-                <!-- shadow-lg: Large shadow -->
-                <!-- border-t: Top border -->
-                <!-- border-gray-200: Light gray border -->
-                <!-- transform: Enable transforms -->
-                <!-- origin-top: Transform origin at top -->
-                <!-- scale-y-0: Initially scaled to 0% vertically -->
-                <!-- opacity-0: Initially invisible -->
-                <!-- transition-all duration-300: Smooth transitions -->
-                <!-- ease-out: Ease-out timing function -->
-                <!-- overflow-hidden: Hide overflowing content -->
+            <div class="relative">
+                <button 
+                    id="profile-btn" 
+                    type="button" 
+                    class="ml-4 p-2 text-gray-300 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-full transition-all duration-300 transform hover:scale-110"
+                    aria-label="Profile menu"
+                    aria-expanded="false"
+                    aria-haspopup="true">
+                    <svg class="w-8 h-8 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5.121 17.804A13.937 13.937 0 0112 15c2.485 0 4.797.657 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </button>
                 
-                <div class="px-4 py-4 space-y-1">
-                    <!-- px-4: Horizontal padding 16px -->
-                    <!-- py-4: Vertical padding 16px -->
-                    <!-- space-y-1: Vertical gap 4px between children -->
-                    
-                    <!-- MODIFICATION: Tailwind-only mobile menu styling -->
-                    <a href="LoginRegister.php" class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
-                        <!-- block: Display block -->
-                        <!-- py-3: Vertical padding 12px -->
-                        <!-- px-3: Horizontal padding 12px -->
-                        <!-- text-gray-800: Dark gray text -->
-                        <!-- hover:text-blue-600: Blue text on hover -->
-                        <!-- hover:bg-blue-50: Light blue background on hover -->
-                        <!-- rounded-lg: Large rounded corners -->
-                        <!-- transition-all duration-200: Smooth transitions -->
-                        <!-- transform: Enable transforms -->
-                        <!-- hover:translate-x-1: Move 4px right on hover -->
+                <div
+                    id="profile-dropdown"
+                    class="absolute top-full right-0 mt-2 w-48 bg-white/95 backdrop-blur-sm shadow-xl rounded-lg py-2 z-10 opacity-0 scale-95 transform transition-all duration-200 ease-out pointer-events-none border border-gray-200">
+                    <a href="LoginRegister.php" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 rounded-md mx-1">
                         Sign Up
                     </a>
-                    <a href="LoginRegister.php" class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
+                    <a href="LoginRegister.php" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 rounded-md mx-1">
                         Sign In
-                    </a>
-                    <hr class="my-3 border-gray-300">
-                    <!-- my-3: Vertical margin 12px -->
-                    <!-- border-gray-300: Medium gray border -->
-                    
-                    <a href="hero.php" class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
-                        Home
-                    </a>
-                    <a href="BrowseOffers.html" class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
-                        Browse Offers
-                    </a>
-                    <!-- MODIFICATION: Fixed typo and added Tailwind animations -->
-                    <a href="PostOffers.html" class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
-                        Post Offers
                     </a>
                 </div>
             </div>
-        </nav>
+        </div>
+
+        <div class="block md:hidden">
+            <button 
+                id="mobile-menu-btn" 
+                class="text-white hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent rounded p-2 transition-all duration-300 transform hover:scale-110 active:scale-95"
+                aria-label="Toggle mobile menu"
+                aria-expanded="false">
+                <svg id="menu-icon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="close-icon" class="w-6 h-6 hidden transition-transform duration-300 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden bg-white/95 backdrop-blur-sm shadow-lg border-t border-gray-200 transform origin-top scale-y-0 opacity-0 transition-all duration-300 ease-out overflow-hidden">
+        <div class="px-4 py-4 space-y-1">
+            <a href="LoginRegister.php" class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
+                Sign Up
+            </a>
+            <a href="LoginRegister.php" class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
+                Sign In
+            </a>
+            <hr class="my-3 border-gray-300">
+            <a href="hero.php" class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
+                Home
+            </a>
+            <a href="BrowseOffers.html" class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
+                Browse Offers
+            </a>
+            <a href="PostOffers.html" class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
+                Post Offers
+            </a>
+        </div>
+    </div>
+</nav>
 
 <script>
-        // MODIFICATION: Pure JavaScript with Tailwind classes - no custom CSS needed
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    
+    mobileMenuBtn.addEventListener('click', function() {
+        const isHidden = mobileMenu.classList.contains('scale-y-0');
         
-        // Mobile menu toggle functionality
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const closeIcon = document.getElementById('close-icon');
+        if (isHidden) {
+            mobileMenu.classList.remove('scale-y-0', 'opacity-0');
+            mobileMenu.classList.add('scale-y-100', 'opacity-100');
+            menuIcon.classList.add('hidden', 'rotate-90');
+            closeIcon.classList.remove('hidden', 'rotate-90');
+            closeIcon.classList.add('rotate-0');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        } else {
+            mobileMenu.classList.remove('scale-y-100', 'opacity-100');
+            mobileMenu.classList.add('scale-y-0', 'opacity-0');
+            menuIcon.classList.remove('hidden', 'rotate-90');
+            menuIcon.classList.add('rotate-0');
+            closeIcon.classList.add('hidden', 'rotate-90');
+            closeIcon.classList.remove('rotate-0');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    const profileBtn = document.getElementById('profile-btn');
+    const profileDropdown = document.getElementById('profile-dropdown');
+    let dropdownTimeout;
+
+    function showDropdown() {
+        clearTimeout(dropdownTimeout);
+        profileDropdown.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+        profileDropdown.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
+        profileBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function hideDropdown() {
+        dropdownTimeout = setTimeout(() => {
+            profileDropdown.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+            profileDropdown.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+            profileBtn.setAttribute('aria-expanded', 'false');
+        }, 150);
+    }
+
+    profileBtn.addEventListener('mouseenter', showDropdown);
+    profileBtn.addEventListener('mouseleave', hideDropdown);
+    profileDropdown.addEventListener('mouseenter', showDropdown);
+    profileDropdown.addEventListener('mouseleave', hideDropdown);
+    profileBtn.addEventListener('focus', showDropdown);
+    profileBtn.addEventListener('blur', hideDropdown);
+
+    document.addEventListener('click', function(event) {
+        if (!profileBtn.contains(event.target) && !profileDropdown.contains(event.target)) {
+            profileDropdown.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+            profileDropdown.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+            profileBtn.setAttribute('aria-expanded', 'false');
+        }
         
-        mobileMenuBtn.addEventListener('click', function() {
-            const isHidden = mobileMenu.classList.contains('scale-y-0');
-            
-            if (isHidden) {
-                // Show menu - using Tailwind classes only
-                // scale-y-100: Scale to 100% vertically (full height)
-                // opacity-100: Full opacity (visible)
-                mobileMenu.classList.remove('scale-y-0', 'opacity-0');
-                mobileMenu.classList.add('scale-y-100', 'opacity-100');
-                
-                // rotate-90: Rotate 90 degrees
-                // hidden: CSS display: none
-                menuIcon.classList.add('hidden', 'rotate-90');
-                closeIcon.classList.remove('hidden', 'rotate-90');
-                closeIcon.classList.add('rotate-0'); // rotate-0: No rotation
-                mobileMenuBtn.setAttribute('aria-expanded', 'true');
-            } else {
-                // Hide menu - using Tailwind classes only
-                mobileMenu.classList.remove('scale-y-100', 'opacity-100');
-                mobileMenu.classList.add('scale-y-0', 'opacity-0');
-                menuIcon.classList.remove('hidden', 'rotate-90');
-                menuIcon.classList.add('rotate-0');
-                closeIcon.classList.add('hidden', 'rotate-90');
-                closeIcon.classList.remove('rotate-0');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
-
-        // MODIFICATION: Profile dropdown with pure Tailwind class manipulation
-        const profileBtn = document.getElementById('profile-btn');
-        const profileDropdown = document.getElementById('profile-dropdown');
-        let dropdownTimeout;
-
-        // Show dropdown function using Tailwind classes
-        function showDropdown() {
-            clearTimeout(dropdownTimeout);
-            // opacity-100: Full opacity (visible)
-            // scale-100: Full scale (normal size)
-            // pointer-events-auto: Enable pointer events
-            profileDropdown.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
-            profileDropdown.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
-            profileBtn.setAttribute('aria-expanded', 'true');
+        if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+            mobileMenu.classList.remove('scale-y-100', 'opacity-100');
+            mobileMenu.classList.add('scale-y-0', 'opacity-0');
+            menuIcon.classList.remove('hidden', 'rotate-90');
+            closeIcon.classList.add('hidden', 'rotate-90');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
         }
+    });
 
-        // Hide dropdown with delay using Tailwind classes
-        function hideDropdown() {
-            dropdownTimeout = setTimeout(() => {
-                // opacity-0: Invisible
-                // scale-95: Scaled to 95% (slightly smaller)
-                // pointer-events-none: Disable pointer events
-                profileDropdown.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
-                profileDropdown.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
-                profileBtn.setAttribute('aria-expanded', 'false');
-            }, 150);
-        }
-
-        // Mouse events for profile dropdown
-        profileBtn.addEventListener('mouseenter', showDropdown);
-        profileBtn.addEventListener('mouseleave', hideDropdown);
-        profileDropdown.addEventListener('mouseenter', showDropdown);
-        profileDropdown.addEventListener('mouseleave', hideDropdown);
-
-        // Keyboard navigation for profile dropdown
-        profileBtn.addEventListener('focus', showDropdown);
-        profileBtn.addEventListener('blur', hideDropdown);
-
-        // Click outside to close dropdowns - using Tailwind classes
-        document.addEventListener('click', function(event) {
-            if (!profileBtn.contains(event.target) && !profileDropdown.contains(event.target)) {
-                profileDropdown.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
-                profileDropdown.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
-                profileBtn.setAttribute('aria-expanded', 'false');
-            }
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            mobileMenu.classList.remove('scale-y-100', 'opacity-100');
+            mobileMenu.classList.add('scale-y-0', 'opacity-0');
+            menuIcon.classList.remove('hidden', 'rotate-90');
+            closeIcon.classList.add('hidden', 'rotate-90');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
             
-            if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
-                mobileMenu.classList.remove('scale-y-100', 'opacity-100');
-                mobileMenu.classList.add('scale-y-0', 'opacity-0');
-                menuIcon.classList.remove('hidden', 'rotate-90');
-                closeIcon.classList.add('hidden', 'rotate-90');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
-
-        // MODIFICATION: Keyboard navigation using Tailwind classes
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                // Close mobile menu
-                mobileMenu.classList.remove('scale-y-100', 'opacity-100');
-                mobileMenu.classList.add('scale-y-0', 'opacity-0');
-                menuIcon.classList.remove('hidden', 'rotate-90');
-                closeIcon.classList.add('hidden', 'rotate-90');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                
-                // Close profile dropdown
-                profileDropdown.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
-                profileDropdown.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
-                profileBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
-    </script>
+            profileDropdown.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+            profileDropdown.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+            profileBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+</script>
