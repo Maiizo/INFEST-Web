@@ -1,4 +1,4 @@
-<?php include_once 'controller.php';?>
+<?php include_once '../controller.php';?>
 
 
 <!DOCTYPE html>
