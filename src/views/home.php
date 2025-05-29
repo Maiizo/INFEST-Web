@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- <link rel="stylesheet" href="/INFEST2025/INFEST-Web/src/style/style.css"> -->
-    <link rel="stylesheet" href="../style/style.css">
+     <link rel="stylesheet" href="../style/style.css">
 </head>
 
 <body>
@@ -17,7 +16,6 @@
     <?php include '../components/home/section3.html'; ?>
     <?php include '../components/home/review.html'; ?>
     <?php include '../components/footer.html'; ?>
-    <?php include '../components/home/BUTTONS.html'; ?>
     <?php include '../components/ShoppingCart.html'; ?>
 
 </body>

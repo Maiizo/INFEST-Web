@@ -28,7 +28,7 @@ function getAllUsers()
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $data = array(); // Initialize array for each row
+                $data = array(); 
                 $data['id'] = $row["user_id"];
                 $data['name'] = $row["name"];
                 $data['email'] = $row["email"];
