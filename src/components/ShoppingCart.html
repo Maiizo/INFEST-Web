@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Floating Exchange Cart Button</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-    <link rel="stylesheet" href="../../dist/css/style.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 
@@ -17,18 +17,18 @@
         <div class="space-y-4">
             <p class="text-gray-600">This is demo content to show how the floating cart button stays fixed during
                 scrolling.</p>
-            <div class="h-96 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center">
+            <div class="bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center" style="height: 24rem;">
                 <p class="text-gray-500">Scroll down to see the floating button behavior...</p>
             </div>
             <div
-                class="h-96 bg-gradient-to-br from-green-100 to-yellow-100 rounded-lg flex items-center justify-center">
+                class="bg-gradient-to-br from-green-100 to-yellow-100 rounded-lg flex items-center justify-center" style="height: 24rem;">
                 <p class="text-gray-500">The cart button stays fixed in the bottom-right corner</p>
             </div>
-            <div class="h-96 bg-gradient-to-br from-pink-100 to-red-100 rounded-lg flex items-center justify-center">
+            <div class="bg-gradient-to-br from-pink-100 to-red-100 rounded-lg flex items-center justify-center" style="height: 24rem;">
                 <p class="text-gray-500">It will persist across page changes and scrolling</p>
             </div>
             <div
-                class="h-96 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-lg flex items-center justify-center">
+                class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-lg flex items-center justify-center" style="height: 24rem;">
                 <p class="text-gray-500">Perfect for a sticky shopping cart experience!</p>
             </div>
         </div>
@@ -42,13 +42,13 @@
     <!-- shadow-2xl: large shadow for prominence | transition-all: smooth hover effects -->
     <!-- hover effects: lift up, increase shadow, slight scale -->
     <button
-        class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary to-unity-teal text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-3xl hover:scale-110 group"
+        class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-orange-500 to-teal-400 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-3xl hover:scale-110 group"
         onclick="openCart()" aria-label="Open exchange cart">
 
         <!-- Shopping Cart Icon (SVG) -->
         <!-- w-6 h-6: 24px icon size | transition-transform: smooth icon animation -->
         <!-- group-hover:scale-110: slightly scale icon when button is hovered -->
-        <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-110 text-primary" fill="none"
+        <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-110 text-orange-500" fill="none"
             stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H19M9 19h.01M20 19h.01"></path>
@@ -56,11 +56,11 @@
 
         <!-- Notification Badge -->
         <!-- absolute: positioned relative to button | -top-2 -right-2: offset positioning -->
-        <!-- bg-danger: red background | text-white: white text | text-xs: small text -->
+        <!-- bg-red-500: red background | text-white: white text | text-xs: small text -->
         <!-- w-6 h-6: 24px circle | rounded-full: circular | flex items-center justify-center: center number -->
         <!-- font-bold: bold text | animate-pulse: pulsing animation to draw attention -->
         <span
-            class="absolute -top-2 -right-2 bg-danger text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold animate-pulse">
+            class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold animate-pulse">
             3
         </span>
     </button>
@@ -73,16 +73,15 @@
         id="cartOverlay" onclick="closeCart()"></div>
 
     <!-- Cart Slider Panel -->
-    <!-- fixed top-0 right-0: positioned at top-right | w-112: 28rem width on desktop -->
-    <!-- max-w-full: full width on mobile | h-screen: full viewport height -->
+    <!-- fixed top-0 right-0: positioned at top-right | max-w-full: full width on mobile | h-screen: full viewport height -->
     <!-- bg-white: white background | z-50: above overlay | flex flex-col: vertical layout -->
     <!-- shadow-3xl: large shadow | transform translate-x-full: initially hidden off-screen -->
     <!-- transition-transform: smooth slide animation -->
-    <div class="fixed top-0 right-0 w-112 max-w-full h-screen bg-white z-50 flex flex-col shadow-3xl transform translate-x-full transition-transform duration-500 ease-out"
+    <div class="fixed top-0 right-0 max-w-full h-screen bg-white z-50 flex flex-col shadow-2xl transform translate-x-full transition-transform duration-500 ease-out" style="width: 28rem;"
         id="cartSlider">
 
         <!-- Cart Header -->
-        <div class="bg-gradient-to-r from-primary to-unity-teal text-white p-6 flex justify-between items-center">
+        <div class="bg-gradient-to-r from-orange-500 to-teal-400 text-white p-6 flex justify-between items-center">
             <div>
                 <h2 class="text-2xl font-bold">Exchange Hub</h2>
                 <p class="text-sm opacity-90 mt-1">Your community connections</p>
@@ -94,7 +93,7 @@
         </div>
 
         <!-- Summary Section -->
-        <div class="bg-gradient-to-r from-unity-teal to-unity-cool text-white px-6 py-5 text-center">
+        <div class="bg-gradient-to-r from-teal-400 to-blue-400 text-white px-6 py-5 text-center">
             <div class="text-lg font-semibold mb-1" id="exchangeCount">3 Active Exchange Requests</div>
             <div class="text-sm opacity-90" id="exchangeSubtitle">Ready to connect with your neighbors</div>
         </div>
@@ -103,10 +102,10 @@
         <div class="flex-1 overflow-y-auto p-5 space-y-5" id="cartItems">
             <!-- Sample Exchange Item -->
             <div
-                class="exchange-item bg-orange-50 rounded-2xl p-5 border-l-4 border-primary transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                class="exchange-item bg-orange-50 rounded-2xl p-5 border-l-4 border-orange-500 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                 <div class="flex items-start mb-4">
                     <div
-                        class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-unity-teal flex items-center justify-center text-white font-bold text-lg mr-4 flex-shrink-0">
+                        class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-teal-400 flex items-center justify-center text-white font-bold text-lg mr-4 flex-shrink-0">
                         SM</div>
                     <div class="flex-1 min-w-0">
                         <h3 class="text-base font-semibold text-gray-800 mb-1 truncate">Weekly Sourdough Bread</h3>
@@ -115,7 +114,7 @@
                 </div>
                 <div class="bg-white rounded-xl p-4 space-y-4">
                     <div>
-                        <div class="flex items-center text-xs font-semibold uppercase text-unity-darkBlue mb-2">
+                        <div class="flex items-center text-xs font-semibold uppercase text-blue-800 mb-2">
                             <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
                             Offering
                         </div>
@@ -123,7 +122,7 @@
                             weekly.</p>
                     </div>
                     <div>
-                        <div class="flex items-center text-xs font-semibold uppercase text-unity-darkBlue mb-2">
+                        <div class="flex items-center text-xs font-semibold uppercase text-blue-800 mb-2">
                             <div class="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
                             Seeking
                         </div>
@@ -132,9 +131,9 @@
                 </div>
                 <div class="flex gap-2 mt-4">
                     <button
-                        class="flex-1 py-2 px-4 bg-primary text-white rounded-lg text-sm font-medium transition-all duration-300 hover:bg-orange-600">Connect</button>
+                        class="flex-1 py-2 px-4 bg-orange-500 text-white rounded-lg text-sm font-medium transition-all duration-300 hover:bg-orange-600">Connect</button>
                     <button
-                        class="flex-1 py-2 px-4 bg-white text-danger border-2 border-danger rounded-lg text-sm font-medium transition-all duration-300 hover:bg-danger hover:text-white"
+                        class="flex-1 py-2 px-4 bg-white text-red-500 border-2 border-red-500 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-red-500 hover:text-white"
                         onclick="removeItem(this)">Remove</button>
                 </div>
             </div>
@@ -144,10 +143,10 @@
         <div class="p-6 bg-orange-50 border-t border-gray-200">
             <div class="flex gap-4">
                 <button
-                    class="flex-1 py-4 px-6 bg-white text-primary border-2 border-primary rounded-xl text-base font-semibold transition-all duration-300 hover:bg-primary hover:text-white">Browse
+                    class="flex-1 py-4 px-6 bg-white text-orange-500 border-2 border-orange-500 rounded-xl text-base font-semibold transition-all duration-300 hover:bg-orange-500 hover:text-white">Browse
                     More</button>
                 <button
-                    class="flex-1 py-4 px-6 bg-gradient-to-r from-primary to-unity-teal text-white rounded-xl text-base font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">Start
+                    class="flex-1 py-4 px-6 bg-gradient-to-r from-orange-500 to-teal-400 text-white rounded-xl text-base font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">Start
                     Exchange</button>
             </div>
         </div>
