@@ -5,32 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hero Section</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        html, body {
-            overflow-x: hidden;
-            max-width: 100vw;
-        }
-        
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-    </style>
+
 </head>
 <body>
     <section class="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
-        <!-- Background Image -->
         <div class="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style="background-image: url('../../src/assets/bg.png')"></div>
 
-        <!-- background Image Overlay -->
         <div class="absolute inset-0 bg-black/50"></div>
 
-        <!-- background pattern -->
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-20 left-20 w-32 h-32 bg-orange-500 rounded-full blur-3xl animate-pulse"></div>
             <div class="absolute bottom-40 right-20 w-40 h-40 bg-teal-400 rounded-full blur-3xl animate-pulse"
@@ -38,10 +21,9 @@
             <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-yellow-400 rounded-full blur-2xl animate-pulse"
                 style="animation-delay: 4s;"></div>
         </div>
-        <!-- content -->
         <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 pt-32 pb-20">
             <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-8rem)]">
-                <!-- left content -->
+                <!-- left  -->
                 <div class="space-y-8 text-white">
                     <div class="space-y-6">
                         <h3 class="text-teal-400 text-lg font-medium tracking-wide uppercase">Together we thrive</h3>
@@ -53,8 +35,7 @@
                         </h1>
                     </div>
 
-                    <!-- stats -->
-                    <div class="flex items-center space-x-12 py-8">
+                   <div class="flex items-center space-x-12 py-8">
                         <div class="text-center">
                             <div class="text-4xl md:text-5xl font-bold text-teal-400 mb-2">2897</div>
                             <div class="text-gray-300 text-sm uppercase tracking-wide">People Helped</div>
@@ -69,31 +50,26 @@
                         </div>
                     </div>
 
-                    <!-- call to action buttons -->
                     <div class="flex gap-3 mx-0">
-                        <a href="LoginRegister.php">
+                        <a href="src/components/SignUp.html">
                         <button
                             class="px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-medium rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                             Join Now
                         </button></a>
-                        <a href="#ProductsAvailable">
+                        <a href="src/components/ShoppingCart.html">
                             <button
                                 class="px-6 py-3 bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white font-medium rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                                 See Products Available
                             </button></a>
                     </div>
 
-                    <!-- description -->
                     <p class="text-gray-300 text-lg leading-relaxed max-w-xl">Join our verified local help exchange platform
                         where neighbors empower each other. Discover the joys of giving and receiving support in your
                         community.</p>
                 </div>
 
-                <!-- giving mock community cards-->
                 <div class="relative">
-                    <!-- bg bg-gradient-to-br  from-gray-800 to-gray-900 border border-gray-700  -->
                     <div class="relative rounded-3xl p-8 ">
-                        <!-- mock community cards -->
                         <div class="space-y-6">
                             <div
                                 class="bg-gradient-to-r from-orange-500/20 to-teal-400/20 p-6 rounded-xl border border-orange-500/30">
