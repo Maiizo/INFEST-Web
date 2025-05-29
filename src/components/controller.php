@@ -322,4 +322,4 @@ function insertResponse($usersId, $helpRequestsId, $exchangeInformationsId)
 }
 
 ?>
-?>
+
