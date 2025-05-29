@@ -7,8 +7,6 @@
     <title>Post Your Offer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-gray-50 min-h-screen">
@@ -81,8 +79,8 @@
                     <!-- Upload Image -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Upload Image</label>
-                        <button id="uploadimage" type="button"
-                            class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-orange-500 transition-colors duration-200">
+                        <button type="button" id="uploadimage"
+                            class="w-full border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-orange-500 transition-colors duration-200">
                             <div class="space-y-2">
                                 <div class="mx-auto w-12 h-12 text-gray-400">
                                     <svg fill="none" stroke="currentColor" viewBox="0 0 48 48">
@@ -92,15 +90,14 @@
                                     </svg>
                                 </div>
                                 <div class="text-sm text-gray-600">
-                                    <div type="button" class="text-orange-500 hover:text-orange-600 font-medium">
+                                    <span class="text-orange-500 hover:text-orange-600 font-medium" id="uploadText">
                                         Click to upload image
-                                    </div>
+                                    </span>
                                 </div>
                                 <p class="text-xs text-gray-500">PNG, JPG up to 10MB</p>
-                                <input type="file" name="offer_image" accept="image/*" class="hidden" id="imageUpload">
                             </div>
-                            </button>
-                        </div>
+                        </button>
+                        <input type="file" name="offer_image" accept="image/*" class="hidden" id="imageUpload">
                     </div>
                 </div>
 
@@ -183,20 +180,12 @@
             $('#imageUpload').on('change', function (e) {
                 if (e.target.files.length > 0) {
                     const fileName = e.target.files[0].name;
-                    $('.text-orange-500').text(fileName);
+                    $('#uploadText').text(fileName);
                 }
             });
 
             // Handle save as draft
             $('#saveDraft').on('click', function () {
-                submitForm(true);
-            });
-
-
-});
-
-            // Handle save as draft
-            document.getElementById('saveDraft').addEventListener('click', function () {
                 const form = document.getElementById('offerForm');
                 const formData = new FormData(form);
                 formData.append('save_draft', '1');
@@ -204,6 +193,7 @@
                 // You can implement AJAX call here to save draft
                 alert('Draft saved functionality would go here');
             });
+        });
     </script>
 </body>
 
