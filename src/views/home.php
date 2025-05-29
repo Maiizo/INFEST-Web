@@ -18,6 +18,7 @@
     <?php include '../components/home/review.html'; ?>
     <?php include '../components/footer.html'; ?>
     <?php include '../components/home/BUTTONS.html'; ?>
+    <?php include '../components/home/ShoppingCart.html'; ?>
 
 </body>
 
