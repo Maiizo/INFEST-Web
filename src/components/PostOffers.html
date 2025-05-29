@@ -12,13 +12,12 @@
 <body class="bg-gray-50 min-h-screen">
     <div class="container mx-auto px-4 py-8">
         <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-            <!-- Header -->
+           
             <div class="bg-gradient-to-r from-orange-500 to-red-500 px-8 py-6">
                 <h1 class="text-3xl font-bold text-white">Post Your Offer</h1>
                 <p class="text-orange-100 mt-2">Share what you have to offer and what you're looking for in exchange</p>
             </div>
 
-            <!-- Form -->
             <form class="p-8 space-y-8" id="offerForm" method="POST" action="submit_offer.php"
                 enctype="multipart/form-data">
                 <!-- What You're Offering -->
@@ -26,7 +25,7 @@
                     <h2 class="text-2xl font-semibold text-gray-800">What You're Offering</h2>
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <!-- Product/Service Name -->
+                        
                         <div class="lg:col-span-2">
                             <label for="product_name" class="block text-sm font-medium text-gray-700 mb-2">
                                 Product/Service Name <span class="text-red-500">*</span>
@@ -36,7 +35,7 @@
                                 placeholder="Enter product or service name">
                         </div>
 
-                        <!-- Category -->
+                       
                         <div>
                             <label for="category" class="block text-sm font-medium text-gray-700 mb-2">
                                 Category <span class="text-red-500">*</span>
@@ -55,10 +54,9 @@
                             </div>
                         </div>
 
-                        <!-- City/Location -->
                         <div>
                             <label for="city" class="block text-sm font-medium text-gray-700 mb-2">
-                                City/Location <span class="text-red-500">*</span>
+                                City <span class="text-red-500">*</span>
                             </label>
                             <input type="text" id="city" name="city" required
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
@@ -66,8 +64,7 @@
                         </div>
                     </div>
 
-                    <!-- Description -->
-                    <div>
+                     <div>
                         <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
                             Description <span class="text-red-500">*</span>
                         </label>
@@ -76,8 +73,7 @@
                             placeholder="Describe your product or service in detail"></textarea>
                     </div>
 
-                    <!-- Upload Image -->
-                    <div>
+                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Upload Image</label>
                         <button type="button" id="uploadimage"
                             class="w-full border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-orange-500 transition-colors duration-200">
@@ -106,8 +102,7 @@
                     <h2 class="text-2xl font-semibold text-gray-800">What You're Seeking</h2>
 
                     <div class="space-y-6">
-                        <!-- Exchange Product/Service -->
-                        <div>
+                         <div>
                             <label for="exchange_product" class="block text-sm font-medium text-gray-700 mb-2">
                                 Exchange Product/Service <span class="text-red-500">*</span>
                             </label>
@@ -116,7 +111,6 @@
                                 placeholder="What are you looking for in exchange?">
                         </div>
 
-                        <!-- Exchange Description -->
                         <div>
                             <label for="exchange_description" class="block text-sm font-medium text-gray-700 mb-2">
                                 Exchange Description <span class="text-red-500">*</span>
@@ -128,12 +122,10 @@
                     </div>
                 </div>
 
-                <!-- Contact Information -->
-                <div class="space-y-6 border-t pt-8">
+                 <div class="space-y-6 border-t pt-8">
                     <h2 class="text-2xl font-semibold text-gray-800">Contact Information</h2>
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <!-- Contact Email -->
                         <div>
                             <label for="contact_email" class="block text-sm font-medium text-gray-700 mb-2">
                                 Contact Email <span class="text-red-500">*</span>
@@ -143,7 +135,6 @@
                                 placeholder="your.email@example.com">
                         </div>
 
-                        <!-- Contact Number -->
                         <div>
                             <label for="contact_number" class="block text-sm font-medium text-gray-700 mb-2">
                                 Contact Number
@@ -155,7 +146,7 @@
                     </div>
                 </div>
 
-                <!-- Form Actions -->
+            
                 <div class="flex flex-col sm:flex-row gap-4 pt-8 border-t">
                     <button type="submit"
                         class="flex-1 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-medium rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
@@ -172,7 +163,7 @@
 
     <script>
         $(document).ready(function () {
-            // Handle image upload
+            //  image upload
             $('#uploadimage').on('click', function () {
                 $('#imageUpload').click();
             });
@@ -184,14 +175,13 @@
                 }
             });
 
-            // Handle save as draft
+            //  spy bisa  as draft
             $('#saveDraft').on('click', function () {
                 const form = document.getElementById('offerForm');
                 const formData = new FormData(form);
                 formData.append('save_draft', '1');
 
-                // You can implement AJAX call here to save draft
-                alert('Draft saved functionality would go here');
+                      alert('Draft saved functionality would go here');
             });
         });
     </script>

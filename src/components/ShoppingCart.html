@@ -11,7 +11,6 @@
 </head>
 
 <body class="bg-gray-100 min-h-screen">
-    <!-- Demo content to show scrolling behavior -->
     <div class="p-8 space-y-8">
         <h1 class="text-3xl font-bold text-gray-800">Demo Page Content</h1>
         <div class="space-y-4">
@@ -34,73 +33,44 @@
         </div>
     </div>
 
-    <!-- Floating Exchange Cart Button - Fixed Position -->
-    <!-- fixed: stays in place during scrolling | bottom-6 right-6: positioned 1.5rem from bottom-right -->
-    <!-- z-50: high stacking order to appear above other content -->
-    <!-- bg-gradient-to-r: horizontal gradient from UnityGrid orange to teal -->
-    <!-- text-white: white text | p-4: 1rem padding | rounded-full: circular button -->
-    <!-- shadow-2xl: large shadow for prominence | transition-all: smooth hover effects -->
-    <!-- hover effects: lift up, increase shadow, slight scale -->
-    <button
+      <button
         class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-orange-500 to-teal-400 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-3xl hover:scale-110 group"
         onclick="openCart()" aria-label="Open exchange cart">
-
-        <!-- Shopping Cart Icon (SVG) -->
-        <!-- w-6 h-6: 24px icon size | transition-transform: smooth icon animation -->
-        <!-- group-hover:scale-110: slightly scale icon when button is hovered -->
-        <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-110 text-orange-500" fill="none"
+          <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-110 text-orange-500" fill="none"
             stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H19M9 19h.01M20 19h.01"></path>
         </svg>
 
-        <!-- Notification Badge -->
-        <!-- absolute: positioned relative to button | -top-2 -right-2: offset positioning -->
-        <!-- bg-red-500: red background | text-white: white text | text-xs: small text -->
-        <!-- w-6 h-6: 24px circle | rounded-full: circular | flex items-center justify-center: center number -->
-        <!-- font-bold: bold text | animate-pulse: pulsing animation to draw attention -->
-        <span
+      <span
             class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold animate-pulse">
             3
         </span>
     </button>
 
-    <!-- Overlay for cart (hidden by default) -->
-    <!-- fixed inset-0: covers entire viewport | bg-black bg-opacity-50: semi-transparent background -->
-    <!-- backdrop-blur-sm: blur background | z-40: below cart but above page content -->
-    <!-- opacity-0 invisible: hidden by default | transition-all: smooth show/hide animation -->
-    <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 opacity-0 invisible transition-all duration-300"
+     <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 opacity-0 invisible transition-all duration-300"
         id="cartOverlay" onclick="closeCart()"></div>
 
-    <!-- Cart Slider Panel -->
-    <!-- fixed top-0 right-0: positioned at top-right | max-w-full: full width on mobile | h-screen: full viewport height -->
-    <!-- bg-white: white background | z-50: above overlay | flex flex-col: vertical layout -->
-    <!-- shadow-3xl: large shadow | transform translate-x-full: initially hidden off-screen -->
-    <!-- transition-transform: smooth slide animation -->
-    <div class="fixed top-0 right-0 max-w-full h-screen bg-white z-50 flex flex-col shadow-2xl transform translate-x-full transition-transform duration-500 ease-out" style="width: 28rem;"
+     <div class="fixed top-0 right-0 max-w-full h-screen bg-white z-50 flex flex-col shadow-2xl transform translate-x-full transition-transform duration-500 ease-out" style="width: 28rem;"
         id="cartSlider">
 
-        <!-- Cart Header -->
-        <div class="bg-gradient-to-r from-orange-500 to-teal-400 text-white p-6 flex justify-between items-center">
+         <div class="bg-gradient-to-r from-orange-500 to-teal-400 text-white p-6 flex justify-between items-center">
             <div>
                 <h2 class="text-2xl font-bold">Exchange Hub</h2>
                 <p class="text-sm opacity-90 mt-1">Your community connections</p>
             </div>
-            <!-- Close Button -->
-            <button
+             <button
                 class="bg-white bg-opacity-20 w-10 h-10 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:bg-opacity-30 hover:rotate-90"
                 onclick="closeCart()">×</button>
         </div>
 
-        <!-- Summary Section -->
-        <div class="bg-gradient-to-r from-teal-400 to-blue-400 text-white px-6 py-5 text-center">
+         <div class="bg-gradient-to-r from-teal-400 to-blue-400 text-white px-6 py-5 text-center">
             <div class="text-lg font-semibold mb-1" id="exchangeCount">3 Active Exchange Requests</div>
             <div class="text-sm opacity-90" id="exchangeSubtitle">Ready to connect with your neighbors</div>
         </div>
 
-        <!-- Cart Items -->
-        <div class="flex-1 overflow-y-auto p-5 space-y-5" id="cartItems">
-            <!-- Sample Exchange Item -->
+         <div class="flex-1 overflow-y-auto p-5 space-y-5" id="cartItems">
+            <!-- sample  -->
             <div
                 class="exchange-item bg-orange-50 rounded-2xl p-5 border-l-4 border-orange-500 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                 <div class="flex items-start mb-4">
@@ -139,8 +109,7 @@
             </div>
         </div>
 
-        <!-- Footer -->
-        <div class="p-6 bg-orange-50 border-t border-gray-200">
+         <div class="p-6 bg-orange-50 border-t border-gray-200">
             <div class="flex gap-4">
                 <button
                     class="flex-1 py-4 px-6 bg-white text-orange-500 border-2 border-orange-500 rounded-xl text-base font-semibold transition-all duration-300 hover:bg-orange-500 hover:text-white">Browse
