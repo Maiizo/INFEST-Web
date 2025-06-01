@@ -7,10 +7,10 @@ if (session_status() == PHP_SESSION_NONE) {
 
 function connectDB()
 {
-    $host = 'localhost';
-    $user = "root";
-    $password = "";
-    $db = "UnityGrid_db";
+    $host = getenv('DB_HOST') ?: 'localhost';
+    $user = getenv('DB_USER') ?: 'root';
+    $password = getenv('DB_PASSWORD') ?: '';
+    $db = getenv('DB_NAME') ?: 'UnityGrid_db';
 
     $conn = mysqli_connect($host, $user, $password, $db) or die("Error connecting to database");
     return $conn;
