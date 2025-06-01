@@ -31,7 +31,7 @@ $categories = getAllCategories();
 
 <body class="bg-gray-50 min-h-screen">
     <!-- Include navbar -->
-    <?php include 'navbar.html'; ?>
+    <?php include '../components/navbar.html'; ?>
     
     <div class="container mx-auto px-4 py-8 pt-24">
         <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
