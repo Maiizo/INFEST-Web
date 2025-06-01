@@ -1,0 +1,26 @@
+# Ignore uploads directory to prevent overwriting during builds
+uploads/
+**/uploads/
+
+# Node modules (will be installed in container)
+node_modules/
+npm-debug.log
+
+# Git files
+.git/
+.gitignore
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.production

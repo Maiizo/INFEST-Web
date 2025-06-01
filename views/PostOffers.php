@@ -2,7 +2,7 @@
 // POST_OFFERS.PHP - PHP version with authentication check
 // FIXED: Proper include path and authentication handling
 
-include_once __DIR__ . '/controller.php';
+include_once '../components/controller.php';
 
 // Check if user is logged in
 $currentUser = getCurrentUser();
@@ -26,12 +26,12 @@ $categories = getAllCategories();
     <title>Post Your Offer - UnityGrid</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="/style/style.css">
 </head>
 
 <body class="bg-gray-50 min-h-screen">
     <!-- Include navbar -->
-    <?php include 'navbar.html'; ?>
+    <?php include '/components/navbar.html'; ?>
     
     <div class="container mx-auto px-4 py-8 pt-24">
         <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
@@ -45,7 +45,7 @@ $categories = getAllCategories();
             <!-- Display success/error messages -->
             <div id="message-container" class="mx-8 mt-4"></div>
 
-            <form class="p-8 space-y-8" id="offerForm" method="POST" action="submit_offer.php"
+            <form class="p-8 space-y-8" id="offerForm" method="POST" action="/components/submit_offer.php"
                 enctype="multipart/form-data">
                 <!-- What You're Offering -->
                 <div class="space-y-6">
@@ -176,7 +176,7 @@ $categories = getAllCategories();
                         class="flex-1 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-medium rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                         Post Your Offer
                     </button>
-                    <a href="../views/BrowseOffers.php"
+                    <a href="/views/BrowseOffers.php"
                         class="flex-1 px-8 py-4 bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white font-medium rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl text-center">
                         Cancel
                     </a>

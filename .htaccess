@@ -1,0 +1,45 @@
+# Prevent directory browsing and serve files directly
+Options -Indexes
+
+# Ensure assets directory is accessible
+<Files ~ "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$">
+    Require all granted
+</Files>
+
+# Enable URL rewriting
+RewriteEngine On
+
+# Allow direct access to assets folder
+RewriteCond %{REQUEST_URI} ^/assets/
+RewriteRule ^(.*)$ - [L]
+
+# Allow direct access to style folder
+RewriteCond %{REQUEST_URI} ^/style/
+RewriteRule ^(.*)$ - [L]
+
+# Allow direct access to components folder
+RewriteCond %{REQUEST_URI} ^/components/
+RewriteRule ^(.*)$ - [L]
+
+# Allow direct access to views folder
+RewriteCond %{REQUEST_URI} ^/views/
+RewriteRule ^(.*)$ - [L]
+
+# Allow direct access to actual files (css, js, images, etc.)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(.*)$ - [L]
+
+# Allow direct access to actual directories
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.*)$ - [L]
+
+# Redirect all other requests to index.php only for non-file requests
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/assets/
+RewriteCond %{REQUEST_URI} !^/style/
+RewriteCond %{REQUEST_URI} !^/components/
+RewriteCond %{REQUEST_URI} !^/views/
+RewriteRule ^(.*)$ /index.php [L]
+
+# Files will be served as-is without URL rewriting

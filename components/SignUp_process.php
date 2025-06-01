@@ -54,11 +54,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         } elseif ($result === "Email already exists") {
             // Email exists error
-            header("Location: SignUp.html?error=email_exists");
+            header("Location: signup.html?error=email_exists");
             exit();
         } else {
             // General registration error
-            header("Location: SignUp.html?error=registration_failed");
+            header("Location: signup.html?error=registration_failed");
             exit();
         }
     } else {
@@ -70,12 +70,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errorType = "email_exists";
         }
         
-        header("Location: SignUp.html?error=$errorType");
+        header("Location: signup.html?error=$errorType");
         exit();
     }
 } else {
     // If not a POST request, redirect to signup page
-    header("Location: SignUp.html");
+    header("Location: signup.html");
     exit();
 }
 ?>
