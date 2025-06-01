@@ -1,29 +1,50 @@
+<?php
+// POST_OFFERS.PHP - PHP version with authentication check
+// REPLACES PostOffers.html to handle login requirements properly
+
+include_once '../views/controller.php';
+
+// Check if user is logged in
+$currentUser = getCurrentUser();
+
+// If not logged in, redirect to login with message
+if (!$currentUser) {
+    header("Location: ../components/SignIn.html?error=login_required&message=Please log in to post an offer");
+    exit();
+}
+
+// Get categories for dropdown
+$categories = getAllCategories();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Your Offer</title>
+    <title>Post Your Offer - UnityGrid</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../style/style.css">
 </head>
 
 <body class="bg-gray-50 min-h-screen">
-    <!-- ENHANCED POST OFFERS: Added session checking and database integration -->
+    <!-- Include navbar -->
+    <?php include '../components/navbar.html'; ?>
     
-    <div class="container mx-auto px-4 py-8">
+    <div class="container mx-auto px-4 py-8 pt-24">
         <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
            
             <div class="bg-gradient-to-r from-orange-500 to-red-500 px-8 py-6">
                 <h1 class="text-3xl font-bold text-white">Post Your Offer</h1>
                 <p class="text-orange-100 mt-2">Share what you have to offer and what you're looking for in exchange</p>
+                <p class="text-orange-100 text-sm mt-1">Welcome back, <?php echo htmlspecialchars($currentUser['name']); ?>!</p>
             </div>
 
             <!-- Display success/error messages -->
             <div id="message-container" class="mx-8 mt-4"></div>
 
-            <!-- MODIFIED: Updated form action to point to submit_offer.php -->
             <form class="p-8 space-y-8" id="offerForm" method="POST" action="submit_offer.php"
                 enctype="multipart/form-data">
                 <!-- What You're Offering -->
@@ -41,7 +62,6 @@
                                 placeholder="Enter product or service name">
                         </div>
 
-                        <!-- MODIFIED: Updated category options to use database categories -->
                         <div>
                             <label for="category" class="block text-sm font-medium text-gray-700 mb-2">
                                 Category <span class="text-red-500">*</span>
@@ -49,8 +69,11 @@
                             <select name="category" id="category" required
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200">
                                 <option value="">Select a category</option>
-                                <option value="1">Goods</option>
-                                <option value="2">Services</option>
+                                <?php foreach ($categories as $category): ?>
+                                    <option value="<?php echo $category['id']; ?>">
+                                        <?php echo htmlspecialchars($category['name']); ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
 
@@ -131,6 +154,7 @@
                                 Contact Email <span class="text-red-500">*</span>
                             </label>
                             <input type="email" id="contact_email" name="contact_email" required
+                                value="<?php echo htmlspecialchars($currentUser['email']); ?>"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
                                 placeholder="your.email@example.com">
                         </div>
@@ -163,7 +187,7 @@
 
     <script>
         $(document).ready(function () {
-            // Image upload functionality (unchanged)
+            // Image upload functionality
             $('#uploadimage').on('click', function () {
                 $('#imageUpload').click();
             });
@@ -180,7 +204,7 @@
                 alert('Draft saved functionality would go here');
             });
 
-            // NEW: Form validation
+            // Form validation
             $('#offerForm').on('submit', function(e) {
                 const requiredFields = ['product_name', 'category', 'city', 'description', 'exchange_product', 'exchange_description', 'contact_email'];
                 let isValid = true;
@@ -202,7 +226,7 @@
             });
         });
 
-        // NEW: Message display function
+        // Message display function
         function showMessage(message, type) {
             const messageContainer = document.getElementById('message-container');
             const alertClass = type === 'error' ? 'bg-red-100 border-red-500 text-red-700' : 'bg-green-100 border-green-500 text-green-700';
@@ -214,20 +238,17 @@
             `;
         }
 
-        // NEW: Check for URL parameters to show messages
+        // Check for URL parameters to show messages
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('success')) {
             showMessage('Your offer has been posted successfully!', 'success');
         }
         if (urlParams.get('error')) {
             const errorMsg = urlParams.get('error');
-            if (errorMsg === 'login_required') {
-                showMessage('Please log in to post an offer.', 'error');
-                setTimeout(() => {
-                    window.location.href = '../components/SignIn.html';
-                }, 2000);
-            } else if (errorMsg === 'upload_failed') {
+            if (errorMsg === 'upload_failed') {
                 showMessage('Failed to upload image. Please try again.', 'error');
+            } else if (errorMsg === 'database_error') {
+                showMessage('Database error occurred. Please try again.', 'error');
             } else {
                 showMessage('An error occurred. Please try again.', 'error');
             }

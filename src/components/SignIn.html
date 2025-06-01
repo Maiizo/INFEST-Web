@@ -64,6 +64,9 @@
                 showMessage('Invalid email or password!', 'error');
             } else if (errorMsg === 'login_failed') {
                 showMessage('Login failed. Please try again.', 'error');
+            } else if (errorMsg === 'login_required') {
+                const message = urlParams.get('message') || 'Please log in to access this feature.';
+                showMessage(message, 'error');
             } else {
                 showMessage('An error occurred. Please try again.', 'error');
             }

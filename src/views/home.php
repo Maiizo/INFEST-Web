@@ -17,6 +17,7 @@
     <?php include '../components/home/review.html'; ?>
     <?php include '../components/footer.html'; ?>
     <?php include '../components/ShoppingCart.html'; ?>
+    <?php include '../views/PostOffers.php'; ?>
 
 </body>
 

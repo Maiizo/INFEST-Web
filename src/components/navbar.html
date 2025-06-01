@@ -4,39 +4,6 @@ include_once __DIR__ . '/controller.php';
 $currentUser = getCurrentUser();
 ?>
 
-<script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                animation: {
-                    'dropdown-enter': 'dropdown-enter 0.2s ease-out',
-                    'dropdown-exit': 'dropdown-exit 0.2s ease-in',
-                    'mobile-menu-enter': 'mobile-menu-enter 0.3s ease-out',
-                    'mobile-menu-exit': 'mobile-menu-exit 0.3s ease-in'
-                },
-                keyframes: {
-                    'dropdown-enter': {
-                        '0%': { opacity: '0', transform: 'translateY(-10px) scale(0.95)' },
-                        '100%': { opacity: '1', transform: 'translateY(0) scale(1)' }
-                    },
-                    'dropdown-exit': {
-                        '0%': { opacity: '1', transform: 'translateY(0) scale(1)' },
-                        '100%': { opacity: '0', transform: 'translateY(-10px) scale(0.95)' }
-                    },
-                    'mobile-menu-enter': {
-                        '0%': { opacity: '0', transform: 'scaleY(0)' },
-                        '100%': { opacity: '1', transform: 'scaleY(1)' }
-                    },
-                    'mobile-menu-exit': {
-                        '0%': { opacity: '1', transform: 'scaleY(1)' },
-                        '100%': { opacity: '0', transform: 'scaleY(0)' }
-                    }
-                }
-            }
-        }
-    }
-</script>
-
 <style>
     .navbar-scrolled .text-white {
         color: #FF6B35 ;
@@ -59,16 +26,10 @@ $currentUser = getCurrentUser();
                     class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 ">
                     Browse Offers
                 </a>
-                <!-- MODIFIED: Only show Post Offers if user is logged in -->
-                <?php if ($currentUser): ?>
-                <a href="../components/PostOffers.html"
+                <!-- FIXED: Point to PHP version of Post Offers -->
+                <a href="../components/PostOffers.php"
                     class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 ">
                     Post Offers
-                </a>
-                <?php endif; ?>
-                <a href="../components/Database.html"
-                    class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 ">
-                    Database
                 </a>
             </div>
 
@@ -84,7 +45,7 @@ $currentUser = getCurrentUser();
                 </button>
 
                 <div id="profile-dropdown"
-                    class="absolute top-full right-0 mt-2 w-48 bg-white/95 backdrop-blur-sm shadow-xl rounded-lg py-2 z-10 opacity-0 scale-95 transform transition-all duration-200 ease-out pointer-events-none border border-gray-200">
+                    class="absolute top-full right-0 mt-2 w-48 bg-white bg-opacity-95 backdrop-blur-sm shadow-xl rounded-lg py-2 z-10 opacity-0 scale-95 transform transition-all duration-200 ease-out pointer-events-none border border-gray-200">
                     
                     <!-- MODIFIED: Show different options based on login status -->
                     <?php if ($currentUser): ?>
@@ -134,7 +95,7 @@ $currentUser = getCurrentUser();
 
     <!-- MODIFIED: Mobile menu with session-aware content -->
     <div id="mobile-menu"
-        class="md:hidden bg-white/95 backdrop-blur-sm shadow-lg border-t border-gray-200 transform origin-top scale-y-0 opacity-0 transition-all duration-300 ease-out overflow-hidden">
+        class="md:hidden bg-white bg-opacity-95 backdrop-blur-sm shadow-lg border-t border-gray-200 transform origin-top scale-y-0 opacity-0 transition-all duration-300 ease-out overflow-hidden">
         <div class="px-4 py-4 space-y-1">
             <?php if ($currentUser): ?>
                 <!-- User is logged in - mobile menu -->
@@ -169,12 +130,11 @@ $currentUser = getCurrentUser();
                 class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
                 Browse Offers
             </a>
-            <?php if ($currentUser): ?>
-            <a href="../components/PostOffers.html"
+            <!-- FIXED: Point to PHP version of Post Offers -->
+            <a href="../components/PostOffers.php"
                 class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
                 Post Offers
             </a>
-            <?php endif; ?>
         </div>
     </div>
 </nav>
