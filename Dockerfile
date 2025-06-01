@@ -12,7 +12,7 @@ ENV DB_USER=root
 ENV DB_PASSWORD=
 ENV DB_NAME=UnityGrid_db
 
-# Install PHP extensions and Node.js
+# Install PHP extensions
 RUN apt-get update && \
     apt-get install -y \
         curl \
@@ -23,15 +23,8 @@ RUN apt-get update && \
         pdo \
         pdo_mysql \
         zip && \
-    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
-# Install npm dependencies and build assets
-RUN npm install && \
-    npm run copy-assets && \
-    cp -r assets /var/www/html/
 
 # Enable Apache modules
 RUN a2enmod rewrite
@@ -44,8 +37,8 @@ RUN mkdir -p /var/www/html/uploads && \
 # Create volume for persistent file uploads
 VOLUME ["/var/www/html/uploads"]
 
-# Expose port
+# Expose port for discoverability
 EXPOSE 80
 
 # Use the default Apache entrypoint
-CMD ["apache2-foreground"] 
+CMD ["apache2-foreground"]
