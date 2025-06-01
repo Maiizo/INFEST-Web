@@ -34,6 +34,15 @@ RUN echo '{ \
     "routes": [ \
         { \
             "match": { \
+                "uri": "/" \
+            }, \
+            "action": { \
+                "share": "/var/www/", \
+                "index": "index.html" \
+            } \
+        }, \
+        { \
+            "match": { \
                 "uri": "*.php" \
             }, \
             "action": { \
@@ -49,8 +58,7 @@ RUN echo '{ \
     "applications": { \
         "php": { \
             "type": "php", \
-            "root": "/var/www/", \
-            "index": "index.html" \
+            "root": "/var/www/" \
         } \
     } \
 }' > /docker-entrypoint.d/config.json
