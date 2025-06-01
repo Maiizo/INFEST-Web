@@ -2,7 +2,7 @@
 // ENHANCED BROWSE OFFERS PAGE: Modified from .html to .php for database integration
 // Added dynamic content loading from database and session management
 
-include_once 'src/components/controller.php';
+include_once '../components/controller.php';
 
 // Get current user
 $currentUser = getCurrentUser();
@@ -26,13 +26,13 @@ $categories = getAllCategories();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnityGrid Dashboard</title>
-    <link rel="stylesheet" href="src/style/style.css">
+    <link rel="stylesheet" href="../style/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
     <!-- Include navbar with session management -->
-    <?php include 'src/components/navbar.html'; ?>
+    <?php include '../components/navbar.html'; ?>
 
     <section class="bg-gray-50 min-h-screen pt-24">
         <!-- Header -->
@@ -153,7 +153,7 @@ $categories = getAllCategories();
                                                     Make Offer
                                                 </button>
                                             <?php else: ?>
-                                                <button onclick="window.location.href='src/components/SignIn.html'"
+                                                <button onclick="window.location.href='../components/SignIn.html'"
                                                     class="w-full px-4 py-2 rounded-md text-sm font-medium bg-gray-400 text-white">
                                                     Login to Make Offer
                                                 </button>
@@ -214,7 +214,7 @@ $categories = getAllCategories();
 
     <!-- Include Shopping Cart if user is logged in -->
     <?php if ($currentUser): ?>
-        <?php include 'src/components/ShoppingCart.html'; ?>
+        <?php include '../components/ShoppingCart.html'; ?>
     <?php endif; ?>
 
     <script>

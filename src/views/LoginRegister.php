@@ -6,6 +6,6 @@
     <title>Document</title>  
   </head>
 <body>
-    <?php include 'src/components/SignIn.html'; ?>
+    <?php include '../components/SignIn.html'; ?>
 </body>
 </html>
