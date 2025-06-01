@@ -33,19 +33,19 @@ $offerUser = getUserById($offer['users_id']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offer Details - UnityGrid</title>
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="../style/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-gray-50 min-h-screen">
     <!-- Include navbar -->
-    <?php include '/components/navbar.html'; ?>
+    <?php include '../components/navbar.html'; ?>
 
     <div class="pt-24 pb-12">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Back button -->
             <div class="mb-6">
-                <a href="/views/BrowseOffers.php" 
+                <a href="../views/BrowseOffers.php" 
                    class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -161,7 +161,7 @@ $offerUser = getUserById($offer['users_id']);
                                 <?php endif; ?>
                             <?php else: ?>
                                 <!-- User not logged in -->
-                                <button onclick="window.location.href='/components/SignIn.html'" 
+                                <button onclick="window.location.href='../components/SignIn.html'" 
                                         class="flex-1 px-6 py-3 bg-gray-400 hover:bg-gray-500 text-white font-medium rounded-lg transition-all duration-200">
                                     Sign In to Contact
                                 </button>

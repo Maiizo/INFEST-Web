@@ -4,7 +4,7 @@
 session_start();
 
 // Simple function to require login for protected pages
-function requireLogin($redirectTo = '/src/components/SignIn.html') {
+function requireLogin($redirectTo = './SignIn.html') {
     // Check if essential session variables exist
     if (!isset($_SESSION['user_id']) || !isset($_SESSION['name'])) {
         header("Location: $redirectTo?error=login_required");
@@ -25,7 +25,7 @@ function redirectIfLoggedIn($redirectTo = '../views/home.php') {
 function requireOwnership($userId, $redirectTo = '../views/home.php') {
     // Check if user is logged in first
     if (!isset($_SESSION['user_id'])) {
-        header("Location: /src/components/SignIn.html?error=login_required");
+        header("Location: ./SignIn.html?error=login_required");
         exit();
     }
     

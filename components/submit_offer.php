@@ -6,7 +6,7 @@ include_once 'controller.php';
 
 // Check if user is logged in
 if (!isLoggedIn()) {
-    header("Location: /src/components/PostOffers.html?error=login_required");
+    header("Location: ./PostOffers.html?error=login_required");
     exit();
 }
 

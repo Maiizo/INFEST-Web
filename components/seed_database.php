@@ -109,7 +109,7 @@ echo "Database seeding completed!\n";
         </div>
         
         <div class="space-y-4">
-            <a href="/views/home.php" 
+            <a href="../views/home.php" 
                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg text-center block transition-colors duration-200">
                 Go to Home Page
             </a>
