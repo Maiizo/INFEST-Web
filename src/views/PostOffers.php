@@ -2,7 +2,7 @@
 // POST_OFFERS.PHP - PHP version with authentication check
 // FIXED: Proper include path and authentication handling
 
-include_once __DIR__ . '/controller.php';
+include_once __DIR__ . '/../components/controller.php';
 
 // Check if user is logged in
 $currentUser = getCurrentUser();

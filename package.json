@@ -4,7 +4,7 @@
   "main": "index.js",
   
   "scripts": {
-    "copy-assets": "shx mkdir -p dist/assets && shx cp -r src/assets/* dist/assets/",
+    "copy-assets": "shx mkdir -p dist/assets && shx cp -r assets/* dist/assets/",
     "serve": "echo 'Use Live Server or XAMPP to serve files'"
   },
   "repository": {
