@@ -49,9 +49,33 @@ RUN echo '{ \
             } \
         }, \
         { \
+            "match": { \
+                "uri": "*/*.php" \
+            }, \
+            "action": { \
+                "pass": "applications/php" \
+            } \
+        }, \
+        { \
+            "match": { \
+                "uri": "*/*/*.php" \
+            }, \
+            "action": { \
+                "pass": "applications/php" \
+            } \
+        }, \
+        { \
+            "match": { \
+                "uri": "/" \
+            }, \
             "action": { \
                 "share": "/var/www/", \
                 "index": "index.html" \
+            } \
+        }, \
+        { \
+            "action": { \
+                "share": "/var/www/" \
             } \
         } \
     ], \
