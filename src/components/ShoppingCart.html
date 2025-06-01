@@ -11,45 +11,46 @@
 </head>
 
 <body class="bg-gray-100 min-h-screen">
- 
 
-      <button
+
+    <button
         class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-orange-500 to-teal-400 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-3xl hover:scale-110 group"
         onclick="openCart()" aria-label="Open exchange cart">
-          <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-110 text-white" fill="none"
+        <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-110 text-white" fill="none"
             stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H19M9 19h.01M20 19h.01"></path>
         </svg>
 
-      <span
-            class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold animate-pulse">
-            3
+        <span
+            class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold animate-pulse"
+            id="cartBadge">
+            0
         </span>
     </button>
 
-     <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 opacity-0 invisible transition-all duration-300"
+    <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 opacity-0 invisible transition-all duration-300"
         id="cartOverlay" onclick="closeCart()"></div>
 
-     <div class="fixed top-0 right-0 max-w-full h-screen bg-white z-50 flex flex-col shadow-2xl transform translate-x-full transition-transform duration-500 ease-out" style="width: 28rem;"
-        id="cartSlider">
+    <div class="fixed top-0 right-0 max-w-full h-screen bg-white z-50 flex flex-col shadow-2xl transform translate-x-full transition-transform duration-500 ease-out"
+        style="width: 28rem;" id="cartSlider">
 
-         <div class="bg-gradient-to-r from-orange-500 to-teal-400 text-white p-6 flex justify-between items-center">
+        <div class="bg-gradient-to-r from-orange-500 to-teal-400 text-white p-6 flex justify-between items-center">
             <div>
                 <h2 class="text-2xl font-bold">Exchange Hub</h2>
                 <p class="text-sm opacity-90 mt-1">Your community connections</p>
             </div>
-             <button
-                class="bg-white bg-opacity-20 w-10 h-10 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:bg-opacity-30 hover:rotate-90"
+            <button
+                class="bg-white bg-opacity-20 w-10 h-10 rounded-full flex items-center justify-center text-xl leading-none text-center transition-all duration-300 hover:bg-opacity-30 hover:rotate-90"
                 onclick="closeCart()">×</button>
         </div>
 
-         <div class="bg-gradient-to-r from-teal-400 to-blue-400 text-white px-6 py-5 text-center">
-            <div class="text-lg font-semibold mb-1" id="exchangeCount">3 Active Exchange Requests</div>
+        <div class="bg-gradient-to-r from-teal-400 to-blue-400 text-white px-6 py-5 text-center">
+            <div class="text-lg font-semibold mb-1" id="exchangeCount">0 Active Exchange Requests</div>
             <div class="text-sm opacity-90" id="exchangeSubtitle">Ready to connect with your neighbors</div>
         </div>
 
-         <div class="flex-1 overflow-y-auto p-5 space-y-5" id="cartItems">
+        <div class="flex-1 overflow-y-auto p-5 space-y-5" id="cartItems">
             <!-- sample  -->
             <div
                 class="exchange-item bg-orange-50 rounded-2xl p-5 border-l-4 border-orange-500 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
@@ -89,7 +90,7 @@
             </div>
         </div>
 
-         <div class="p-6 bg-orange-50 border-t border-gray-200">
+        <div class="p-6 bg-orange-50 border-t border-gray-200">
             <div class="flex gap-4">
                 <button
                     class="flex-1 py-4 px-6 bg-white text-orange-500 border-2 border-orange-500 rounded-xl text-base font-semibold transition-all duration-300 hover:bg-orange-500 hover:text-white">Browse
@@ -158,7 +159,7 @@
         function updateCartCount() {
             const items = document.querySelectorAll('.exchange-item');
             const count = items.length;
-            const badge = document.querySelector('.animate-pulse');
+            const badge = document.getElementById('cartBadge');
             const countElement = document.getElementById('exchangeCount');
 
             badge.textContent = count;
@@ -178,6 +179,9 @@
                 badge.style.display = 'flex';
             }
         }
+
+        // Call updateCartCount on page load
+        window.addEventListener('DOMContentLoaded', updateCartCount);
 
         // Close cart with Escape key
         document.addEventListener('keydown', function (e) {

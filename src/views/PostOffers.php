@@ -10,7 +10,9 @@
 </head>
 
 <body class="bg-gray-50 min-h-screen">
-    <div class="container mx-auto px-4 py-8">
+
+<?php include '../components/navbar.html'; ?>   
+<div class="container mx-auto px-4 py-8 mt-16">
         <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
            
             <div class="bg-gradient-to-r from-orange-500 to-red-500 px-8 py-6">

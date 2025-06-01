@@ -9,7 +9,7 @@
      <link rel="stylesheet" href="../style/style.css">
 </head>
 
-<body>
+<body class="is-home">
     <?php include '../components/navbar.html'; ?>
     <?php include '../components/home/hero.html'; ?>
     <?php include '../components/home/section2.html'; ?>

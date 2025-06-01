@@ -10,8 +10,8 @@
 </head>
 
 <body>
-
-    <section class="bg-gray-50 min-h-screen">
+<?php include '../components/navbar.html'; ?>
+    <section class="bg-gray-50 min-h-screen mt-16">
         <!-- Header -->
         <header class="bg-white shadow-sm border-b">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
