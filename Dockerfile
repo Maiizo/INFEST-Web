@@ -51,7 +51,7 @@ RUN echo '{ \
         { \
             "action": { \
                 "share": "/var/www/", \
-                "index": ["index.html", "index.php"] \
+                "index": "index.html" \
             } \
         } \
     ], \
