@@ -71,8 +71,13 @@ RUN echo '{ \
     } \
 }' > /docker-entrypoint.d/config.json
 
-# Set proper permissions
-RUN chown -R unit:unit /var/www/
+# Create uploads directory with proper permissions
+RUN mkdir -p /var/www/uploads && \
+    chown -R unit:unit /var/www/ && \
+    chmod 755 /var/www/uploads
+
+# Create volume for persistent file uploads
+VOLUME ["/var/www/uploads"]
 
 # Expose port
 EXPOSE 80

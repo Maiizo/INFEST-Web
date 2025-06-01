@@ -41,11 +41,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Handle image upload
     $imageUrl = null;
     if (isset($_FILES['offer_image']) && $_FILES['offer_image']['error'] == UPLOAD_ERR_OK) {
-        $uploadDir = '../uploads/';
+        $uploadDir = '/var/www/uploads/'; // Use absolute path for Docker
         
         // Create uploads directory if it doesn't exist
         if (!file_exists($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
+            mkdir($uploadDir, 0755, true);
+            // Ensure proper ownership for unit user
+            chown($uploadDir, 'unit');
+            chgrp($uploadDir, 'unit');
         }
         
         $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
