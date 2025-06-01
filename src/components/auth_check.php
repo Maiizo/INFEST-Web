@@ -1,29 +1,36 @@
 <?php
-// AUTH_CHECK.PHP - Authentication middleware
-// NEW FILE: Protects pages that require user login
+// AUTH_CHECK.PHP - Simple authentication check like PDF approach
+// Start session
+session_start();
 
-include_once __DIR__ . '/controller.php';
-
-// Function to require login for protected pages
+// Simple function to require login for protected pages
 function requireLogin($redirectTo = '../components/SignIn.html') {
-    if (!isLoggedIn()) {
+    // Check if essential session variables exist
+    if (!isset($_SESSION['user_id']) || !isset($_SESSION['name'])) {
         header("Location: $redirectTo?error=login_required");
         exit();
     }
 }
 
-// Function to redirect logged-in users away from auth pages
+// Simple function to redirect logged-in users away from auth pages
 function redirectIfLoggedIn($redirectTo = '../views/home.php') {
-    if (isLoggedIn()) {
+    // Check if user is already logged in
+    if (isset($_SESSION['user_id']) && isset($_SESSION['name'])) {
         header("Location: $redirectTo");
         exit();
     }
 }
 
-// Function to check if user owns a specific resource
+// Simple function to check if user owns a specific resource
 function requireOwnership($userId, $redirectTo = '../views/home.php') {
-    $currentUser = getCurrentUser();
-    if (!$currentUser || $currentUser['id'] != $userId) {
+    // Check if user is logged in first
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: ../components/SignIn.html?error=login_required");
+        exit();
+    }
+    
+    // Check if user owns the resource
+    if ($_SESSION['user_id'] != $userId) {
         header("Location: $redirectTo?error=access_denied");
         exit();
     }

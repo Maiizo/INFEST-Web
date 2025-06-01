@@ -1,7 +1,5 @@
 <?php
-// ENHANCED CONTROLLER.PHP - Added session management and authentication functions
-// Modified from original controller.php to include login/logout functionality
-
+// SIMPLIFIED CONTROLLER.PHP - Basic session management like PDF approach
 // Start session if not already started
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -23,71 +21,38 @@ function closeDB($conn)
     mysqli_close($conn);
 }
 
-// NEW FUNCTION: User Authentication
-function authenticateUser($email, $password)
-{
-    $conn = connectDB();
-    $userData = null;
+// SIMPLE SESSION FUNCTIONS - Following PDF approach
 
-    if ($conn != NULL) {
-        $sql_query = "SELECT * FROM `users` WHERE `email` = ?";
-        $stmt = mysqli_prepare($conn, $sql_query);
-        mysqli_stmt_bind_param($stmt, "s", $email);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            // Verify password (assuming plain text for now - in production use password_hash/password_verify)
-            if ($password === $row["password"]) {
-                $userData = array(
-                    'id' => $row["user_id"],
-                    'name' => $row["name"],
-                    'email' => $row["email"],
-                    'phone' => $row["phone"]
-                );
-                
-                // Set session variables
-                $_SESSION['user_id'] = $row["user_id"];
-                $_SESSION['user_name'] = $row["name"];
-                $_SESSION['user_email'] = $row["email"];
-                $_SESSION['logged_in'] = true;
-            }
-        }
-        
-        mysqli_stmt_close($stmt);
-        closeDB($conn);
-    }
-    return $userData;
-}
-
-// NEW FUNCTION: Check if user is logged in
+// Simple function to check if user is logged in
 function isLoggedIn()
 {
-    return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
+    return isset($_SESSION['user_id']) && isset($_SESSION['name']);
 }
 
-// NEW FUNCTION: Get current user data
+// Simple function to get current user data from session
 function getCurrentUser()
 {
     if (isLoggedIn()) {
         return array(
             'id' => $_SESSION['user_id'],
-            'name' => $_SESSION['user_name'],
-            'email' => $_SESSION['user_email']
+            'name' => $_SESSION['name'],
+            'email' => $_SESSION['email'],
+            'phone' => $_SESSION['phone']
         );
     }
     return null;
 }
 
-// NEW FUNCTION: Logout user
+// Simple logout function - destroy all session data
 function logoutUser()
 {
+    // Clear all session variables
     session_unset();
+    // Destroy the session
     session_destroy();
 }
 
-// NEW FUNCTION: Check if email already exists
+// Check if email already exists in database
 function emailExists($email)
 {
     $conn = connectDB();
@@ -111,7 +76,7 @@ function emailExists($email)
     return $exists;
 }
 
-// EXISTING FUNCTIONS (unchanged)
+// DATABASE RETRIEVAL FUNCTIONS
 function getAllUsers()
 {
     $allData = array();
@@ -217,7 +182,6 @@ function getAllHelpRequests()
     return $allData;
 }
 
-// NEW FUNCTION: Get help requests for browse offers with user details
 function getHelpRequestsForBrowse($filter = 'all', $category = '', $location = '')
 {
     $allData = array();
@@ -346,7 +310,7 @@ function getAllResponses()
     return $allData;
 }
 
-// Helper functions (unchanged)
+// Helper functions
 function getUserById($userId)
 {
     $conn = connectDB();
@@ -412,7 +376,7 @@ function getHelpRequestById($helpRequestId)
     return $requestData;
 }
 
-// Insert functions (unchanged but with enhanced error handling)
+// INSERT FUNCTIONS
 function insertUser($name, $email, $phone, $password)
 {
     $conn = connectDB();

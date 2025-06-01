@@ -1,13 +1,14 @@
 <?php
-// LOGOUT.PHP - Handles user logout
-// NEW FILE: Destroys session and redirects to home page
+// LOGOUT.PHP - Simple session destruction like PDF approach
+session_start();
 
-include_once '../components/controller.php';
+// Clear all session variables
+session_unset();
 
-// Logout the user
-logoutUser();
+// Destroy the session completely
+session_destroy();
 
-// Redirect to home page with logout message
+// Redirect to home page
 header("Location: ../views/home.php?logout=success");
 exit();
 ?>
