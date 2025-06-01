@@ -1,10 +1,10 @@
-FROM unit:1.34.1-php8.3
+FROM php:8.3-apache
 
 # Set working directory
-WORKDIR /var/www
+WORKDIR /var/www/html
 
 # Copy application files
-COPY . /var/www/
+COPY . /var/www/html/
 
 # Set default environment variables for database
 ENV DB_HOST=localhost
@@ -32,71 +32,19 @@ RUN apt-get update && \
 RUN npm install && \
     npm run copy-assets
 
-# Create Unit configuration
-RUN echo '{ \
-    "listeners": { \
-        "*:80": { \
-            "pass": "routes" \
-        } \
-    }, \
-    "routes": [ \
-        { \
-            "match": { \
-                "uri": "*.php" \
-            }, \
-            "action": { \
-                "pass": "applications/php" \
-            } \
-        }, \
-        { \
-            "match": { \
-                "uri": "*/*.php" \
-            }, \
-            "action": { \
-                "pass": "applications/php" \
-            } \
-        }, \
-        { \
-            "match": { \
-                "uri": "*/*/*.php" \
-            }, \
-            "action": { \
-                "pass": "applications/php" \
-            } \
-        }, \
-        { \
-            "match": { \
-                "uri": "/" \
-            }, \
-            "action": { \
-                "share": "/var/www/", \
-                "index": "index.html" \
-            } \
-        }, \
-        { \
-            "action": { \
-                "share": "/var/www/" \
-            } \
-        } \
-    ], \
-    "applications": { \
-        "php": { \
-            "type": "php", \
-            "root": "/var/www/" \
-        } \
-    } \
-}' > /docker-entrypoint.d/config.json
+# Enable Apache modules
+RUN a2enmod rewrite
 
 # Create uploads directory with proper permissions
-RUN mkdir -p /var/www/uploads && \
-    chown -R unit:unit /var/www/ && \
-    chmod 755 /var/www/uploads
+RUN mkdir -p /var/www/html/uploads && \
+    chown -R www-data:www-data /var/www/html/ && \
+    chmod 755 /var/www/html/uploads
 
 # Create volume for persistent file uploads
-VOLUME ["/var/www/uploads"]
+VOLUME ["/var/www/html/uploads"]
 
 # Expose port
 EXPOSE 80
 
-# Use the default Unit entrypoint
-CMD ["unitd", "--no-daemon", "--control", "unix:/var/run/control.unit.sock"] 
+# Use the default Apache entrypoint
+CMD ["apache2-foreground"] 
