@@ -10,14 +10,14 @@
 </head>
 
 <body class="is-home">
-    <?php include '../components/navbar.html'; ?>
-    <?php include '../components/home/hero.html'; ?>
-    <?php include '../components/home/section2.html'; ?>
-    <?php include '../components/home/section3.html'; ?>
-    <?php include '../components/home/review.html'; ?>
-    <?php include '../components/footer.html'; ?>
-    <?php include '../components/ShoppingCart.html'; ?>
-
+    <!-- <h1>halo ini home bro</h1> -->
+    <?php include '../../src/components/navbar.html' ?>
+    <?php include '../../src/components/home/hero.html' ?>
+    <?php include '../../src/components/home/section2.html' ?>
+    <?php include '../../src/components/home/section3.html' ?>
+    <?php include '../../src/components/home/review.html' ?>
+    <?php include '../../src/components/footer.html' ?>
+    <?php include '../../src/components/ShoppingCart.html' ?>
 </body>
 
 </html>
