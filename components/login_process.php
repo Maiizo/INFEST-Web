@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     // Basic validation
     if (empty($email) || empty($password)) {
-        header("Location: /src/components/SignIn.html?error=empty_fields");
+        header("Location: /components/SignIn.html?error=empty_fields");
         exit();
     }
     
@@ -53,12 +53,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     
     // If we reach here, login failed
-    header("Location: /src/components/SignIn.html?error=invalid_credentials");
+    header("Location: /components/SignIn.html?error=invalid_credentials");
     exit();
     
 } else {
     // If not a POST request, redirect to login page
-    header("Location: /src/components/SignIn.html");
+    header("Location: /components/SignIn.html");
     exit();
 }
 ?>

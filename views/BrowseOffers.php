@@ -153,7 +153,7 @@ $categories = getAllCategories();
                                                     Make Offer
                                                 </button>
                                             <?php else: ?>
-                                                <button onclick="window.location.href='../components/SignIn.html'"
+                                                <button onclick="window.location.href='/components/SignIn.html'"
                                                     class="w-full px-4 py-2 rounded-md text-sm font-medium bg-gray-400 text-white">
                                                     Login to Make Offer
                                                 </button>

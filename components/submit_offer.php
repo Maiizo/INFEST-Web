@@ -6,7 +6,7 @@ include_once 'controller.php';
 
 // Check if user is logged in
 if (!isLoggedIn()) {
-    header("Location: ./PostOffers.html?error=login_required");
+    header("Location: /views/PostOffers.php?error=login_required");
     exit();
 }
 
@@ -87,21 +87,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if ($result) {
             // Success - redirect with success message
-            header("Location: /src/components/PostOffers.html?success=1");
+            header("Location: /views/PostOffers.php?success=1");
             exit();
         } else {
             // Database insertion failed
-            header("Location: /src/components/PostOffers.html?error=database_error");
+            header("Location: /views/PostOffers.php?error=database_error");
             exit();
         }
     } else {
         // Validation errors
-        header("Location: /src/components/PostOffers.html?error=validation_failed");
+        header("Location: /views/PostOffers.php?error=validation_failed");
         exit();
     }
 } else {
     // If not a POST request, redirect to post offers page
-    header("Location: /src/components/PostOffers.html");
+    header("Location: /views/PostOffers.php");
     exit();
 }
 ?>

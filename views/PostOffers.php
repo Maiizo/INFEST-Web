@@ -9,7 +9,7 @@ $currentUser = getCurrentUser();
 
 // If not logged in, redirect to login with message
 if (!$currentUser) {
-    header("Location: ../components/SignIn.html?error=login_required&message=Please log in to post an offer");
+    header("Location: /components/SignIn.html?error=login_required&message=Please log in to post an offer");
     exit();
 }
 
@@ -176,7 +176,7 @@ $categories = getAllCategories();
                         class="flex-1 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-medium rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                         Post Your Offer
                     </button>
-                    <a href="../views/BrowseOffers.php"
+                    <a href="/views/BrowseOffers.php"
                         class="flex-1 px-8 py-4 bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white font-medium rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl text-center">
                         Cancel
                     </a>
