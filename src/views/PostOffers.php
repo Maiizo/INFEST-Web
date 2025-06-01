@@ -1,15 +1,15 @@
 <?php
 // POST_OFFERS.PHP - PHP version with authentication check
-// REPLACES PostOffers.html to handle login requirements properly
+// FIXED: Proper include path and authentication handling
 
-include_once '../views/controller.php';
+include_once __DIR__ . '/controller.php';
 
 // Check if user is logged in
 $currentUser = getCurrentUser();
 
 // If not logged in, redirect to login with message
 if (!$currentUser) {
-    header("Location: ../components/SignIn.html?error=login_required&message=Please log in to post an offer");
+    header("Location: SignIn.html?error=login_required&message=Please log in to post an offer");
     exit();
 }
 
@@ -31,7 +31,7 @@ $categories = getAllCategories();
 
 <body class="bg-gray-50 min-h-screen">
     <!-- Include navbar -->
-    <?php include '../components/navbar.html'; ?>
+    <?php include 'navbar.html'; ?>
     
     <div class="container mx-auto px-4 py-8 pt-24">
         <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
@@ -176,10 +176,10 @@ $categories = getAllCategories();
                         class="flex-1 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-medium rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                         Post Your Offer
                     </button>
-                    <button type="button" id="saveDraft"
-                        class="flex-1 px-8 py-4 bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white font-medium rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
-                        Save as Draft
-                    </button>
+                    <a href="../views/BrowseOffers.php"
+                        class="flex-1 px-8 py-4 bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white font-medium rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl text-center">
+                        Cancel
+                    </a>
                 </div>
             </form>
         </div>
@@ -197,11 +197,6 @@ $categories = getAllCategories();
                     const fileName = e.target.files[0].name;
                     $('#uploadText').text(fileName);
                 }
-            });
-
-            // Save as draft functionality (placeholder)
-            $('#saveDraft').on('click', function () {
-                alert('Draft saved functionality would go here');
             });
 
             // Form validation
