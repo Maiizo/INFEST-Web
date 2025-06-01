@@ -8,9 +8,34 @@
     <link rel="stylesheet" href="../style/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const locationSelect = document.getElementById('location');
+        const otherInput = document.getElementById('otherLocation');
+        const submitBtn = document.getElementById('submitBtn');
+
+        function handleLocationChange() {
+            if (locationSelect.value === 'other') {
+                otherInput.classList.remove('hidden');
+                otherInput.required = true;
+                submitBtn.classList.remove('hidden');
+
+            } else {
+                otherInput.classList.add('hidden');
+                otherInput.required = false;
+                otherInput.value = '';
+                submitBtn.classList.add('hidden');
+
+            }
+        }
+
+        handleLocationChange();
+        locationSelect.addEventListener('change', handleLocationChange);
+    });
+</script>
 
 <body>
-<?php include '../components/navbar.html'; ?>
+    <?php include '../components/navbar.html'; ?>
     <section class="bg-gray-50 min-h-screen mt-16">
         <!-- Header -->
         <header class="bg-white shadow-sm border-b">
@@ -44,28 +69,48 @@
                                    bg-gray-100 text-gray-700 hover:bg-gray-200">
                             Services
                         </button>
-                    </div>
-
-                    <!-- Category and Location Filters -->
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <select name="category"
+                        <select name="location" id="location"
                             class="px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-primary focus:border-transparent">
-                            <option value="">Categories</option>
-                            <option value="food">Food & Cooking</option>
-                            <option value="tech">Technology</option>
-                            <option value="crafts">Arts & Crafts</option>
-                            <option value="music">Music</option>
-                            <option value="sports">Sports</option>
-                            <option value="photography">Photography</option>
+                            <option value="">Select Location</option>
+                            <option value="tokyo">Tokyo, Japan</option>
+                            <option value="shanghai">Shanghai, China</option>
+                            <option value="mumbai">Mumbai, India</option>
+                            <option value="new-york">New York City, USA</option>
+                            <option value="sao-paulo">São Paulo, Brazil</option>
+                            <option value="dhaka">Dhaka, Bangladesh</option>
+                            <option value="karachi">Karachi, Pakistan</option>
+                            <option value="lagos">Lagos, Nigeria</option>
+                            <option value="istanbul">Istanbul, Turkey</option>
+                            <option value="moscow">Moscow, Russia</option>
+                            <option value="manila">Manila, Philippines</option>
+                            <option value="cairo">Cairo, Egypt</option>
+                            <option value="mexico-city">Mexico City, Mexico</option>
+                            <option value="london">London, United Kingdom</option>
+                            <option value="paris">Paris, France</option>
+                            <option value="berlin">Berlin, Germany</option>
+                            <option value="tehran">Tehran, Iran</option>
+                            <option value="riyadh">Riyadh, Saudi Arabia</option>
+                            <option value="jakarta">Jakarta, Indonesia</option>
+                            <option value="rome">Rome, Italy</option>
+                            <option value="madrid">Madrid, Spain</option>
+                            <option value="toronto">Toronto, Canada</option>
+                            <option value="sydney">Sydney, Australia</option>
+                            <option value="buenos-aires">Buenos Aires, Argentina</option>
+                            <option value="seoul">Seoul, South Korea</option>
+                            <option value="bangkok">Bangkok, Thailand</option>
+                            <option value="johannesburg">Johannesburg, South Africa</option>
+                            <option value="kinshasa">Kinshasa, DR Congo</option>
+                            <option value="addis-ababa">Addis Ababa, Ethiopia</option>
+                            <option value="casablanca">Casablanca, Morocco</option>
+                            <option value="other">Other</option>
                         </select>
 
-                        <select name="location"
-                            class="px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-primary focus:border-transparent">
-                            <option value="">Location</option>
-                            <option value="sarkanika">Sarkanika</option>
-                            <option value="sarikaya">Sarikaya</option>
-                            <option value="nearby">Nearby</option>
-                        </select>
+                        <input type="text"
+                            id="otherLocation"
+                            name="other_location"
+                            placeholder="Enter your location"
+                            class="other-input p-2 rounded-md border border-gray-300 focus:ring-primary focus:border-transparent hidden">
+                        <button type="submit" class="submit-btn hidden" id="submitBtn">Submit</button>
                     </div>
                 </div>
             </form>
@@ -377,6 +422,8 @@
 
 
     </section>
+
+
 </body>
 
 </html>
