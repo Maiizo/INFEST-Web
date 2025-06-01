@@ -12,9 +12,17 @@ ENV DB_USER=root
 ENV DB_PASSWORD=
 ENV DB_NAME=UnityGrid_db
 
-# Install Node.js and npm for building assets if needed
+# Install PHP extensions and Node.js
 RUN apt-get update && \
-    apt-get install -y curl && \
+    apt-get install -y \
+        curl \
+        libzip-dev \
+        default-mysql-client && \
+    docker-php-ext-install \
+        mysqli \
+        pdo \
+        pdo_mysql \
+        zip && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs && \
     apt-get clean && \
