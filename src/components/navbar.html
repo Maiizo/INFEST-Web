@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
+<?php
+// ENHANCED NAVBAR: Added PHP session management to show/hide login/logout options
+include_once __DIR__ . '/controller.php';
+$currentUser = getCurrentUser();
+?>
 
 <script>
     tailwind.config = {
@@ -42,34 +38,15 @@
 </script>
 
 <style>
-    #navbar {
-        background: #FF6B35;
-        border-bottom: 1px solid rgba(255, 107, 53, 0.3);
-    }
-    
-    .navbar-scrolled {
-        background: transparent !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    }
-    
     .navbar-scrolled .text-white {
-        color: white !important;
-    }
-    
-    .navbar-white {
-        background: #4ECDC4;
-        border-bottom: 1px solid #e5e7eb;
-    }
-    
-    #mobile-menu {
-        background: #fff !important;
+        color: #FF6B35 ;
     }
 </style>
 
-<nav id="navbar" class="fixed top-0 left-0 w-full z-30 transition-all duration-300">
+<nav id="navbar" class="fixed top-5 left-0 w-full z-30 border-b border-white/10 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
         <a href="home.php" class="flex items-center space-x-2 transform transition-all duration-300 hover:scale-105">
-            <span class="text-xl font-bold text-white drop-shadow-lg">UnityGrid</span>
+            <span class="text-xl font-bold text-blue-400 drop-shadow-lg">UnityGrid</span>
         </a>
 
         <div class="hidden md:flex items-center flex-1">
@@ -82,10 +59,13 @@
                     class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 ">
                     Browse Offers
                 </a>
-                <a href="../views/PostOffers.php"
+                <!-- MODIFIED: Only show Post Offers if user is logged in -->
+                <?php if ($currentUser): ?>
+                <a href="../components/PostOffers.html"
                     class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 ">
                     Post Offers
                 </a>
+                <?php endif; ?>
                 <a href="../components/Database.html"
                     class="text-lg text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-105 ">
                     Database
@@ -94,7 +74,7 @@
 
             <div class="relative">
                 <button id="profile-btn" type="button"
-                    class="ml-4 p-2 text-white hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-full transition-all duration-300 transform hover:scale-110"
+                    class="ml-4 p-2 text-gray-300 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-full transition-all duration-300 transform hover:scale-110"
                     aria-label="Profile menu" aria-expanded="false" aria-haspopup="true">
                     <svg class="w-8 h-8 transition-transform duration-200" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24">
@@ -105,14 +85,33 @@
 
                 <div id="profile-dropdown"
                     class="absolute top-full right-0 mt-2 w-48 bg-white/95 backdrop-blur-sm shadow-xl rounded-lg py-2 z-10 opacity-0 scale-95 transform transition-all duration-200 ease-out pointer-events-none border border-gray-200">
-                    <a href="../components/SignUp.html"
-                        class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 rounded-md mx-1">
-                        Sign Up
-                    </a>
-                    <a href="../components/SignIn.html"
-                        class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 rounded-md mx-1">
-                        Sign In
-                    </a>
+                    
+                    <!-- MODIFIED: Show different options based on login status -->
+                    <?php if ($currentUser): ?>
+                        <!-- User is logged in -->
+                        <div class="px-4 py-2 border-b border-gray-200">
+                            <p class="text-sm font-medium text-gray-900">Welcome, <?php echo htmlspecialchars($currentUser['name']); ?>!</p>
+                            <p class="text-xs text-gray-500"><?php echo htmlspecialchars($currentUser['email']); ?></p>
+                        </div>
+                        <a href="../views/profile.html"
+                            class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 rounded-md mx-1">
+                            Profile
+                        </a>
+                        <a href="../components/logout.php"
+                            class="block px-4 py-2 text-red-600 hover:bg-red-50 hover:text-red-700 transition-colors duration-200 rounded-md mx-1">
+                            Logout
+                        </a>
+                    <?php else: ?>
+                        <!-- User is not logged in -->
+                        <a href="../components/SignUp.html"
+                            class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 rounded-md mx-1">
+                            Sign Up
+                        </a>
+                        <a href="../components/SignIn.html"
+                            class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 rounded-md mx-1">
+                            Sign In
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -133,35 +132,55 @@
         </div>
     </div>
 
+    <!-- MODIFIED: Mobile menu with session-aware content -->
     <div id="mobile-menu"
         class="md:hidden bg-white/95 backdrop-blur-sm shadow-lg border-t border-gray-200 transform origin-top scale-y-0 opacity-0 transition-all duration-300 ease-out overflow-hidden">
         <div class="px-4 py-4 space-y-1">
-            <a href="../components/SignUp.html"
-                class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
-                Sign Up
-            </a>
-            <a href="../components/SignIn.html"
-                class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
-                Sign In
-            </a>
+            <?php if ($currentUser): ?>
+                <!-- User is logged in - mobile menu -->
+                <div class="px-3 py-2 border-b border-gray-200 mb-2">
+                    <p class="text-sm font-medium text-gray-900">Welcome, <?php echo htmlspecialchars($currentUser['name']); ?>!</p>
+                </div>
+                <a href="../views/profile.html"
+                    class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
+                    Profile
+                </a>
+                <a href="../components/logout.php"
+                    class="block py-3 px-3 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
+                    Logout
+                </a>
+            <?php else: ?>
+                <!-- User is not logged in - mobile menu -->
+                <a href="../components/SignUp.html"
+                    class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
+                    Sign Up
+                </a>
+                <a href="../components/SignIn.html"
+                    class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
+                    Sign In
+                </a>
+            <?php endif; ?>
             <hr class="my-3 border-gray-300">
-            <a href="hero.php"
+            <a href="../views/home.php"
                 class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
                 Home
             </a>
-            <a href="../views/PostOffers.php"
+            <a href="../views/BrowseOffers.php"
                 class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
                 Browse Offers
             </a>
-            <a href="../views/PostOffers.php"
+            <?php if ($currentUser): ?>
+            <a href="../components/PostOffers.html"
                 class="block py-3 px-3 text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 transform hover:translate-x-1">
                 Post Offers
             </a>
+            <?php endif; ?>
         </div>
     </div>
 </nav>
 
 <script>
+    // JavaScript remains the same as original
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIcon = document.getElementById('menu-icon');
@@ -244,28 +263,17 @@
         }
     });
 
-    if (document.body.classList.contains('is-home')) {
-         document.getElementById('navbar').classList.add('navbar-scrolled');
-       
-        window.addEventListener('scroll', function () {
-            const navbar = document.getElementById('navbar');
-            const section1 = document.getElementById('hero'); 
-            if (section1) {
-                const section1Bottom = section1.offsetTop + section1.offsetHeight;
-                
-                if (window.scrollY > section1Bottom) {
-                    navbar.classList.remove('navbar-scrolled');
-                } else {
-                    navbar.classList.add('navbar-scrolled');
-                }
-            }
-        });
+   window.addEventListener('scroll', function () {
+    const navbar = document.getElementById('navbar');
+    const section1 = document.getElementById('hero'); 
+    if (section1) {
+        const section1Bottom = section1.offsetTop + section1.offsetHeight;
+        
+        if (window.scrollY > section1Bottom) {
+            navbar.classList.add('navbar-scrolled');
+        } else {
+            navbar.classList.remove('navbar-scrolled');
+        }
     }
-
-    if (!document.body.classList.contains('is-home')) {
-        document.getElementById('navbar').classList.add('navbar-white');
-    }
+});
 </script>
-
-</body>
-</html>
