@@ -33,9 +33,6 @@ RUN npm install && \
     npm run copy-assets && \
     cp -r assets /var/www/html/
 
-# Copy Apache virtual host configuration
-COPY apache-vhost.conf /etc/apache2/sites-available/000-default.conf
-
 # Enable Apache modules
 RUN a2enmod rewrite
 
