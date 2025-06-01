@@ -51,10 +51,50 @@ RUN echo '{ \
         }, \
         { \
             "match": { \
+                "uri": "/assets/*" \
+            }, \
+            "action": { \
+                "share": "/var/www/" \
+            } \
+        }, \
+        { \
+            "match": { \
+                "uri": "/dist/*" \
+            }, \
+            "action": { \
+                "share": "/var/www/" \
+            } \
+        }, \
+        { \
+            "match": { \
+                "uri": "/src/*.php" \
+            }, \
+            "action": { \
+                "pass": "applications/php" \
+            } \
+        }, \
+        { \
+            "match": { \
+                "uri": "/src/*" \
+            }, \
+            "action": { \
+                "share": "/var/www/" \
+            } \
+        }, \
+        { \
+            "match": { \
                 "uri": "*.php" \
             }, \
             "action": { \
                 "pass": "applications/php" \
+            } \
+        }, \
+        { \
+            "match": { \
+                "uri": "~\\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$" \
+            }, \
+            "action": { \
+                "share": "/var/www/" \
             } \
         }, \
         { \
