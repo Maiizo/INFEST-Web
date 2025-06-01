@@ -42,47 +42,6 @@ RUN echo '{ \
     "routes": [ \
         { \
             "match": { \
-                "uri": "/" \
-            }, \
-            "action": { \
-                "share": "/var/www/", \
-                "index": "index.html" \
-            } \
-        }, \
-        { \
-            "match": { \
-                "uri": "/assets/*" \
-            }, \
-            "action": { \
-                "share": "/var/www/" \
-            } \
-        }, \
-        { \
-            "match": { \
-                "uri": "/dist/*" \
-            }, \
-            "action": { \
-                "share": "/var/www/" \
-            } \
-        }, \
-        { \
-            "match": { \
-                "uri": "/src/*.php" \
-            }, \
-            "action": { \
-                "pass": "applications/php" \
-            } \
-        }, \
-        { \
-            "match": { \
-                "uri": "/src/*" \
-            }, \
-            "action": { \
-                "share": "/var/www/" \
-            } \
-        }, \
-        { \
-            "match": { \
                 "uri": "*.php" \
             }, \
             "action": { \
@@ -90,16 +49,9 @@ RUN echo '{ \
             } \
         }, \
         { \
-            "match": { \
-                "uri": "~\\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$" \
-            }, \
             "action": { \
-                "share": "/var/www/" \
-            } \
-        }, \
-        { \
-            "action": { \
-                "share": "/var/www/" \
+                "share": "/var/www/", \
+                "index": ["index.html", "index.php"] \
             } \
         } \
     ], \
