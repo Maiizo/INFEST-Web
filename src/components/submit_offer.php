@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Handle image upload
     $imageUrl = null;
     if (isset($_FILES['offer_image']) && $_FILES['offer_image']['error'] == UPLOAD_ERR_OK) {
-        $uploadDir = '/var/www/uploads/'; // Use absolute path for Docker
+        $uploadDir = '/www/html/uploads/'; // Use absolute path for Docker volume
         
         // Create uploads directory if it doesn't exist
         if (!file_exists($uploadDir)) {
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $targetPath = $uploadDir . $fileName;
             
             if (move_uploaded_file($_FILES['offer_image']['tmp_name'], $targetPath)) {
-                $imageUrl = 'uploads/' . $fileName;
+                $imageUrl = 'uploads/' . $fileName; // This assumes your web server serves /www/html as document root
             } else {
                 $errors[] = "Failed to upload image.";
             }
