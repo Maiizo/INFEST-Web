@@ -118,14 +118,24 @@
 
                     <div id="profile-dropdown"
                         class="absolute top-full right-0 mt-2 w-48 bg-white/95 backdrop-blur-sm shadow-xl rounded-lg py-2 z-10 opacity-0 scale-95 transform transition-all duration-200 ease-out pointer-events-none border border-gray-200">
-                        <a href="/components/signup.php"
-                            class="block px-4 py-2 text-gray-800 hover:bg-teal-50 hover:text-teal-600 transition-colors duration-200 rounded-md mx-1 font-medium">
-                            Sign Up
-                        </a>
-                        <a href="/components/sign_in.php"
-                            class="block px-4 py-2 text-gray-800 hover:bg-teal-50 hover:text-teal-600 transition-colors duration-200 rounded-md mx-1 font-medium">
-                            Sign In
-                        </a>
+                        <?php if(isset($_SESSION['name'])): ?>
+                            <div class="px-4 py-2 text-gray-800 font-medium border-b border-gray-200">
+                                Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?>
+                            </div>
+                            <a href="/components/logout.php"
+                                class="block px-4 py-2 text-gray-800 hover:bg-teal-50 hover:text-teal-600 transition-colors duration-200 rounded-md mx-1 font-medium">
+                                Logout
+                            </a>
+                        <?php else: ?>
+                            <a href="/components/signup.php"
+                                class="block px-4 py-2 text-gray-800 hover:bg-teal-50 hover:text-teal-600 transition-colors duration-200 rounded-md mx-1 font-medium">
+                                Sign Up
+                            </a>
+                            <a href="/components/sign_in.php"
+                                class="block px-4 py-2 text-gray-800 hover:bg-teal-50 hover:text-teal-600 transition-colors duration-200 rounded-md mx-1 font-medium">
+                                Sign In
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -173,14 +183,24 @@
             
             <!-- Auth Links -->
             <div class="space-y-2 pt-4">
-                <a href="/components/signup.php"
-                    class="block py-3 px-4 text-center bg-gradient-to-r from-orange-500 to-red-500 text-white hover:from-orange-600 hover:to-red-600 rounded-lg transition-all duration-200 font-medium">
-                    Sign Up
-                </a>
-                <a href="/components/sign_in.php"
-                    class="block py-3 px-4 text-center border border-teal-500 text-teal-600 hover:bg-teal-50 rounded-lg transition-all duration-200 font-medium">
-                    Sign In
-                </a>
+                <?php if(isset($_SESSION['name'])): ?>
+                    <div class="py-3 px-4 text-gray-800 font-medium">
+                        Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?>
+                    </div>
+                    <a href="/components/logout.php"
+                        class="block py-3 px-4 text-center border border-teal-500 text-teal-600 hover:bg-teal-50 rounded-lg transition-all duration-200 font-medium">
+                        Logout
+                    </a>
+                <?php else: ?>
+                    <a href="/components/signup.php"
+                        class="block py-3 px-4 text-center bg-gradient-to-r from-orange-500 to-red-500 text-white hover:from-orange-600 hover:to-red-600 rounded-lg transition-all duration-200 font-medium">
+                        Sign Up
+                    </a>
+                    <a href="/components/sign_in.php"
+                        class="block py-3 px-4 text-center border border-teal-500 text-teal-600 hover:bg-teal-50 rounded-lg transition-all duration-200 font-medium">
+                        Sign In
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>

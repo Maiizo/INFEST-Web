@@ -2,6 +2,7 @@
 // SUBMIT_OFFER.PHP - Handles offer submission
 // NEW FILE: Processes offer form data and saves to database
 
+include_once 'config.php';
 include_once 'controller.php';
 
 // Check if user is logged in
@@ -41,25 +42,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Handle image upload
     $imageUrl = null;
     if (isset($_FILES['offer_image']) && $_FILES['offer_image']['error'] == UPLOAD_ERR_OK) {
-        $uploadDir = '/www/html/uploads/'; // Use absolute path for Docker volume
-        
-        // Create uploads directory if it doesn't exist
-        if (!file_exists($uploadDir)) {
-            mkdir($uploadDir, 0755, true);
-            // Ensure proper ownership for unit user
-            chown($uploadDir, 'unit');
-            chgrp($uploadDir, 'unit');
-        }
-        
-        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        $uploadDir = getUploadDirectory();
         $fileType = $_FILES['offer_image']['type'];
         
-        if (in_array($fileType, $allowedTypes)) {
-            $fileName = uniqid() . '_' . basename($_FILES['offer_image']['name']);
+        if (in_array($fileType, ALLOWED_IMAGE_TYPES)) {
+            $fileName = createSafeFilename($_FILES['offer_image']['name']);
             $targetPath = $uploadDir . $fileName;
             
             if (move_uploaded_file($_FILES['offer_image']['tmp_name'], $targetPath)) {
-                $imageUrl = 'uploads/' . $fileName; // This assumes your web server serves /www/html as document root
+                $imageUrl = UPLOADS_URL . $fileName; // Use defined constant for URL
             } else {
                 $errors[] = "Failed to upload image.";
             }
