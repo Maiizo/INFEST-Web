@@ -45,6 +45,7 @@ RUN echo '<VirtualHost *:80>' > /etc/apache2/sites-available/000-default.conf &&
 # Create uploads directory with proper permissions
 RUN mkdir -p /var/www/html/uploads /var/www/html/assets && \
     chown -R www-data:www-data /var/www/html/ && \
+    chown -R www-data:www-data /var/www/html/uploads && \
     chmod 755 /var/www/html/assets && \
     chmod 755 /var/www/html/uploads
 
