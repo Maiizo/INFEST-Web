@@ -50,6 +50,4 @@ function getUploadDirectory() {
 function createSafeFilename($originalName) {
     $extension = pathinfo($originalName, PATHINFO_EXTENSION);
     return uniqid() . '_' . time() . '.' . $extension;
-}
-
-?> 
+} 
