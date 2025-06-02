@@ -114,7 +114,7 @@ echo "Database seeding completed!\n";
                 Go to Home Page
             </a>
             
-            <a href="Database.html" 
+            <a href="Database.php" 
                class="w-full bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg text-center block transition-colors duration-200">
                 View Database
             </a>

@@ -1,5 +1,5 @@
 <?php
-// SIGNUP_PROCESS.PHP - Handles user registration
+// signup_process.php - Handles user registration
 // FIXED: Complete signup process with proper validation and database integration
 
 include_once 'controller.php';
@@ -50,15 +50,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if ($result === true) {
             // Success - redirect to login page with success message
-            header("Location: SignIn.html?success=1");
+            header("Location: sign_in.php?success=1");
             exit();
         } elseif ($result === "Email already exists") {
             // Email exists error
-            header("Location: signup.html?error=email_exists");
+            header("Location: signup.php?error=email_exists");
             exit();
         } else {
             // General registration error
-            header("Location: signup.html?error=registration_failed");
+            header("Location: signup.php?error=registration_failed");
             exit();
         }
     } else {
@@ -70,12 +70,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errorType = "email_exists";
         }
         
-        header("Location: signup.html?error=$errorType");
+        header("Location: signup.php?error=$errorType");
         exit();
     }
 } else {
     // If not a POST request, redirect to signup page
-    header("Location: signup.html");
+    header("Location: signup.php");
     exit();
 }
 ?>

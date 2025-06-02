@@ -93,7 +93,7 @@
                     
                     <!-- Call to Action -->
                     <div class="pt-4">
-                        <a href="/components/signup.html" class="group">
+                        <a href="/components/signup.php" class="group">
                             <button class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl pulse-glow">
                                 <span class="flex items-center space-x-2">
                                     <span>Get Started Today</span>

@@ -33,8 +33,8 @@
 
                 <div class="text-center mt-10 mb-4 text-lg text-gray-600">
                     Don't have an Account?
-                    <!-- MODIFIED: Updated link to point to signup.html -->
-                    <a href="/components/signup.html" class="text-blue-500 hover:underline">Sign Up</a>
+                    <!-- MODIFIED: Updated link to point to signup.php -->
+                    <a href="/components/signup.php" class="text-blue-500 hover:underline">Sign Up</a>
                 </div>
             </div>
         </div>

@@ -124,7 +124,7 @@
                     
                     <!-- Enhanced CTA Button -->
                     <div class="mt-12">
-                        <a href="/views/BrowseOffers.php" class="group">
+                        <a href="/views/browse_offers.php" class="group">
                             <button class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white glassmorphism border border-teal-400/50 hover:border-teal-400 rounded-xl transition-all duration-300 hover:scale-105 hover:bg-teal-400/20">
                                 <span class="flex items-center space-x-2">
                                     <span>Discover More Features</span>

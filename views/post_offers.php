@@ -9,7 +9,7 @@ $currentUser = getCurrentUser();
 
 // If not logged in, redirect to login with message
 if (!$currentUser) {
-    header("Location: /components/SignIn.html?error=login_required&message=Please log in to post an offer");
+    header("Location: /components/sign_in.php?error=login_required&message=Please log in to post an offer");
     exit();
 }
 
@@ -87,7 +87,7 @@ $categories = getAllCategories();
     </div>
     
     <!-- Include navbar -->
-    <?php include '../components/navbar.html'; ?>
+    <?php include '../components/navbar.php'; ?>
     
     <div class="relative z-10 container mx-auto px-4 py-8 pt-24">
         <div class="max-w-4xl mx-auto glassmorphism rounded-2xl shadow-2xl overflow-hidden border border-white/20">
@@ -257,7 +257,7 @@ $categories = getAllCategories();
                         class="flex-1 px-8 py-4 bg-gradient-to-r from-orange-500 to-teal-400 hover:from-orange-600 hover:to-teal-500 text-white font-semibold rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                         Post Your Offer
                     </button>
-                    <a href="/views/BrowseOffers.php"
+                    <a href="/views/browse_offers.php"
                         class="flex-1 px-8 py-4 glassmorphism text-gray-300 border border-white/30 hover:bg-white/20 font-semibold rounded-xl transform hover:scale-105 transition-all duration-300 text-center">
                         Cancel
                     </a>

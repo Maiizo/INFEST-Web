@@ -1,5 +1,5 @@
 <?php
-// ENHANCED BROWSE OFFERS PAGE: Modified from .html to .php for database integration
+// ENHANCED BROWSE OFFERS PAGE: Modified from .php to .php for database integration
 // Added dynamic content loading from database and session management
 
 include_once '../components/controller.php';
@@ -89,7 +89,7 @@ $categories = getAllCategories();
 
 <body>
     <!-- Include navbar with session management -->
-    <?php include '../components/navbar.html'; ?>
+    <?php include '../components/navbar.php'; ?>
 
     <section class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen pt-24 overflow-hidden">
         <!-- Background Elements -->
@@ -224,7 +224,7 @@ $categories = getAllCategories();
                                                     Make Offer
                                                 </button>
                                             <?php else: ?>
-                                                <button onclick="window.location.href='/components/SignIn.html'"
+                                                <button onclick="window.location.href='/components/sign_in.php'"
                                                     class="w-full px-4 py-3 rounded-xl text-sm font-semibold glassmorphism text-white hover:bg-white/20 transition-all duration-300">
                                                     Login to Make Offer
                                                 </button>
@@ -285,7 +285,7 @@ $categories = getAllCategories();
 
     <!-- Include Shopping Cart if user is logged in -->
     <?php if (isset($_SESSION['user_id'])): ?>
-        <?php include '../components/ShoppingCart.html'; ?>
+        <?php include '../components/shopping_cart.php'; ?>
     <?php endif; ?>
 
     <script>
@@ -355,7 +355,7 @@ $categories = getAllCategories();
             }, 3000);
         }
         
-        // Shopping cart functions (from original ShoppingCart.html)
+        // Shopping cart functions (from original shopping_cart.php)
         function openCart() {
             const overlay = document.getElementById('cartOverlay');
             const slider = document.getElementById('cartSlider');

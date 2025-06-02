@@ -90,12 +90,12 @@
                     Home
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="/views/BrowseOffers.php"
+                <a href="/views/browse_offers.php"
                     class="nav-link text-white hover:text-teal-400 transition-all duration-300 font-medium relative group">
                     Browse Offers
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="/views/PostOffers.php"
+                <a href="/views/post_offers.php"
                     class="nav-link text-white hover:text-teal-400 transition-all duration-300 font-medium relative group">
                     Post Offers
                     <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
@@ -118,11 +118,11 @@
 
                     <div id="profile-dropdown"
                         class="absolute top-full right-0 mt-2 w-48 bg-white/95 backdrop-blur-sm shadow-xl rounded-lg py-2 z-10 opacity-0 scale-95 transform transition-all duration-200 ease-out pointer-events-none border border-gray-200">
-                        <a href="/components/signup.html"
+                        <a href="/components/signup.php"
                             class="block px-4 py-2 text-gray-800 hover:bg-teal-50 hover:text-teal-600 transition-colors duration-200 rounded-md mx-1 font-medium">
                             Sign Up
                         </a>
-                        <a href="/components/SignIn.html"
+                        <a href="/components/sign_in.php"
                             class="block px-4 py-2 text-gray-800 hover:bg-teal-50 hover:text-teal-600 transition-colors duration-200 rounded-md mx-1 font-medium">
                             Sign In
                         </a>
@@ -158,11 +158,11 @@
                     class="block py-3 px-4 text-gray-800 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-all duration-200 font-medium">
                     Home
                 </a>
-                <a href="/views/BrowseOffers.php"
+                <a href="/views/browse_offers.php"
                     class="block py-3 px-4 text-gray-800 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-all duration-200 font-medium">
                     Browse Offers
                 </a>
-                <a href="/views/PostOffers.php"
+                <a href="/views/post_offers.php"
                     class="block py-3 px-4 text-gray-800 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-all duration-200 font-medium">
                     Post Offers
                 </a>
@@ -173,11 +173,11 @@
             
             <!-- Auth Links -->
             <div class="space-y-2 pt-4">
-                <a href="/components/signup.html"
+                <a href="/components/signup.php"
                     class="block py-3 px-4 text-center bg-gradient-to-r from-orange-500 to-red-500 text-white hover:from-orange-600 hover:to-red-600 rounded-lg transition-all duration-200 font-medium">
                     Sign Up
                 </a>
-                <a href="/components/SignIn.html"
+                <a href="/components/sign_in.php"
                     class="block py-3 px-4 text-center border border-teal-500 text-teal-600 hover:bg-teal-50 rounded-lg transition-all duration-200 font-medium">
                     Sign In
                 </a>

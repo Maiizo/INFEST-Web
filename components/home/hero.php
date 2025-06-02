@@ -140,7 +140,7 @@
 
                     <!-- Enhanced CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-3">
-                        <a href="/components/signup.html" class="group">
+                        <a href="/components/signup.php" class="group">
                             <button class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl pulse-glow">
                                 <span class="flex items-center justify-center space-x-2">
                                     <span>Join the Community</span>
@@ -150,7 +150,7 @@
                                 </span>
                             </button>
                         </a>
-                        <a href="/views/BrowseOffers.php" class="group">
+                        <a href="/views/browse_offers.php" class="group">
                             <button class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white font-bold rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                                 <span class="flex items-center justify-center space-x-2">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

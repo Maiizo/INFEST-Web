@@ -133,13 +133,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/views/BrowseOffers.php" class="group flex items-center text-gray-300 hover:text-teal-400 transition-all duration-300">
+                                    <a href="/views/browse_offers.php" class="group flex items-center text-gray-300 hover:text-teal-400 transition-all duration-300">
                                         <div class="w-2 h-2 bg-orange-400 rounded-full mr-3 group-hover:bg-teal-400 transition-colors"></div>
                                         <span class="group-hover:translate-x-1 transition-transform">Browse Offers</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/views/PostOffers.php" class="group flex items-center text-gray-300 hover:text-teal-400 transition-all duration-300">
+                                    <a href="/views/post_offers.php" class="group flex items-center text-gray-300 hover:text-teal-400 transition-all duration-300">
                                         <div class="w-2 h-2 bg-orange-400 rounded-full mr-3 group-hover:bg-teal-400 transition-colors"></div>
                                         <span class="group-hover:translate-x-1 transition-transform">Post Offers</span>
                                     </a>

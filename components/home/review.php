@@ -243,7 +243,7 @@
 
             <!-- Enhanced Call to Action -->
             <div class="flex justify-center">
-                <a href="/components/signup.html" 
+                <a href="/components/signup.php" 
                    class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl pulse-glow">
                     Get Involved Now
                     <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

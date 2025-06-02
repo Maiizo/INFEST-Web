@@ -11,13 +11,13 @@
 
 <body class="is-home">
     <!-- <h1>halo ini home bro</h1> -->
-    <?php include './components/navbar.html' ?>
-    <?php include './components/home/hero.html' ?>
-    <?php include './components/home/section2.html' ?>
-    <?php include './components/home/section3.html' ?>
-    <?php include './components/home/review.html' ?>
-    <?php include './components/footer.html' ?>
-    <?php include './components/ShoppingCart.html' ?>
+    <?php include './components/navbar.php' ?>
+    <?php include './components/home/hero.php' ?>
+    <?php include './components/home/section2.php' ?>
+    <?php include './components/home/section3.php' ?>
+    <?php include './components/home/review.php' ?>
+    <?php include './components/footer.php' ?>
+    <?php include './components/shopping_cart.php' ?>
 </body>
 
 </html>
