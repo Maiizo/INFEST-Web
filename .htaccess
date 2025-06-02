@@ -6,23 +6,8 @@ Options -Indexes
     Require all granted
 </Files>
 
-# Security for uploads directory - only allow image files
-<Directory "uploads">
-    Options -Indexes
-    <Files ~ "\.(jpg|jpeg|png|gif)$">
-        Require all granted
-    </Files>
-    <Files ~ "\.php$">
-        Require all denied
-    </Files>
-</Directory>
-
 # Enable URL rewriting
 RewriteEngine On
-
-# Allow direct access to uploads folder
-RewriteCond %{REQUEST_URI} ^/uploads/
-RewriteRule ^(.*)$ - [L]
 
 # Allow direct access to assets folder
 RewriteCond %{REQUEST_URI} ^/assets/
@@ -34,6 +19,10 @@ RewriteRule ^(.*)$ - [L]
 
 # Allow direct access to components folder
 RewriteCond %{REQUEST_URI} ^/components/
+RewriteRule ^(.*)$ - [L]
+
+# Allow direct access to uploads folder
+RewriteCond %{REQUEST_URI} ^/uploads/
 RewriteRule ^(.*)$ - [L]
 
 # Allow direct access to views folder
@@ -51,11 +40,11 @@ RewriteRule ^(.*)$ - [L]
 # Redirect all other requests to index.php only for non-file requests
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !^/uploads/
 RewriteCond %{REQUEST_URI} !^/assets/
 RewriteCond %{REQUEST_URI} !^/style/
 RewriteCond %{REQUEST_URI} !^/components/
 RewriteCond %{REQUEST_URI} !^/views/
+RewriteCond %{REQUEST_URI} !^/uploads/
 RewriteRule ^(.*)$ /index.php [L]
 
 # Files will be served as-is without URL rewriting
