@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // Include configuration
-include_once 'config.php';
+include_once __DIR__ . '/config.php';
 
 function connectDB()
 {

@@ -2,7 +2,7 @@
 // TEST_PATHS.PHP - Test script to verify path configurations
 // This file can be used to debug and verify path settings
 
-include_once 'config.php';
+include_once __DIR__ . '/config.php';
 
 echo "<h2>Path Configuration Test</h2>\n";
 echo "<p><strong>Environment Information:</strong></p>\n";

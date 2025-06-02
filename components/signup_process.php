@@ -1,8 +1,8 @@
 <?php
-// signup_process.php - Handles user registration
-// FIXED: Complete signup process with proper validation and database integration
+// SIGNUP_PROCESS.PHP - Handles user registration
+// NEW FILE: Process signup form data
 
-include_once 'controller.php';
+include_once __DIR__ . '/controller.php';
 
 // Check if form was submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

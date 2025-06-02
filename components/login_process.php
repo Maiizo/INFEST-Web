@@ -2,10 +2,12 @@
 // LOGIN_PROCESS.PHP - Simple session approach similar to PDF example
 // Modified to use basic session handling like the PDF document
 
-// Start session at the beginning
-session_start();
+// Start session if not already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
-include_once 'controller.php';
+include_once __DIR__ . '/controller.php';
 
 // Check if form was submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

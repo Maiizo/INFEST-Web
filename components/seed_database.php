@@ -2,7 +2,7 @@
 // SEED_DATABASE.PHP - Database seeder for initial data
 // NEW FILE: Populates database with initial categories and status data
 
-include_once 'controller.php';
+include_once __DIR__ . '/controller.php';
 
 // Function to seed categories
 function seedCategories() {

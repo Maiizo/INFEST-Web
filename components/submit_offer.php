@@ -2,8 +2,8 @@
 // SUBMIT_OFFER.PHP - Handles offer submission
 // NEW FILE: Processes offer form data and saves to database
 
-include_once 'config.php';
-include_once 'controller.php';
+include_once __DIR__ . '/config.php';
+include_once __DIR__ . '/controller.php';
 
 // Check if user is logged in
 if (!isLoggedIn()) {
