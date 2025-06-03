@@ -29,9 +29,24 @@ RUN apt-get update && \
 # Enable Apache modules
 RUN a2enmod rewrite
 
+# Configure Apache document root and directory permissions
+RUN echo '<VirtualHost *:80>' > /etc/apache2/sites-available/000-default.conf && \
+    echo '    ServerAdmin webmaster@localhost' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    DocumentRoot /var/www/html' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    <Directory /var/www/html>' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '        Options -Indexes' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '        AllowOverride All' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '        Require all granted' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    </Directory>' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    ErrorLog ${APACHE_LOG_DIR}/error.log' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    CustomLog ${APACHE_LOG_DIR}/access.log combined' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '</VirtualHost>' >> /etc/apache2/sites-available/000-default.conf
+
 # Create uploads directory with proper permissions
-RUN mkdir -p /var/www/html/uploads && \
+RUN mkdir -p /var/www/html/uploads /var/www/html/assets && \
     chown -R www-data:www-data /var/www/html/ && \
+    chown -R www-data:www-data /var/www/html/uploads && \
+    chmod 755 /var/www/html/assets && \
     chmod 755 /var/www/html/uploads
 
 # Create volume for persistent file uploads

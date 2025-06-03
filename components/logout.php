@@ -9,6 +9,6 @@ session_unset();
 session_destroy();
 
 // Redirect to home page
-header("Location: ../views/home.php?logout=success");
+header("Location: /views/home.php?logout=success");
 exit();
 ?>

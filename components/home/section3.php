@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .floating-animation {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        .floating-animation-delayed {
+            animation: floating 6s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        
+        .floating-animation-delayed-2 {
+            animation: floating 6s ease-in-out infinite;
+            animation-delay: 4s;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(-3deg); }
+            75% { transform: translateY(-15px) rotate(3deg); }
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        .feature-card:hover {
+            transform: perspective(1000px) rotateY(5deg) translateZ(20px);
+        }
+    </style>
+</head>
+<body>
+    <section class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-20 w-32 h-32 bg-teal-400 rounded-full blur-3xl floating-animation"></div>
+            <div class="absolute bottom-40 right-20 w-40 h-40 bg-orange-500 rounded-full blur-3xl floating-animation-delayed"></div>
+            <div class="absolute top-1/2 right-1/4 w-24 h-24 bg-yellow-400 rounded-full blur-2xl floating-animation-delayed-2"></div>
+        </div>
+        
+        <div class="relative z-10 py-20 px-4 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Side - Content -->
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                        Empowering 
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-teal-400">Local Connections</span>
+                    </h2>
+                    <p class="text-gray-300 text-xl mb-12 leading-relaxed">
+                        Join us in creating a <span class="text-teal-400 font-semibold">supportive community</span> where neighbors help neighbors and everyone thrives together.
+                    </p>
+                    
+                    <!-- Enhanced Feature Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-lg">
+                        <!-- Find Local Help -->
+                        <div class="feature-card glassmorphism rounded-xl p-6 border border-orange-500/30 hover:border-orange-400/50 transition-all duration-300 group">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-white font-semibold text-base">Find Local Help</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Offer Your Skills -->
+                        <div class="feature-card glassmorphism rounded-xl p-6 border border-teal-400/30 hover:border-teal-400/50 transition-all duration-300 group">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-r from-teal-500 to-green-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-white font-semibold text-base">Offer Your Skills</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Share Resources -->
+                        <div class="feature-card glassmorphism rounded-xl p-6 border border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300 group">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
+                                        <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-white font-semibold text-base">Share Resources</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Build Trusting Bonds -->
+                        <div class="feature-card glassmorphism rounded-xl p-6 border border-orange-500/30 hover:border-orange-400/50 transition-all duration-300 group">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-red-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-white font-semibold text-base">Build Trusting Bonds</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Enhanced CTA Button -->
+                    <div class="mt-12">
+                        <a href="/views/browse_offers.php" class="group">
+                            <button class="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white glassmorphism border border-teal-400/50 hover:border-teal-400 rounded-xl transition-all duration-300 hover:scale-105 hover:bg-teal-400/20">
+                                <span class="flex items-center space-x-2">
+                                    <span>Discover More Features</span>
+                                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Right Side - Enhanced Image -->
+                <div class="flex justify-center lg:justify-end">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-gradient-to-r from-teal-400/20 to-orange-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                        <img src="/assets/section3img.png" alt="Two People Helping Each Other"
+                             class="relative w-full h-auto rounded-2xl shadow-2xl transition-transform duration-300 hover:scale-105 border border-white/10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

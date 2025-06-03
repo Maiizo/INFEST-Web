@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In - UnityGrid</title>
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="/style/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
@@ -33,8 +33,8 @@
 
                 <div class="text-center mt-10 mb-4 text-lg text-gray-600">
                     Don't have an Account?
-                    <!-- MODIFIED: Updated link to point to SignUp.html -->
-                    <a href="../components/SignUp.html" class="text-blue-500 hover:underline">Sign Up</a>
+                    <!-- MODIFIED: Updated link to point to signup.php -->
+                    <a href="/components/signup.php" class="text-blue-500 hover:underline">Sign Up</a>
                 </div>
             </div>
         </div>

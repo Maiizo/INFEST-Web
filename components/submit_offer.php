@@ -2,11 +2,12 @@
 // SUBMIT_OFFER.PHP - Handles offer submission
 // NEW FILE: Processes offer form data and saves to database
 
-include_once '../components/controller.php';
+include_once __DIR__ . '/config.php';
+include_once __DIR__ . '/controller.php';
 
 // Check if user is logged in
 if (!isLoggedIn()) {
-    header("Location: ../components/PostOffers.html?error=login_required");
+    header("Location: /views/post_offers.php?error=login_required");
     exit();
 }
 
@@ -41,25 +42,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Handle image upload
     $imageUrl = null;
     if (isset($_FILES['offer_image']) && $_FILES['offer_image']['error'] == UPLOAD_ERR_OK) {
-        $uploadDir = '/www/html/uploads/'; // Use absolute path for Docker volume
-        
-        // Create uploads directory if it doesn't exist
-        if (!file_exists($uploadDir)) {
-            mkdir($uploadDir, 0755, true);
-            // Ensure proper ownership for unit user
-            chown($uploadDir, 'unit');
-            chgrp($uploadDir, 'unit');
-        }
-        
-        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        $uploadDir = getUploadDirectory();
         $fileType = $_FILES['offer_image']['type'];
         
-        if (in_array($fileType, $allowedTypes)) {
-            $fileName = uniqid() . '_' . basename($_FILES['offer_image']['name']);
+        if (in_array($fileType, ALLOWED_IMAGE_TYPES)) {
+            $fileName = createSafeFilename($_FILES['offer_image']['name']);
             $targetPath = $uploadDir . $fileName;
             
             if (move_uploaded_file($_FILES['offer_image']['tmp_name'], $targetPath)) {
-                $imageUrl = 'uploads/' . $fileName; // This assumes your web server serves /www/html as document root
+                $imageUrl = UPLOADS_URL . $fileName; // Use defined constant for URL
             } else {
                 $errors[] = "Failed to upload image.";
             }
@@ -87,21 +78,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if ($result) {
             // Success - redirect with success message
-            header("Location: ../components/PostOffers.html?success=1");
+            header("Location: /views/post_offers.php?success=1");
             exit();
         } else {
             // Database insertion failed
-            header("Location: ../components/PostOffers.html?error=database_error");
+            header("Location: /views/post_offers.php?error=database_error");
             exit();
         }
     } else {
         // Validation errors
-        header("Location: ../components/PostOffers.html?error=validation_failed");
+        header("Location: /views/post_offers.php?error=validation_failed");
         exit();
     }
 } else {
     // If not a POST request, redirect to post offers page
-    header("Location: ../components/PostOffers.html");
+    header("Location: /views/post_offers.php");
     exit();
 }
 ?>

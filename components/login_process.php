@@ -2,10 +2,12 @@
 // LOGIN_PROCESS.PHP - Simple session approach similar to PDF example
 // Modified to use basic session handling like the PDF document
 
-// Start session at the beginning
-session_start();
+// Start session if not already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
-include_once '../components/controller.php';
+include_once __DIR__ . '/controller.php';
 
 // Check if form was submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -15,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     // Basic validation
     if (empty($email) || empty($password)) {
-        header("Location: ../components/SignIn.html?error=empty_fields");
+        header("Location: /components/sign_in.php?error=empty_fields");
         exit();
     }
     
@@ -43,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Redirect to home page
                 mysqli_stmt_close($stmt);
                 closeDB($conn);
-                header("Location: ../views/home.php");
+                header("Location: /views/home.php");
                 exit();
             }
         }
@@ -53,12 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     
     // If we reach here, login failed
-    header("Location: ../components/SignIn.html?error=invalid_credentials");
+    header("Location: /components/sign_in.php?error=invalid_credentials");
     exit();
     
 } else {
     // If not a POST request, redirect to login page
-    header("Location: ../components/SignIn.html");
+    header("Location: /components/sign_in.php");
     exit();
 }
-?>

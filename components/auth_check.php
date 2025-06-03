@@ -4,7 +4,7 @@
 session_start();
 
 // Simple function to require login for protected pages
-function requireLogin($redirectTo = '../components/SignIn.html') {
+function requireLogin($redirectTo = '/components/sign_in.php') {
     // Check if essential session variables exist
     if (!isset($_SESSION['user_id']) || !isset($_SESSION['name'])) {
         header("Location: $redirectTo?error=login_required");
@@ -13,7 +13,7 @@ function requireLogin($redirectTo = '../components/SignIn.html') {
 }
 
 // Simple function to redirect logged-in users away from auth pages
-function redirectIfLoggedIn($redirectTo = '../views/home.php') {
+function redirectIfLoggedIn($redirectTo = '/views/home.php') {
     // Check if user is already logged in
     if (isset($_SESSION['user_id']) && isset($_SESSION['name'])) {
         header("Location: $redirectTo");
@@ -22,10 +22,10 @@ function redirectIfLoggedIn($redirectTo = '../views/home.php') {
 }
 
 // Simple function to check if user owns a specific resource
-function requireOwnership($userId, $redirectTo = '../views/home.php') {
+function requireOwnership($userId, $redirectTo = '/views/home.php') {
     // Check if user is logged in first
     if (!isset($_SESSION['user_id'])) {
-        header("Location: ../components/SignIn.html?error=login_required");
+        header("Location: /components/sign_in.php?error=login_required");
         exit();
     }
     

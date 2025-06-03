@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .floating-animation {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        .floating-animation-delayed {
+            animation: floating 6s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        
+        .floating-animation-delayed-2 {
+            animation: floating 6s ease-in-out infinite;
+            animation-delay: 4s;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(-3deg); }
+            75% { transform: translateY(-15px) rotate(3deg); }
+        }
+        
+        .review-card {
+            transition: all 0.3s ease;
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        .review-card:hover {
+            transform: perspective(1000px) rotateY(5deg) translateZ(20px);
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(249, 115, 22, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(249, 115, 22, 0.6), 0 0 60px rgba(249, 115, 22, 0.3); }
+        }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+        <!-- Enhanced Background -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+                style="background-image: url('/assets/reviews-page.jpg')"></div>
+            <div class="absolute inset-0 bg-black/50"></div>
+        </div>
+
+        <!-- Enhanced Floating Elements -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-20 w-32 h-32 bg-orange-500 rounded-full blur-3xl floating-animation"></div>
+            <div class="absolute bottom-40 right-20 w-40 h-40 bg-teal-400 rounded-full blur-3xl floating-animation-delayed"></div>
+            <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-yellow-400 rounded-full blur-2xl floating-animation-delayed-2"></div>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center justify-center px-4 py-16 lg:py-24">
+            <div class="w-full max-w-7xl text-center">
+                <!-- Enhanced Header Section -->
+                <div class="text-white mb-16">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Join the Movement for a<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-teal-400">Stronger
+                            Neighborhood</span> Community!
+                    </h1>
+                    <p class="text-lg md:text-xl lg:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed text-gray-300">
+                        Discover how easy it is to connect with neighbors who are ready to help. Whether you need assistance
+                        or can lend a hand, this <span class="text-teal-400 font-semibold">platform is built for you</span>.
+                    </p>
+                </div>
+
+                <!-- Enhanced Reviews Section -->
+                <div class="mb-16">
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-yellow-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        What Our Community Says
+                    </h2>
+                    
+                    <!-- Enhanced Reviews Container -->
+                    <div class="flex space-x-6 overflow-x-auto scrollbar-hide scroll-smooth pb-6" id="testimonialContainer">
+
+                    <!-- Review Card 1 -->
+                    <div class="review-card glassmorphism rounded-2xl p-8 shadow-2xl min-w-[350px] max-w-[400px] flex-shrink-0 relative border border-orange-500/30 hover:border-orange-400/50 transition-all duration-300 group">
+                        <!-- Stars -->
+                        <div class="flex items-center mb-6">
+                            <div class="flex gap-1">
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                            </div>
+                            <span class="ml-2 text-lg font-bold text-white">5.0</span>
+                        </div>
+
+                        <!-- Review Text -->
+                        <p class="text-gray-300 mb-8 text-left leading-relaxed">
+                            "This platform has transformed our community. I've met amazing neighbors and received help
+                            when I needed it most. The connections I've made here have truly enriched my life!"
+                        </p>
+
+                        <!-- Reviewer Info -->
+                        <div class="flex items-center">
+                            <img src="/assets/emilyjohnson.jpg"
+                                alt="Emily Johnson" class="w-12 h-12 object-cover rounded-full mr-4 border-2 border-orange-500/50 group-hover:border-orange-400 transition-colors duration-300">
+                            <div class="text-left">
+                                <div class="font-semibold text-white">Emily Johnson</div>
+                                <div class="text-orange-400 font-medium text-sm">Local Resident</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 2 -->
+                    <div class="review-card glassmorphism rounded-2xl p-8 shadow-2xl min-w-[350px] max-w-[400px] flex-shrink-0 relative border border-teal-400/30 hover:border-teal-400/50 transition-all duration-300 group">
+                        <!-- Stars -->
+                        <div class="flex items-center mb-6">
+                            <div class="flex gap-1">
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                            </div>
+                            <span class="ml-2 text-lg font-bold text-white">5.0</span>
+                        </div>
+
+                        <!-- Review Text -->
+                        <p class="text-gray-300 mb-8 text-left leading-relaxed">
+                            "Amazing experience! The neighbors here are so helpful and kind. I've found everything from
+                            babysitters to handymen through this platform. Highly recommend!"
+                        </p>
+
+                        <!-- Reviewer Info -->
+                        <div class="flex items-center">
+                            <img src="/assets/johnsmith.jpg"
+                                alt="John Smith" class="w-12 h-12 rounded-full mr-4 border-2 border-teal-400/50 group-hover:border-teal-400 transition-colors duration-300 object-cover">
+                            <div class="text-left">
+                                <div class="font-semibold text-white">John Smith</div>
+                                <div class="text-teal-400 font-medium text-sm">Local Resident</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 3 -->
+                    <div class="review-card glassmorphism rounded-2xl p-8 shadow-2xl min-w-[350px] max-w-[400px] flex-shrink-0 relative border border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300 group">
+                        <!-- Stars -->
+                        <div class="flex items-center mb-6">
+                            <div class="flex gap-1">
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                            </div>
+                            <span class="ml-2 text-lg font-bold text-white">5.0</span>
+                        </div>
+
+                        <!-- Review Text -->
+                        <p class="text-gray-300 mb-8 text-left leading-relaxed">
+                            "I love being part of this community! From borrowing tools to organizing block parties, this
+                            platform has made our neighborhood feel like a real family."
+                        </p>
+
+                        <!-- Reviewer Info -->
+                        <div class="flex items-center">
+                            <img src="/assets/sarahwilliams.jpg"
+                                alt="Sarah Williams" class="w-12 h-12 object-cover rounded-full mr-4 border-2 border-yellow-400/50 group-hover:border-yellow-400 transition-colors duration-300">
+                            <div class="text-left">
+                                <div class="font-semibold text-white">Sarah Williams</div>
+                                <div class="text-yellow-400 font-medium text-sm">Local Resident</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Scroll Indicator -->
+                <p class="text-white/80 text-sm mt-6 font-medium">
+                    ← Scroll to see more reviews →
+                </p>
+            </div>
+
+            <!-- Enhanced Call to Action -->
+            <div class="flex justify-center">
+                <a href="/components/signup.php" 
+                   class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl pulse-glow">
+                    Get Involved Now
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

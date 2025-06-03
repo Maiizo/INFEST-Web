@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .floating-animation {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        .floating-animation-delayed {
+            animation: floating 6s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        
+        .floating-animation-delayed-2 {
+            animation: floating 6s ease-in-out infinite;
+            animation-delay: 4s;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(-3deg); }
+            75% { transform: translateY(-15px) rotate(3deg); }
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #f97316, #06b6d4, #eab308);
+            background-size: 200% 200%;
+            animation: gradient-shift 3s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(249, 115, 22, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(249, 115, 22, 0.6), 0 0 60px rgba(249, 115, 22, 0.3); }
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        .testimonial-card:hover {
+            transform: perspective(1000px) rotateY(5deg) translateZ(20px);
+        }
+        
+        .stat-number {
+            background: linear-gradient(135deg, #06b6d4, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body>
+    <section id="hero" class="relative h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+        <!-- Enhanced Background -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+                style="background-image: url('/assets/bg.png')"></div>
+            <div class="absolute inset-0 bg-black/50"></div>
+        </div>
+
+        <!-- Enhanced Floating Elements -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-20 w-32 h-32 bg-orange-500 rounded-full blur-3xl floating-animation"></div>
+            <div class="absolute bottom-40 right-20 w-40 h-40 bg-teal-400 rounded-full blur-3xl floating-animation-delayed"></div>
+            <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-yellow-400 rounded-full blur-2xl floating-animation-delayed-2"></div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="relative z-10 h-full max-w-7xl mx-auto px-6 sm:px-8 flex items-center">
+            <div class="grid lg:grid-cols-2 gap-12 items-center w-full">
+                <!-- Enhanced Left Side -->
+                <div class="space-y-6 text-white">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center px-4 py-2 glassmorphism rounded-full">
+                        <div class="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
+                        <span class="text-sm font-medium text-gray-200">🌟 Trusted by 10,000+ neighbors</span>
+                    </div>
+
+                    <!-- Main Heading -->
+                    <div class="space-y-4">
+                        <h3 class="text-teal-400 text-lg font-semibold tracking-wide uppercase animate-pulse">Together we thrive</h3>
+                        <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-[0.9] tracking-tight">
+                            Need <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-teal-400">Any</span><br>
+                            Help? <br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-yellow-400">We</span>
+                            got you!
+                        </h1>
+                        <p class="text-lg text-gray-300 leading-relaxed max-w-xl font-light">
+                            Join our <span class="text-teal-400 font-semibold">verified local help exchange platform</span> 
+                            where neighbors empower each other. Discover the joys of giving and receiving support in your community.
+                        </p>
+                    </div>
+
+                    <!-- Enhanced Stats -->
+                    <div class="grid grid-cols-3 gap-6 py-6">
+                        <div class="text-center group">
+                            <div class="text-4xl md:text-5xl font-bold text-teal-400 mb-2 transform group-hover:scale-110 transition-transform duration-300">2,897</div>
+                            <div class="text-gray-300 text-sm uppercase tracking-wide">People Helped</div>
+                        </div>
+                        <div class="text-center group">
+                            <div class="text-4xl md:text-5xl font-bold text-teal-400 mb-2 transform group-hover:scale-110 transition-transform duration-300">3,240</div>
+                            <div class="text-gray-300 text-sm uppercase tracking-wide">Requests Fulfilled</div>
+                        </div>
+                        <div class="text-center group">
+                            <div class="text-4xl md:text-5xl font-bold text-teal-400 mb-2 transform group-hover:scale-110 transition-transform duration-300">98%</div>
+                            <div class="text-gray-300 text-sm uppercase tracking-wide">Success Rate</div>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="/components/signup.php" class="group">
+                            <button class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl pulse-glow">
+                                <span class="flex items-center justify-center space-x-2">
+                                    <span>Join the Community</span>
+                                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                    </svg>
+                                </span>
+                            </button>
+                        </a>
+                        <a href="/views/browse_offers.php" class="group">
+                            <button class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white font-bold rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                                <span class="flex items-center justify-center space-x-2">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                    </svg>
+                                    <span>Explore Services</span>
+                                </span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Enhanced Right Side -->
+                <div class="relative">
+                    <div class="space-y-4">
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-card glassmorphism p-4 rounded-2xl border border-orange-500/30 hover:border-orange-400/50 transition-all duration-300">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <div class="relative">
+                                    <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center text-white font-bold shadow-lg">
+                                        J
+                                    </div>
+                                    <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white"></div>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-white">John Martinez</h3>
+                                    <p class="text-xs text-gray-400">Garden maintenance</p>
+                                    <div class="flex items-center mt-1">
+                                        <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                                        <span class="ml-2 text-xs text-gray-500">2h ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-sm italic">"Amazing community support!"</p>
+                        </div>
+
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-card glassmorphism p-4 rounded-2xl border border-teal-400/30 hover:border-teal-400/50 transition-all duration-300 ml-6">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <div class="relative">
+                                    <div class="w-12 h-12 bg-teal-400 rounded-xl flex items-center justify-center text-white font-bold shadow-lg">
+                                        S
+                                    </div>
+                                    <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white"></div>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-white">Sarah Chen</h3>
+                                    <p class="text-xs text-gray-400">Tutoring service</p>
+                                    <div class="flex items-center mt-1">
+                                        <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                                        <span class="ml-2 text-xs text-gray-500">1d ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-sm italic">"Love helping in my neighborhood!"</p>
+                        </div>
+
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-card glassmorphism p-4 rounded-2xl border border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <div class="relative">
+                                    <div class="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center text-white font-bold shadow-lg">
+                                        M
+                                    </div>
+                                    <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white"></div>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-white">Mike Johnson</h3>
+                                    <p class="text-xs text-gray-400">Home repairs</p>
+                                    <div class="flex items-center mt-1">
+                                        <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                                        <span class="ml-2 text-xs text-gray-500">3d ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-sm italic">"Community rocks! Fixed 5 homes this week."</p>
+                        </div>
+
+                        <!-- Trust Indicators -->
+                        <div class="glassmorphism p-3 rounded-xl border border-white/10">
+                            <div class="flex items-center justify-between text-center">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-xs text-gray-300">Verified</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-teal-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <span class="text-xs text-gray-300">Secure</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <span class="text-xs text-gray-300">Rated</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
