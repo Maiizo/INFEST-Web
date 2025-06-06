@@ -12,7 +12,6 @@
 
 <body class="bg-gray-100 min-h-screen">
 
-
     <button
         class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-orange-500 to-teal-400 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-3xl hover:scale-110 group"
         onclick="openCart()" aria-label="Open exchange cart">
@@ -52,42 +51,7 @@
 
         <div class="flex-1 overflow-y-auto p-5 space-y-5" id="cartItems">
             <!-- sample  -->
-            <div
-                class="exchange-item bg-orange-50 rounded-2xl p-5 border-l-4 border-orange-500 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-                <div class="flex items-start mb-4">
-                    <div
-                        class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-teal-400 flex items-center justify-center text-white font-bold text-lg mr-4 flex-shrink-0">
-                        SM</div>
-                    <div class="flex-1 min-w-0">
-                        <h3 class="text-base font-semibold text-gray-800 mb-1 truncate">Weekly Sourdough Bread</h3>
-                        <p class="text-sm text-gray-600">Posted by Sarah M. • 2 days ago</p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl p-4 space-y-4">
-                    <div>
-                        <div class="flex items-center text-xs font-semibold uppercase text-blue-800 mb-2">
-                            <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                            Offering
-                        </div>
-                        <p class="text-sm text-gray-700 leading-relaxed">Fresh homemade sourdough bread, delivered
-                            weekly.</p>
-                    </div>
-                    <div>
-                        <div class="flex items-center text-xs font-semibold uppercase text-blue-800 mb-2">
-                            <div class="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
-                            Seeking
-                        </div>
-                        <p class="text-sm text-gray-700 leading-relaxed">Lawn mowing service for small front yard.</p>
-                    </div>
-                </div>
-                <div class="flex gap-2 mt-4">
-                    <button
-                        class="flex-1 py-2 px-4 bg-orange-500 text-white rounded-lg text-sm font-medium transition-all duration-300 hover:bg-orange-600">Connect</button>
-                    <button
-                        class="flex-1 py-2 px-4 bg-white text-red-500 border-2 border-red-500 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-red-500 hover:text-white"
-                        onclick="removeItem(this)">Remove</button>
-                </div>
-            </div>
+            
         </div>
 
         <div class="p-6 bg-orange-50 border-t border-gray-200">
@@ -157,7 +121,9 @@
          * Updates the cart count and badge
          */
         function updateCartCount() {
-            const items = document.querySelectorAll('.exchange-item');
+            // const items = document.querySelectorAll('.exchange-item');
+            let items = JSON.parse(localStorage.getItem('cartItems') || '[]');
+            
             const count = items.length;
             const badge = document.getElementById('cartBadge');
             const countElement = document.getElementById('exchangeCount');
