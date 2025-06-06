@@ -32,41 +32,43 @@
 </script>
 
 <style>
-    .navbar-default {
+        @media (min-width: 768px) {
+        .navbar-default {
         background: rgba(0, 0, 0, 0.1);
-        /* backdrop-filter: blur(10px); */
+        backdrop-filter: blur(10px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     
-    .navbar-scrolled {
-        /* background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px); */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
-    }
-    
-    .navbar-scrolled .nav-link {
-        color: #374151 !important;
-    }
-    
-    .navbar-scrolled .nav-link:hover {
-        color: #14b8a6 !important;
-    }
-    
-    .navbar-scrolled .brand-text {
-        color:rgb(255, 255, 255) !important;
-    }
-    
-    .navbar-scrolled .mobile-btn {
-        color: #374151 !important;
-    }
-    
-    .navbar-scrolled .profile-btn {
-        color: #6B7280 !important;
-    }
-    
-    .navbar-scrolled .profile-btn:hover {
-        color: #14b8a6 !important;
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        .navbar-scrolled .nav-link {
+            color: #374151 !important;
+        }
+        
+        .navbar-scrolled .nav-link:hover {
+            color: #14b8a6 !important;
+        }
+        
+        .navbar-scrolled .brand-text {
+            color:rgb(255, 255, 255) !important;
+        }
+        
+        .navbar-scrolled .mobile-btn {
+            color:#14b8a6 !important;
+        }
+        
+        .navbar-scrolled .profile-btn {
+            color: #6B7280 !important;
+        }
+        
+        .navbar-scrolled .profile-btn:hover {
+            color: #14b8a6 !important;
+        }
     }
 </style>
 
@@ -116,12 +118,16 @@
                         </svg>
                     </button>
 
-                    <div id="profile-dropdown"
+                <div id="profile-dropdown"
                         class="absolute top-full right-0 mt-2 w-48 bg-white/95 backdrop-blur-sm shadow-xl rounded-lg py-2 z-10 opacity-0 scale-95 transform transition-all duration-200 ease-out pointer-events-none border border-gray-200">
                         <?php if(isset($_SESSION['name'])): ?>
                             <div class="px-4 py-2 text-gray-800 font-medium border-b border-gray-200">
                                 Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?>
                             </div>
+                            <a href="/views/profile.php"
+                                class="block px-4 py-2 text-gray-800 hover:bg-teal-50 hover:text-teal-600 transition-colors duration-200 rounded-md mx-1 font-medium">
+                                Profile
+                            </a>
                             <a href="/components/logout.php"
                                 class="block px-4 py-2 text-gray-800 hover:bg-teal-50 hover:text-teal-600 transition-colors duration-200 rounded-md mx-1 font-medium">
                                 Logout
@@ -175,6 +181,10 @@
                 <a href="/views/post_offers.php"
                     class="block py-3 px-4 text-gray-800 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-all duration-200 font-medium">
                     Post Offers
+                </a>
+                <a href="/views/profile.php"
+                    class="block py-3 px-4 text-gray-800 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-all duration-200 font-medium">
+                    Profile
                 </a>
             </div>
             
