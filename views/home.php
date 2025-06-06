@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php
+session_start(); 
+include_once '../components/controller.php';
+
+// Get current user
+$currentUser = getCurrentUser();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
