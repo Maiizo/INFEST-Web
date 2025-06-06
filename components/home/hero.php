@@ -81,7 +81,7 @@
     </style>
 </head>
 <body>
-    <section id="hero" class="relative h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+    <section id="hero" class="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
         <!-- Enhanced Background -->
         <div class="absolute inset-0">
             <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
@@ -97,8 +97,8 @@
         </div>
 
         <!-- Main Content -->
-        <div class="relative z-10 h-full max-w-7xl mx-auto px-6 sm:px-8 flex items-center">
-            <div class="grid lg:grid-cols-2 gap-12 items-center w-full">
+        <div class="relative z-10 min-h-screen max-w-7xl mx-auto px-6 sm:px-[100px] flex items-center py-[90px] lg:py-0">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
                 <!-- Enhanced Left Side -->
                 <div class="space-y-6 text-white">
                     <!-- Badge -->
