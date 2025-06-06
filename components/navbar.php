@@ -34,13 +34,11 @@
 <style>
     .navbar-default {
         background: rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(10px);
+        /* backdrop-filter: blur(10px); */
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .navbar-scrolled {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
@@ -160,7 +158,7 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu"
-        class="md:hidden bg-white/95 backdrop-blur-sm shadow-lg border-t border-gray-200 transform origin-top scale-y-0 opacity-0 transition-all duration-300 ease-out overflow-hidden">
+        class="md:hidden bg-white/95 overflow-hidden">
         <div class="px-4 py-6 space-y-3">
             <!-- Navigation Links -->
             <div class="space-y-2 mb-6">
