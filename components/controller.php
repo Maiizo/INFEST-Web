@@ -465,4 +465,248 @@ function insertResponse($usersId, $helpRequestsId, $exchangeInformationsId)
     return $success;
 }
 
+
+function getUserPostedOffers($userId) {
+    $allData = array();
+    $conn = connectDB();
+
+    if ($conn != NULL) {
+        $sql_query = "SELECT hr.*, c.categories_name, s.status_name 
+                      FROM help_requests hr 
+                      LEFT JOIN categories c ON hr.categories_id = c.category_id 
+                      LEFT JOIN status s ON hr.status_id = s.status_id 
+                      WHERE hr.users_id = ? 
+                      ORDER BY hr.help_request_id DESC";
+        
+        $stmt = mysqli_prepare($conn, $sql_query);
+        mysqli_stmt_bind_param($stmt, "i", $userId);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data = array();
+                $data['id'] = $row["help_request_id"];
+                $data['name_of_product'] = $row["name_of_product"];
+                $data['product_description'] = $row["product_description"];
+                $data['help_request_phone'] = $row["help_request_phone"];
+                $data['help_request_email'] = $row["help_request_email"];
+                $data['exchange_product_name'] = $row["exchange_product_name"];
+                $data['exchange_product_description'] = $row["exchange_product_description"];
+                $data['help_request_location'] = $row["help_request_location"];
+                $data['users_id'] = $row["users_id"];
+                $data['categories_id'] = $row["categories_id"];
+                $data['category_name'] = $row["categories_name"];
+                $data['status_id'] = $row["status_id"];
+                $data['status_name'] = $row["status_name"];
+                $data['help_request_image_url'] = $row["help_request_image_url"];
+                array_push($allData, $data);
+            }
+        }
+        
+        mysqli_stmt_close($stmt);
+        closeDB($conn);
+    }
+    return $allData;
+}
+
+/**
+ * Get all exchange information records created by a specific user
+ * (When they responded to someone else's offer)
+ * @param int $userId - The user ID
+ * @return array - Array of user's exchange responses
+ */
+function getUserExchangeResponses($userId) {
+    $allData = array();
+    $conn = connectDB();
+
+    if ($conn != NULL) {
+        $sql_query = "SELECT ei.*, hr.name_of_product, hr.exchange_product_name, 
+                             u.name as offer_owner_name, hr.help_request_location
+                      FROM exchange_informations ei
+                      INNER JOIN responses r ON ei.exchange_information_id = r.exchange_informations_id
+                      INNER JOIN help_requests hr ON ei.help_requests_id = hr.help_request_id
+                      INNER JOIN users u ON hr.users_id = u.user_id
+                      WHERE r.users_id = ?
+                      ORDER BY ei.exchange_information_id DESC";
+        
+        $stmt = mysqli_prepare($conn, $sql_query);
+        mysqli_stmt_bind_param($stmt, "i", $userId);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data = array();
+                $data['exchange_id'] = $row["exchange_information_id"];
+                $data['exchange_name'] = $row["exchange_information_name"];
+                $data['exchange_phone'] = $row["exchange_information_phone"];
+                $data['exchange_email'] = $row["exchange_information_email"];
+                $data['exchange_description'] = $row["exchange_information_description"];
+                $data['help_requests_id'] = $row["help_requests_id"];
+                $data['original_product_name'] = $row["name_of_product"];
+                $data['sought_product_name'] = $row["exchange_product_name"];
+                $data['offer_owner_name'] = $row["offer_owner_name"];
+                $data['location'] = $row["help_request_location"];
+                array_push($allData, $data);
+            }
+        }
+        
+        mysqli_stmt_close($stmt);
+        closeDB($conn);
+    }
+    return $allData;
+}
+
+/**
+ * Get all responses/interest received on user's posted offers
+ * @param int $userId - The user ID
+ * @return array - Array of responses received on user's offers
+ */
+function getUserReceivedResponses($userId) {
+    $allData = array();
+    $conn = connectDB();
+
+    if ($conn != NULL) {
+        $sql_query = "SELECT ei.*, hr.name_of_product, hr.exchange_product_name,
+                             u.name as responder_name, hr.help_request_id
+                      FROM exchange_informations ei
+                      INNER JOIN help_requests hr ON ei.help_requests_id = hr.help_request_id
+                      INNER JOIN responses r ON ei.exchange_information_id = r.exchange_informations_id
+                      INNER JOIN users u ON r.users_id = u.user_id
+                      WHERE hr.users_id = ?
+                      ORDER BY ei.exchange_information_id DESC";
+        
+        $stmt = mysqli_prepare($conn, $sql_query);
+        mysqli_stmt_bind_param($stmt, "i", $userId);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data = array();
+                $data['exchange_id'] = $row["exchange_information_id"];
+                $data['exchange_name'] = $row["exchange_information_name"];
+                $data['exchange_phone'] = $row["exchange_information_phone"];
+                $data['exchange_email'] = $row["exchange_information_email"];
+                $data['exchange_description'] = $row["exchange_information_description"];
+                $data['help_request_id'] = $row["help_request_id"];
+                $data['product_name'] = $row["name_of_product"];
+                $data['sought_product_name'] = $row["exchange_product_name"];
+                $data['responder_name'] = $row["responder_name"];
+                array_push($allData, $data);
+            }
+        }
+        
+        mysqli_stmt_close($stmt);
+        closeDB($conn);
+    }
+    return $allData;
+}
+
+/**
+ * Get comprehensive user activity summary
+ * @param int $userId - The user ID
+ * @return array - Summary statistics
+ */
+function getUserActivitySummary($userId) {
+    $conn = connectDB();
+    $summary = array(
+        'total_offers_posted' => 0,
+        'total_responses_made' => 0,
+        'total_responses_received' => 0,
+        'active_offers' => 0
+    );
+
+    if ($conn != NULL) {
+        // Count total offers posted
+        $sql = "SELECT COUNT(*) as count FROM help_requests WHERE users_id = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "i", $userId);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if ($result) {
+            $row = $result->fetch_assoc();
+            $summary['total_offers_posted'] = $row['count'];
+        }
+        mysqli_stmt_close($stmt);
+
+        // Count responses made by user
+        $sql = "SELECT COUNT(*) as count FROM responses WHERE users_id = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "i", $userId);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if ($result) {
+            $row = $result->fetch_assoc();
+            $summary['total_responses_made'] = $row['count'];
+        }
+        mysqli_stmt_close($stmt);
+
+        // Count responses received on user's offers
+        $sql = "SELECT COUNT(*) as count 
+                FROM responses r 
+                INNER JOIN help_requests hr ON r.help_requests_id = hr.help_request_id 
+                WHERE hr.users_id = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "i", $userId);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if ($result) {
+            $row = $result->fetch_assoc();
+            $summary['total_responses_received'] = $row['count'];
+        }
+        mysqli_stmt_close($stmt);
+
+        // Count active offers (assuming status_id = 1 means active)
+        $sql = "SELECT COUNT(*) as count FROM help_requests WHERE users_id = ? AND status_id = 1";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "i", $userId);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if ($result) {
+            $row = $result->fetch_assoc();
+            $summary['active_offers'] = $row['count'];
+        }
+        mysqli_stmt_close($stmt);
+
+        closeDB($conn);
+    }
+    return $summary;
+}
+
+/**
+ * Delete a user's help request (offer)
+ * @param int $helpRequestId - The help request ID
+ * @param int $userId - The user ID (for ownership verification)
+ * @return bool - Success status
+ */
+function deleteUserOffer($helpRequestId, $userId) {
+    $conn = connectDB();
+    $success = false;
+
+    if ($conn != NULL) {
+        // First verify the user owns this offer
+        $sql_check = "SELECT users_id FROM help_requests WHERE help_request_id = ?";
+        $stmt_check = mysqli_prepare($conn, $sql_check);
+        mysqli_stmt_bind_param($stmt_check, "i", $helpRequestId);
+        mysqli_stmt_execute($stmt_check);
+        $result = mysqli_stmt_get_result($stmt_check);
+        
+        if ($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            if ($row['users_id'] == $userId) {
+                // User owns the offer, proceed with deletion
+                $sql_delete = "DELETE FROM help_requests WHERE help_request_id = ?";
+                $stmt_delete = mysqli_prepare($conn, $sql_delete);
+                mysqli_stmt_bind_param($stmt_delete, "i", $helpRequestId);
+                $success = mysqli_stmt_execute($stmt_delete);
+                mysqli_stmt_close($stmt_delete);
+            }
+        }
+        mysqli_stmt_close($stmt_check);
+        closeDB($conn);
+    }
+    return $success;
+}
 ?>

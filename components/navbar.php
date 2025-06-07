@@ -136,6 +136,20 @@ $currentUser = getCurrentUser();
                         Post Offers
                         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
                     </a>
+                    <!-- In your navbar.php, replace the profile link with: -->
+                    <?php if ($currentUser): ?>
+                        <a href="/views/profile.php"
+                            class="nav-link text-white hover:text-teal-400 transition-all duration-300 font-medium relative group">
+                            Profile
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    <?php else: ?>
+                        <a href="/components/sign_in.php?message=Please log in to access your profile"
+                            class="nav-link text-white hover:text-teal-400 transition-all duration-300 font-medium relative group">
+                            Profile
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Profile Dropdown & Mobile Menu Button -->
@@ -216,10 +230,20 @@ $currentUser = getCurrentUser();
                         class="block py-3 px-4 text-gray-800 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-all duration-200 font-medium">
                         Post Offers
                     </a>
-                    <a href="/views/profile.php"
-                        class="block py-3 px-4 text-gray-800 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-all duration-200 font-medium">
-                        Profile
-                    </a>
+                    <!-- In your navbar.php, replace the profile link with: -->
+                    <?php if ($currentUser): ?>
+                        <a href="/views/profile.php"
+                            class="nav-link text-white hover:text-teal-400 transition-all duration-300 font-medium relative group">
+                            Profile
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    <?php else: ?>
+                        <a href="/components/sign_in.php?message=Please log in to access your profile"
+                            class="nav-link text-white hover:text-teal-400 transition-all duration-300 font-medium relative group">
+                            Profile
+                            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Divider -->
