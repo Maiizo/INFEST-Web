@@ -51,7 +51,7 @@
 
         <div class="flex-1 overflow-y-auto p-5 space-y-5" id="cartItems">
             <!-- sample  -->
-            
+
         </div>
 
         <div class="p-6 bg-orange-50 border-t border-gray-200">
@@ -70,7 +70,14 @@
         /**
          * Opens the exchange cart
          */
+
+        // let items = JSON.parse(localStorage.getItem('cartItems') || '[]');
+        const items = document.querySelectorAll('.exchange-item');
+
+        console.log("Cart items length: " + items.length);
+
         function openCart() {
+            console.log("buka bang")
             const overlay = document.getElementById('cartOverlay');
             const slider = document.getElementById('cartSlider');
 
@@ -121,9 +128,7 @@
          * Updates the cart count and badge
          */
         function updateCartCount() {
-            // const items = document.querySelectorAll('.exchange-item');
-            let items = JSON.parse(localStorage.getItem('cartItems') || '[]');
-            
+
             const count = items.length;
             const badge = document.getElementById('cartBadge');
             const countElement = document.getElementById('exchangeCount');
@@ -146,18 +151,60 @@
             }
         }
 
+        function loadCartItems() {
+            const cartContainer = document.getElementById('cartItems');
+            if (!cartContainer) return;
+            
+            if (cartItems.length === 0) {
+                cartContainer.innerHTML = `
+                    <div class="flex flex-col items-center justify-center text-center py-16 px-5 text-gray-500">
+                        <div class="text-6xl mb-6 opacity-50">🤝</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-700">No Exchange Requests Yet</h3>
+                        <p class="text-sm text-gray-500 max-w-xs">Start connecting with your community!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // In a real application, you would fetch item details from the server
+            // For now, we'll show placeholder content
+            cartContainer.innerHTML = cartItems.map(item => 
+            console.log("di dalem cart items: " + item)
+            `
+                <div class="exchange-item bg-orange-50 rounded-2xl p-5 border-l-4 border-orange-500 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                    <div class="flex items-start mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-teal-400 flex items-center justify-center text-white font-bold text-lg mr-4 flex-shrink-0">
+                            ID
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="text-base font-semibold text-gray-800 mb-1 truncate">Request #${item.id}</h3>
+                            <p class="text-sm text-gray-600">Added to cart</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="viewDetails(${item.id})" class="flex-1 py-2 px-4 bg-orange-500 text-white rounded-lg text-sm font-medium transition-all duration-300 hover:bg-orange-600">
+                            View Details
+                        </button>
+                        <button onclick="removeFromCart(${item.id})" class="flex-1 py-2 px-4 bg-white text-red-500 border-2 border-red-500 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-red-500 hover:text-white">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
         // Call updateCartCount on page load
         window.addEventListener('DOMContentLoaded', updateCartCount);
 
         // Close cart with Escape key
-        document.addEventListener('keydown', function (e) {
+        document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeCart();
             }
         });
 
         // Close cart when clicking outside
-        document.addEventListener('click', function (e) {
+        document.addEventListener('click', function(e) {
             const cartSlider = document.getElementById('cartSlider');
             const overlay = document.getElementById('cartOverlay');
 

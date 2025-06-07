@@ -264,29 +264,6 @@ $categories = getAllCategories();
                 <?php endif; ?>
             </div>
 
-            <!-- Shopping Cart Button (if user is logged in) -->
-            <?php if ($currentUser): ?>
-                <button
-                    class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-orange-500 to-teal-400 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-3xl hover:scale-110 group glassmorphism border border-white/30"
-                    onclick="openCart()" aria-label="Open exchange cart">
-                    <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-110 text-white" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H19M9 19h.01M20 19h.01"></path>
-                    </svg>
-                    <span id="cart-badge"
-                        class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center font-bold animate-pulse shadow-lg">
-                        0
-                    </span>
-                </button>
-            <?php endif; ?>
-        </div>
-    </section>
-
-    <!-- Include Shopping Cart if user is logged in -->
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <?php include '../components/shopping_cart.php'; ?>
-    <?php endif; ?>
 
     <script>
         // NEW: JavaScript functions for enhanced functionality

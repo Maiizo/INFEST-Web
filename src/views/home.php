@@ -17,7 +17,7 @@
     <?php include '../components/home/section3.html' ?>
     <?php include '../components/home/review.html' ?>
     <?php include '../components/footer.html' ?>
-    <?php include '../components/ShoppingCart.html' ?>
+    
 </body>
 
 </html>
