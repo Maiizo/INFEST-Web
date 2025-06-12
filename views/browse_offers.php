@@ -138,19 +138,7 @@ $categories = getAllCategories();
                     </div>
 
                     <!-- Location Filters -->
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <select name="location" onchange="this.form.submit()"
-                            class="px-3 py-2 glassmorphism border border-white/30 rounded-xl text-sm focus:ring-2 focus:ring-teal-400 focus:border-teal-400 text-white bg-transparent">
-                            <option value="" class="bg-gray-800 text-white">All Locations</option>
-                            <?php foreach ($availableLocations as $availableLocation): ?>
-                                <option value="<?php echo htmlspecialchars($availableLocation); ?>" 
-                                        <?php echo ($location == $availableLocation) ? 'selected' : ''; ?> 
-                                        class="bg-gray-800 text-white">
-                                    <?php echo htmlspecialchars($availableLocation); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
+                    
                 </div>
             </form>
 

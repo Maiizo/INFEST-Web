@@ -233,13 +233,13 @@ $currentUser = getCurrentUser();
                     <!-- In your navbar.php, replace the profile link with: -->
                     <?php if ($currentUser): ?>
                         <a href="/views/profile.php"
-                            class="nav-link text-white hover:text-teal-400 transition-all duration-300 font-medium relative group">
+                            class="nav-link text-gray-800 hover:text-teal-400 transition-all duration-300 font-medium relative group">
                             Profile
                             <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
                         </a>
                     <?php else: ?>
                         <a href="/components/sign_in.php?message=Please log in to access your profile"
-                            class="nav-link text-white hover:text-teal-400 transition-all duration-300 font-medium relative group">
+                            class="nav-link text-gray-800 hover:text-teal-400 transition-all duration-300 font-medium relative group">
                             Profile
                             <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
                         </a>
