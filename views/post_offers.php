@@ -144,12 +144,44 @@ $categories = getAllCategories();
                         </div>
 
                         <div>
-                            <label for="city" class="block text-sm font-medium text-white mb-2">
-                                City <span class="text-orange-400">*</span>
+                            <label for="location" class="block text-sm font-medium text-white mb-2">
+                                Location <span class="text-orange-400">*</span>
                             </label>
-                            <input type="text" id="city" name="city" required
+                            <select name="location" id="location" required
+                                class="w-full px-4 py-3 glassmorphism border border-white/30 rounded-xl focus:ring-2 focus:ring-teal-400 focus:border-teal-400 transition-all duration-200 text-white bg-transparent">
+                                <option value="" class="bg-gray-800 text-white">Select a city</option>
+                                <option value="Jakarta, Indonesia" class="bg-gray-800 text-white">Jakarta, Indonesia</option>
+                                <option value="New York, United States" class="bg-gray-800 text-white">New York, United States</option>
+                                <option value="London, United Kingdom" class="bg-gray-800 text-white">London, United Kingdom</option>
+                                <option value="Tokyo, Japan" class="bg-gray-800 text-white">Tokyo, Japan</option>
+                                <option value="Paris, France" class="bg-gray-800 text-white">Paris, France</option>
+                                <option value="Shanghai, China" class="bg-gray-800 text-white">Shanghai, China</option>
+                                <option value="Dubai, United Arab Emirates" class="bg-gray-800 text-white">Dubai, United Arab Emirates</option>
+                                <option value="Sydney, Australia" class="bg-gray-800 text-white">Sydney, Australia</option>
+                                <option value="Toronto, Canada" class="bg-gray-800 text-white">Toronto, Canada</option>
+                                <option value="Berlin, Germany" class="bg-gray-800 text-white">Berlin, Germany</option>
+                                <option value="Mumbai, India" class="bg-gray-800 text-white">Mumbai, India</option>
+                                <option value="São Paulo, Brazil" class="bg-gray-800 text-white">São Paulo, Brazil</option>
+                                <option value="Seoul, South Korea" class="bg-gray-800 text-white">Seoul, South Korea</option>
+                                <option value="Moscow, Russia" class="bg-gray-800 text-white">Moscow, Russia</option>
+                                <option value="Amsterdam, Netherlands" class="bg-gray-800 text-white">Amsterdam, Netherlands</option>
+                                <option value="Stockholm, Sweden" class="bg-gray-800 text-white">Stockholm, Sweden</option>
+                                <option value="Mexico City, Mexico" class="bg-gray-800 text-white">Mexico City, Mexico</option>
+                                <option value="Cape Town, South Africa" class="bg-gray-800 text-white">Cape Town, South Africa</option>
+                                <option value="Rome, Italy" class="bg-gray-800 text-white">Rome, Italy</option>
+                                <option value="Madrid, Spain" class="bg-gray-800 text-white">Madrid, Spain</option>
+                                <option value="Other" class="bg-gray-800 text-white">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Custom City Input (hidden by default) -->
+                        <div id="custom-city-container" class="hidden">
+                            <label for="custom_city" class="block text-sm font-medium text-white mb-2">
+                                Enter Your City <span class="text-orange-400">*</span>
+                            </label>
+                            <input type="text" id="custom_city" name="custom_city"
                                 class="w-full px-4 py-3 glassmorphism border border-white/30 rounded-xl focus:ring-2 focus:ring-teal-400 focus:border-teal-400 transition-all duration-200 text-white placeholder-gray-300 bg-transparent"
-                                placeholder="Enter your city">
+                                placeholder="Enter your city, country">
                         </div>
                     </div>
 
@@ -163,7 +195,7 @@ $categories = getAllCategories();
                     </div>
 
                      <div>
-                        <label class="block text-sm font-medium text-white mb-2">Upload Image</label>
+                        <label class="block text-sm font-medium text-white mb-2">Upload Image<span class="text-orange-400">*</span></label>
                         <button type="button" id="uploadimage"
                             class="w-full glassmorphism border-2 border-dashed border-white/30 rounded-xl p-6 text-center hover:border-teal-400 transition-all duration-200 hover:bg-white/10">
                             <div class="space-y-2">
@@ -283,10 +315,29 @@ $categories = getAllCategories();
 
             // Form validation
             $('#offerForm').on('submit', function(e) {
-                const requiredFields = ['product_name', 'category', 'city', 'description', 'exchange_product', 'exchange_description', 'contact_email'];
+                const requiredFields = ['product_name', 'category', 'location', 'description', 'exchange_product', 'exchange_description', 'contact_email'];
                 let isValid = true;
                 
+                // Special validation for location
+                const locationValue = $('#location').val();
+                const customCityValue = $('#custom_city').val().trim();
+                
+                if (!locationValue) {
+                    isValid = false;
+                    $('#location').addClass('border-red-400').removeClass('border-white/30');
+                } else if (locationValue === 'Other' && !customCityValue) {
+                    isValid = false;
+                    $('#custom_city').addClass('border-red-400').removeClass('border-white/30');
+                    showMessage('Please enter your custom location.', 'error');
+                } else {
+                    $('#location').removeClass('border-red-400').addClass('border-white/30');
+                    $('#custom_city').removeClass('border-red-400').addClass('border-white/30');
+                }
+                
+                // Validate other required fields
                 requiredFields.forEach(function(field) {
+                    if (field === 'location') return; // Already handled above
+                    
                     const value = $(`#${field}`).val().trim();
                     if (!value) {
                         isValid = false;
@@ -299,6 +350,21 @@ $categories = getAllCategories();
                 if (!isValid) {
                     e.preventDefault();
                     showMessage('Please fill in all required fields.', 'error');
+                }
+            });
+
+            // Handle location dropdown change
+            $('#location').on('change', function() {
+                const selectedValue = $(this).val();
+                const customCityContainer = $('#custom-city-container');
+                const customCityInput = $('#custom_city');
+                
+                if (selectedValue === 'Other') {
+                    customCityContainer.removeClass('hidden').addClass('block');
+                    customCityInput.attr('required', true);
+                } else {
+                    customCityContainer.removeClass('block').addClass('hidden');
+                    customCityInput.attr('required', false).val('');
                 }
             });
         });
