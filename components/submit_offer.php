@@ -18,20 +18,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Sanitize and validate input data
     $productName = trim($_POST['product_name']);
     $categoryId = (int)$_POST['category'];
-    $city = trim($_POST['city']);
+    $location = trim($_POST['location']);
+    $customCity = trim($_POST['custom_city']);
     $description = trim($_POST['description']);
     $exchangeProduct = trim($_POST['exchange_product']);
     $exchangeDescription = trim($_POST['exchange_description']);
     $contactEmail = trim($_POST['contact_email']);
     $contactNumber = trim($_POST['contact_number']);
     
+    // Determine final location value
+    $finalLocation = '';
+    if ($location === 'Other') {
+        $finalLocation = $customCity;
+    } else {
+        $finalLocation = $location;
+    }
+    
     // Server-side validation
     $errors = array();
     
-    // Check required fields
-    if (empty($productName) || empty($categoryId) || empty($city) || empty($description) || 
+    // Check required fields (including location validation)
+    if (empty($productName) || empty($categoryId) || empty($finalLocation) || empty($description) || 
         empty($exchangeProduct) || empty($exchangeDescription) || empty($contactEmail)) {
         $errors[] = "All required fields must be filled.";
+    }
+    
+    // Additional validation for custom location
+    if ($location === 'Other' && empty($customCity)) {
+        $errors[] = "Please enter your custom location.";
     }
     
     // Validate email format
@@ -69,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $contactEmail,
             $exchangeProduct,
             $exchangeDescription,
-            $city,
+            $finalLocation, // Use final processed location
             $currentUser['id'],
             $categoryId,
             1, // Default status ID (assuming 1 = active)

@@ -17,6 +17,7 @@ $helpRequests = getHelpRequestsForBrowse($filter, $category, $location);
 
 // Get categories for dropdown
 $categories = getAllCategories();
+
 ?>
 
 <!DOCTYPE html>
@@ -136,26 +137,18 @@ $categories = getAllCategories();
                         </button>
                     </div>
 
-                    <!-- Category and Location Filters -->
+                    <!-- Location Filters -->
                     <div class="flex flex-col sm:flex-row gap-3">
-                        <select name="category" onchange="this.form.submit()"
-                            class="px-3 py-2 glassmorphism border border-white/30 rounded-xl text-sm focus:ring-2 focus:ring-teal-400 focus:border-teal-400 text-white bg-transparent">
-                            <option value="" class="bg-gray-800 text-white">All Categories</option>
-                            <?php foreach ($categories as $cat): ?>
-                                <option value="<?php echo htmlspecialchars($cat['name']); ?>" 
-                                        <?php echo ($category == $cat['name']) ? 'selected' : ''; ?>
-                                        class="bg-gray-800 text-white">
-                                    <?php echo htmlspecialchars($cat['name']); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-
                         <select name="location" onchange="this.form.submit()"
                             class="px-3 py-2 glassmorphism border border-white/30 rounded-xl text-sm focus:ring-2 focus:ring-teal-400 focus:border-teal-400 text-white bg-transparent">
                             <option value="" class="bg-gray-800 text-white">All Locations</option>
-                            <option value="sarkanika" <?php echo ($location == 'sarkanika') ? 'selected' : ''; ?> class="bg-gray-800 text-white">Sarkanika</option>
-                            <option value="sarikaya" <?php echo ($location == 'sarikaya') ? 'selected' : ''; ?> class="bg-gray-800 text-white">Sarikaya</option>
-                            <option value="nearby" <?php echo ($location == 'nearby') ? 'selected' : ''; ?> class="bg-gray-800 text-white">Nearby</option>
+                            <?php foreach ($availableLocations as $availableLocation): ?>
+                                <option value="<?php echo htmlspecialchars($availableLocation); ?>" 
+                                        <?php echo ($location == $availableLocation) ? 'selected' : ''; ?> 
+                                        class="bg-gray-800 text-white">
+                                    <?php echo htmlspecialchars($availableLocation); ?>
+                                </option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
