@@ -266,7 +266,6 @@ $categories = getAllCategories();
 
 
     <script>
-        // NEW: JavaScript functions for enhanced functionality
         
         // Shopping cart functionality
         let cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');

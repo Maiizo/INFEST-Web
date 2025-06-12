@@ -88,7 +88,7 @@ $offerUser = getUserById($offer['users_id']);
                                 <!-- Image -->
                                 <?php if (!empty($offer['help_request_image_url'])): ?>
                                     <div class="mb-6">
-                                        <img src="/<?php echo htmlspecialchars($offer['help_request_image_url']); ?>" 
+                                        <img src="<?php echo htmlspecialchars($offer['help_request_image_url']); ?>" 
                                              alt="Offer Image" 
                                              class="w-full h-64 object-cover rounded-lg shadow-md">
                                     </div>

@@ -67,12 +67,12 @@ function emailExists($email)
         mysqli_stmt_bind_param($stmt, "s", $email);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
-        
+
         if ($result) {
             $row = $result->fetch_assoc();
             $exists = $row['count'] > 0;
         }
-        
+
         mysqli_stmt_close($stmt);
         closeDB($conn);
     }
@@ -91,7 +91,7 @@ function getAllUsers()
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $data = array(); 
+                $data = array();
                 $data['id'] = $row["user_id"];
                 $data['name'] = $row["name"];
                 $data['email'] = $row["email"];
@@ -100,7 +100,7 @@ function getAllUsers()
                 array_push($allData, $data);
             }
         }
-        
+
         closeDB($conn);
     }
     return $allData;
@@ -123,7 +123,7 @@ function getAllCategories()
                 array_push($allData, $data);
             }
         }
-        
+
         closeDB($conn);
     }
     return $allData;
@@ -146,7 +146,7 @@ function getAllStatus()
                 array_push($allData, $data);
             }
         }
-        
+
         closeDB($conn);
     }
     return $allData;
@@ -179,7 +179,7 @@ function getAllHelpRequests()
                 array_push($allData, $data);
             }
         }
-        
+
         closeDB($conn);
     }
     return $allData;
@@ -197,38 +197,38 @@ function getHelpRequestsForBrowse($filter = 'all', $category = '', $location = '
                       LEFT JOIN categories c ON hr.categories_id = c.category_id 
                       LEFT JOIN status s ON hr.status_id = s.status_id 
                       WHERE 1=1";
-        
+
         $params = array();
         $types = "";
-        
+
         // Apply filters
         if ($filter !== 'all') {
             $sql_query .= " AND c.categories_name = ?";
             $params[] = $filter;
             $types .= "s";
         }
-        
+
         if (!empty($category)) {
             $sql_query .= " AND c.categories_name = ?";
             $params[] = $category;
             $types .= "s";
         }
-        
+
         if (!empty($location)) {
             $sql_query .= " AND hr.help_request_location LIKE ?";
             $params[] = "%" . $location . "%";
             $types .= "s";
         }
-        
+
         $sql_query .= " ORDER BY hr.help_request_id DESC";
-        
+
         if (!empty($params)) {
-            $stmt = mysqli_prepare($conn, $sql_query);
-            mysqli_stmt_bind_param($stmt, $types, ...$params);
-            mysqli_stmt_execute($stmt);
-            $result = mysqli_stmt_get_result($stmt);
+            $stmt = mysqli_prepare($conn, $sql_query); // connect database with query
+            mysqli_stmt_bind_param($stmt, $types, ...$params); // connect input user with query
+            mysqli_stmt_execute($stmt); //execute query
+            $result = mysqli_stmt_get_result($stmt); // get result of query
         } else {
-            $result = mysqli_query($conn, $sql_query);
+            $result = mysqli_query($conn, $sql_query); // langsung execute query tanpa filter dari
         }
 
         if ($result && $result->num_rows > 0) {
@@ -252,7 +252,7 @@ function getHelpRequestsForBrowse($filter = 'all', $category = '', $location = '
                 array_push($allData, $data);
             }
         }
-        
+
         if (isset($stmt)) {
             mysqli_stmt_close($stmt);
         }
@@ -282,7 +282,7 @@ function getAllExchangeInformations()
                 array_push($allData, $data);
             }
         }
-        
+
         closeDB($conn);
     }
     return $allData;
@@ -307,7 +307,7 @@ function getAllResponses()
                 array_push($allData, $data);
             }
         }
-        
+
         closeDB($conn);
     }
     return $allData;
@@ -336,7 +336,7 @@ function getUserById($userId)
                 'password' => $row["password"]
             );
         }
-        
+
         mysqli_stmt_close($stmt);
         closeDB($conn);
     }
@@ -372,7 +372,7 @@ function getHelpRequestById($helpRequestId)
                 'help_request_image_url' => $row["help_request_image_url"]
             );
         }
-        
+
         mysqli_stmt_close($stmt);
         closeDB($conn);
     }
@@ -390,15 +390,15 @@ function insertUser($name, $email, $phone, $password)
         if (emailExists($email)) {
             return "Email already exists";
         }
-        
+
         $sql_query = "INSERT INTO `users` (`name`, `email`, `phone`, `password`) VALUES (?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $sql_query);
         mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $phone, $password);
-        
+
         if (mysqli_stmt_execute($stmt)) {
             $success = true;
         }
-        
+
         mysqli_stmt_close($stmt);
         closeDB($conn);
     }
@@ -414,11 +414,11 @@ function insertHelpRequest($nameOfProduct, $productDescription, $phone, $email, 
         $sql_query = "INSERT INTO `help_requests` (`name_of_product`, `product_description`, `help_request_phone`, `help_request_email`, `exchange_product_name`, `exchange_product_description`, `help_request_location`, `users_id`, `categories_id`, `status_id`, `help_request_image_url`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $sql_query);
         mysqli_stmt_bind_param($stmt, "sssssssiiis", $nameOfProduct, $productDescription, $phone, $email, $exchangeProductName, $exchangeProductDescription, $location, $usersId, $categoriesId, $statusId, $imageUrl);
-        
+
         if (mysqli_stmt_execute($stmt)) {
             $success = mysqli_insert_id($conn); // Return the inserted ID
         }
-        
+
         mysqli_stmt_close($stmt);
         closeDB($conn);
     }
@@ -434,11 +434,11 @@ function insertExchangeInformation($name, $phone, $email, $description, $helpReq
         $sql_query = "INSERT INTO `exchange_informations` (`exchange_information_name`, `exchange_information_phone`, `exchange_information_email`, `exchange_information_description`, `help_requests_id`) VALUES (?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $sql_query);
         mysqli_stmt_bind_param($stmt, "ssssi", $name, $phone, $email, $description, $helpRequestsId);
-        
+
         if (mysqli_stmt_execute($stmt)) {
             $success = true;
         }
-        
+
         mysqli_stmt_close($stmt);
         closeDB($conn);
     }
@@ -454,11 +454,11 @@ function insertResponse($usersId, $helpRequestsId, $exchangeInformationsId)
         $sql_query = "INSERT INTO `responses` (`users_id`, `help_requests_id`, `exchange_informations_id`) VALUES (?, ?, ?)";
         $stmt = mysqli_prepare($conn, $sql_query);
         mysqli_stmt_bind_param($stmt, "iii", $usersId, $helpRequestsId, $exchangeInformationsId);
-        
+
         if (mysqli_stmt_execute($stmt)) {
             $success = true;
         }
-        
+
         mysqli_stmt_close($stmt);
         closeDB($conn);
     }
@@ -466,7 +466,8 @@ function insertResponse($usersId, $helpRequestsId, $exchangeInformationsId)
 }
 
 
-function getUserPostedOffers($userId) {
+function getUserPostedOffers($userId)
+{
     $allData = array();
     $conn = connectDB();
 
@@ -477,7 +478,7 @@ function getUserPostedOffers($userId) {
                       LEFT JOIN status s ON hr.status_id = s.status_id 
                       WHERE hr.users_id = ? 
                       ORDER BY hr.help_request_id DESC";
-        
+
         $stmt = mysqli_prepare($conn, $sql_query);
         mysqli_stmt_bind_param($stmt, "i", $userId);
         mysqli_stmt_execute($stmt);
@@ -503,7 +504,7 @@ function getUserPostedOffers($userId) {
                 array_push($allData, $data);
             }
         }
-        
+
         mysqli_stmt_close($stmt);
         closeDB($conn);
     }
@@ -516,7 +517,8 @@ function getUserPostedOffers($userId) {
  * @param int $userId - The user ID
  * @return array - Array of user's exchange responses
  */
-function getUserExchangeResponses($userId) {
+function getUserExchangeResponses($userId)
+{
     $allData = array();
     $conn = connectDB();
 
@@ -529,7 +531,7 @@ function getUserExchangeResponses($userId) {
                       INNER JOIN users u ON hr.users_id = u.user_id
                       WHERE r.users_id = ?
                       ORDER BY ei.exchange_information_id DESC";
-        
+
         $stmt = mysqli_prepare($conn, $sql_query);
         mysqli_stmt_bind_param($stmt, "i", $userId);
         mysqli_stmt_execute($stmt);
@@ -551,7 +553,7 @@ function getUserExchangeResponses($userId) {
                 array_push($allData, $data);
             }
         }
-        
+
         mysqli_stmt_close($stmt);
         closeDB($conn);
     }
@@ -563,7 +565,8 @@ function getUserExchangeResponses($userId) {
  * @param int $userId - The user ID
  * @return array - Array of responses received on user's offers
  */
-function getUserReceivedResponses($userId) {
+function getUserReceivedResponses($userId)
+{
     $allData = array();
     $conn = connectDB();
 
@@ -576,7 +579,7 @@ function getUserReceivedResponses($userId) {
                       INNER JOIN users u ON r.users_id = u.user_id
                       WHERE hr.users_id = ?
                       ORDER BY ei.exchange_information_id DESC";
-        
+
         $stmt = mysqli_prepare($conn, $sql_query);
         mysqli_stmt_bind_param($stmt, "i", $userId);
         mysqli_stmt_execute($stmt);
@@ -597,7 +600,7 @@ function getUserReceivedResponses($userId) {
                 array_push($allData, $data);
             }
         }
-        
+
         mysqli_stmt_close($stmt);
         closeDB($conn);
     }
@@ -609,7 +612,8 @@ function getUserReceivedResponses($userId) {
  * @param int $userId - The user ID
  * @return array - Summary statistics
  */
-function getUserActivitySummary($userId) {
+function getUserActivitySummary($userId)
+{
     $conn = connectDB();
     $summary = array(
         'total_offers_posted' => 0,
@@ -681,7 +685,8 @@ function getUserActivitySummary($userId) {
  * @param int $userId - The user ID (for ownership verification)
  * @return bool - Success status
  */
-function deleteUserOffer($helpRequestId, $userId) {
+function deleteUserOffer($helpRequestId, $userId)
+{
     $conn = connectDB();
     $success = false;
 
@@ -692,7 +697,7 @@ function deleteUserOffer($helpRequestId, $userId) {
         mysqli_stmt_bind_param($stmt_check, "i", $helpRequestId);
         mysqli_stmt_execute($stmt_check);
         $result = mysqli_stmt_get_result($stmt_check);
-        
+
         if ($result && $result->num_rows > 0) {
             $row = $result->fetch_assoc();
             if ($row['users_id'] == $userId) {
@@ -709,4 +714,3 @@ function deleteUserOffer($helpRequestId, $userId) {
     }
     return $success;
 }
-?>

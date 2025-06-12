@@ -8,7 +8,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <!-- ENHANCED SIGN UP PAGE: Added complete form functionality and database integration -->
     <section class="w-full h-screen flex justify-center items-center bg-gradient-to-r from-primary to-secondary">
         <div class="justify-center lg:w-2/3 px-12 py-20 lg:pl-20">
             <div class="bg-white rounded-3xl p-8 shadow-2xl max-w-xl mx-auto">

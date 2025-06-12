@@ -186,6 +186,7 @@ $categories = getAllCategories();
     </div>
 
     <script>
+        // jquery here
         $(document).ready(function () {
             // Image upload functionality
             $('#uploadimage').on('click', function () {

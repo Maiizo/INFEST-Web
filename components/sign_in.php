@@ -8,7 +8,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <!-- ENHANCED SIGN IN PAGE: Modified original to include proper form handling and session management -->
     <section class="w-full h-screen flex justify-center items-center bg-gradient-to-r from-primary to-secondary">
         <div class="justify-center lg:w-2/3 px-12 py-20 lg:pl-20">
             <div class="bg-white rounded-3xl p-8 shadow-2xl max-w-xl mx-auto">
@@ -17,7 +16,6 @@
                 <!-- Display success/error messages -->
                 <div id="message-container" class="mb-4"></div>
 
-                <!-- MODIFIED: Added proper form attributes and name attributes -->
                 <form id="loginForm" class="space-y-8" method="POST" action="login_process.php">
                     <input type="email" name="email" id="email" placeholder="Email" required
                         class="w-full px-6 py-5 text-xl border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
@@ -33,7 +31,7 @@
 
                 <div class="text-center mt-10 mb-4 text-lg text-gray-600">
                     Don't have an Account?
-                    <!-- MODIFIED: Updated link to point to signup.php -->
+
                     <a href="/components/signup.php" class="text-blue-500 hover:underline">Sign Up</a>
                 </div>
             </div>

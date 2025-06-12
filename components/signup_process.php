@@ -43,8 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     // If no errors, proceed with registration
     if (empty($errors)) {
-        // In production, you should hash the password
-        // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         
         $result = insertUser($name, $email, $phone, $password);
         
