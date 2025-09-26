@@ -1,25 +1,13 @@
-# INFEST Web
-Website for INFEST Web Competititon
+# UnityGrid
+UnityGrid website for INFEST website competition
 
+"UnityGrid" adalah website yang berfungsi sebagai platform komunitas digital untuk menghubungkan warga satu lingkungan dalam saling membantu kebutuhan sehari-hari.
 
+Dibangun menggunakan:
+Backend: PHP dengan database MySQL (phpMyAdmin) Frontend: HTML5, Tailwind CSS Interaktivitas: jQuery/JavaScript Session Management: PHP Session
 
-## Project Setup
+By: Felicia Sword and EIleen Cynthia Mark
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
 
 
 ![alt text](https://github.com/Maiizo/INFEST-Web/blob/main/UnityGrid1.png?raw=true)
