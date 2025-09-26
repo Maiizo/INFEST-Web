@@ -20,3 +20,6 @@ npm run dev
 ```sh
 npm run build
 ```
+
+
+![alt text](https://github.com/Maiizo/INFEST-Web/blob/main/image.jpg?raw=true)
