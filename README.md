@@ -22,7 +22,7 @@ npm run build
 ```
 
 
-![alt text](https://github.com/Maiizo/INFEST-Web/blob/main/UnityGrid1.jpg?raw=true)
-![alt text](https://github.com/Maiizo/INFEST-Web/blob/main/UnityGrid2.jpg?raw=true)
-![alt text](https://github.com/Maiizo/INFEST-Web/blob/main/UnityGrid3.jpg?raw=true)
-![alt text](https://github.com/Maiizo/INFEST-Web/blob/main/UnityGrid4.jpg?raw=true)
+![alt text](https://github.com/Maiizo/INFEST-Web/blob/main/UnityGrid1.png?raw=true)
+![alt text](https://github.com/Maiizo/INFEST-Web/blob/main/UnityGrid2.png?raw=true)
+![alt text](https://github.com/Maiizo/INFEST-Web/blob/main/UnityGrid3.png?raw=true)
+![alt text](https://github.com/Maiizo/INFEST-Web/blob/main/UnityGrid4.png?raw=true)
